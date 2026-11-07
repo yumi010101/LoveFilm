@@ -423,7 +423,7 @@ const data=[
  {id:'record',name:'舊唱片行',x:-77,z:20,w:23,d:20,h:9.7,wall:'#d2c1a9',roof:'#7a675a',type:'record'},
  {id:'home',name:'主角公寓',x:-26,z:20,w:26,d:22,h:24.4,wall:'#e2c9af',roof:'#7d7772',type:'home'},
  {id:'cafe',name:'灣邊咖啡館',x:26,z:20,w:26,d:22,h:9.5,wall:'#d5d2b3',roof:'#7b7256',type:'cafe'},
- {id:'cinema',name:'映灣戲院',x:77,z:20,w:36,d:28,h:16.2,wall:'#d6b9a9',roof:'#614f63',type:'cinema'},
+ {id:'cinema',name:'映灣戲院',x:77,z:20,w:36,d:28,h:20.8,wall:'#d6b9a9',roof:'#614f63',type:'cinema'},
  {id:'lumiere',name:'盧米埃光影館',x:65,z:-75,w:16,d:12,h:14.1,wall:'#eadcc3',roof:'#49545c',type:'lumiere'},
  {id:'workshop',name:'里昂電影道具工坊',x:88,z:-75,w:16,d:12,h:11.7,wall:'#d6ab91',roof:'#855a51',type:'workshop'}];
 for(const d of data){d.front=d.z+d.d/2;d.doorW=2.6;d.doorOpen=0;d.targetOpen=false;d.hinge=d.x-d.doorW/2;buildings.push(d);const sh=new Builder(),rf=new Builder(),h=d.h,w=d.w,dep=d.d,xx=d.x,zz=d.z,front=d.front,back=zz-dep/2,l=xx-w/2,r=xx+w/2;
@@ -903,8 +903,11 @@ for(const d of buildings){
   ceil.box(x+12.52,cy-.10,z-7.25,.46,.16,10.36,'#ddcfb7');
   ceil.box(x+10.2,cy-.10,z-12.32,5.10,.16,.42,'#ddcfb7');
   ceil.box(x+10.2,cy-.10,z-2.16,5.10,.16,.42,'#ddcfb7');
+ }else if(d.type==='cinema'){
+  ceil.box(x,7.55,z,w-.74,.24,dep-.76,'#efe4dc');
+  ceil.box(x,7.18,z-8.8,w-2.2,.16,3.10,'#cab0b1');
  }else ceil.box(x,5.05,z,w-.74,.20,dep-.76,d.type==='cinema'?'#f1e6de':'#f5ebd9');
- const cy=d.type==='office'?5.53:5.05;
+ const cy=d.type==='office'?5.53:(d.type==='cinema'?7.55:5.05);
  for(const sx of [-w*.28,0,w*.28]){
   if(d.type==='office'&&sx>0)continue;
   ceil.box(x+sx,cy-.16,z,.12,.16,dep-.80,d.type==='cinema'?'#b79b9e':'#d8c8ac');
@@ -1054,38 +1057,45 @@ for(const d of buildings){
   world.box(x+7.1,1.35,z+5.95,1.8,.10,.42,'#d4be9a');
   world.box(x+7.1,1.56,z+5.95,1.1,.22,.20,'#7e8f8e');
  }else if(d.type==='cinema'){
-  // Larger auditorium with a real proscenium, bigger screen and deeper seating bowl.
-  world.box(x,.085,z+1.8,3.2,.065,18.8,'#c59c78');
-  world.box(x,2.58,z-10.6,w-3.6,5.2,.18,'#3b3748');
-  world.box(x,2.55,z-10.35,w-7.2,4.15,.12,'#f4e7cf');
-  world.box(x,2.82,z-10.15,w-9.0,3.05,.08,'#afa09a');
-  world.box(x,4.98,z-10.55,w-2.8,.24,.45,'#4d4257');
-  world.box(x,.24,z+10.45,w-5.2,.18,2.25,'#6a4047');
-  for(const k of [-5,-4,-3,-2,-1,0,1,2,3,4,5])world.box(x+k*1.08,.66,z+10.25,.70,.18,.12,'#ffedc9');
-  // more seats, split by a centre aisle
-  const seatRows=[z-2.3,z+0.8,z+3.9,z+7.0,z+10.1];
+  // Proper stepped cinema auditorium: high ceiling, giant screen, sloped seating tiers.
+  world.box(x,.085,z+2.0,4.6,.065,20.8,'#72515b');
+  // giant screen wall and frame
+  world.box(x,3.95,z-10.9,w-3.0,8.10,.22,'#322d3f');
+  world.box(x,3.95,z-10.55,w-7.6,6.65,.14,'#f3e8d5');
+  world.box(x,4.18,z-10.34,w-9.3,5.55,.08,'#f8f2e8');
+  world.box(x,7.55,z-10.85,w-2.4,.28,.48,'#4a4055');
+  // front stage below screen
+  world.box(x,.36,z-7.85,w-8.0,.72,4.05,'#68414a');
+  world.box(x,.71,z-6.18,w-8.4,.10,.26,'#d9c195');
+  // stepped floor platforms for 5 rows
+  const rowZ=[z-0.8,z+2.2,z+5.4,z+8.6,z+11.8];
+  const rowH=[.12,.42,.74,1.08,1.44];
   const seatCols=[-10.2,-6.2,-2.2,2.2,6.2,10.2];
-  for(const sz of seatRows)for(const off of seatCols){
-   const sx=x+off;
-   furnitureBox(sx,.71,sz,1.75,.26,1.46,'#915b64');
-   furnitureBox(sx,1.17,sz+.60,1.75,.96,.26,'#754b59');
+  for(let r=0;r<rowZ.length;r++){
+   world.box(x,rowH[r]/2,rowZ[r],w-6.2,rowH[r],2.55,r%2?'#86656f':'#7a5d66');
+   world.box(x,rowH[r]+.04,rowZ[r]-1.23,w-6.2,.08,.18,'#aa8d6d');
    for(const side of [-1,1]){
-    world.box(sx+side*.86,.78,sz,.14,.45,1.38,'#4b3b43');
-    world.cylinder(sx+side*.86,1.03,sz-.28,.095,.11,'#d7b69b',7);
+    world.box(x+side*1.58,rowH[r]+.08,rowZ[r],.36,.10,.22,'#edb977');
+    world.box(x+side*1.58,rowH[r]+.16,rowZ[r],.20,.05,.12,'#ffefc9');
    }
-   world.box(sx,.55,sz-.43,.92,.07,.49,'#aa7472');
+   for(const off of seatCols){
+    const sx=x+off,base=rowH[r];
+    furnitureBox(sx,base+.61,rowZ[r],1.72,.28,1.44,'#8f5c68');
+    furnitureBox(sx,base+1.10,rowZ[r]+.60,1.72,.98,.27,'#744b58');
+    for(const side of [-1,1]){
+      world.box(sx+side*.85,base+.70,rowZ[r],.14,.46,1.34,'#4b3b43');
+      world.cylinder(sx+side*.85,base+.96,rowZ[r]-.28,.095,.11,'#d7b69b',7);
+    }
+    world.box(sx,base+.45,rowZ[r]-.42,.92,.07,.49,'#aa7472');
+   }
   }
-  // side rails and aisle lights
-  for(const side of [-1,1])for(const zz of [z-6,z-1.8,z+2.2,z+6.2,z+10.2])world.box(x+side*(w/2-1.0),1.84,zz,.14,1.26,.72,'#ddb77f');
-  for(const zz of seatRows)for(const side of [-1,1]){
-   world.box(x+side*1.65,.10,zz,.36,.09,.20,'#edb977');
-   world.box(x+side*1.65,.18,zz,.20,.05,.12,'#ffefc9');
-  }
-  // front low stage and projector booth hint
-  world.box(x,0.44,z+12.0,7.4,.92,.36,'#6f4046');
-  for(const k of [-3,-2,-1,0,1,2,3])world.box(x+k*1.05,0.90,z+11.98,.72,.18,.12,'#ffebc7');
-  world.box(x-13.0,2.85,z+10.8,1.05,.62,1.10,'#3f444f');
-  world.box(x+13.0,2.85,z+10.8,1.05,.62,1.10,'#3f444f');
+  // side rails rising with the tiers
+  for(const side of [-1,1])for(let r=0;r<rowZ.length;r++)world.box(x+side*(w/2-1.05),1.22+rowH[r]*.8,rowZ[r],.14,1.35,.74,'#ddb77f');
+  // rear entry platform / projection booth hint
+  world.box(x,.20,z+13.5,w-5.2,.40,2.65,'#5b3943');
+  for(const k of [-5,-4,-3,-2,-1,0,1,2,3,4,5])world.box(x+k*1.08,.64,z+13.3,.70,.18,.12,'#ffedc9');
+  world.box(x-12.8,4.9,z+11.8,1.25,.78,1.30,'#3f444f');
+  world.box(x+12.8,4.9,z+11.8,1.25,.78,1.30,'#3f444f');
  }else if(d.type==='florist'){
   for(const sx of [x-7,x+7])for(const sz of [z-5,z,z+5]){
    furnitureBox(sx,.83,sz,2.75,.12,2.55,'#c39876');
@@ -1168,28 +1178,24 @@ for(const d of buildings){
   for(const px of [x+5.4,x+8.6,x-5])ceilingPendant(px,z+3.75,'#ffdfb0','#a98462',3.72);
   displayPriceTag(x+9.07,1.97,z+5.88);
  }else if(d.type==='cinema'){
-  // Expanded ticket lobby and auditorium dressing.
-  world.box(x+13.0,.92,z+11.5,3.55,1.78,1.62,'#8f6267');
-  world.box(x+13.0,1.92,z+11.5,3.48,.33,1.55,'#b68877');
-  world.box(x+13.0,2.65,z+11.5,3.34,1.15,.12,'#6e8b8f');
-  world.box(x+13.0,3.22,z+11.5,3.66,.15,.22,'#e7c7a2');
-  for(let k=0;k<7;k++)world.box(x+11.95+k*.34,1.95,z+12.35,.20,.10,.03,'#f3dfc1');
-  furnitureColliders.push({x:x+13.0,z:z+11.5,w:3.6,d:1.7,h:2.8});
-  // Proscenium curtains and amber aisle lights.
-  for(const side of [-1,1])for(let fold=0;fold<7;fold++){
-   const px=x+side*(w/2-4.2)+(fold-3)*.26;
-   world.box(px,2.55,z-10.0,.18,4.45,.28,fold%2?'#6d3e50':'#895366');
+  // Ticket lobby remains at rear; auditorium gets side curtains, sconces and taller booth wall.
+  world.box(x+13.0,.92,z+12.2,3.55,1.78,1.62,'#8f6267');
+  world.box(x+13.0,1.92,z+12.2,3.48,.33,1.55,'#b68877');
+  world.box(x+13.0,2.65,z+12.2,3.34,1.15,.12,'#6e8b8f');
+  world.box(x+13.0,3.22,z+12.2,3.66,.15,.22,'#e7c7a2');
+  for(let k=0;k<7;k++)world.box(x+11.95+k*.34,1.95,z+13.05,.20,.10,.03,'#f3dfc1');
+  furnitureColliders.push({x:x+13.0,z:z+12.2,w:3.6,d:1.7,h:2.8});
+  // tall curtains framing the giant screen
+  for(const side of [-1,1])for(let fold=0;fold<9;fold++){
+   const px=x+side*(w/2-4.5)+(fold-4)*.26;
+   world.box(px,3.9,z-10.2,.18,6.85,.30,fold%2?'#6d3e50':'#895366');
   }
-  for(const pz of [z-2.3,z+0.8,z+3.9,z+7.0,z+10.1])for(const side of [-1,1]){
-   world.box(x+side*1.65,.10,pz,.30,.09,.18,'#edb977');
-   world.box(x+side*1.65,.17,pz,.18,.05,.10,'#ffefc9');
-  }
-  for(const pz of [z-6.5,z-1.5,z+4.5,z+10.5])for(const side of [-1,1])displaySconce(x+side*(w/2-1.15),2.9,pz);
-  // rear posters / projection booth face
-  world.box(x-13.2,2.35,z+11.35,3.1,2.30,.22,'#614d58');
-  world.box(x-13.2,2.42,z+11.52,2.72,2.01,.11,'#dbc6b0');
-  world.box(x-8.5,2.45,z+11.35,3.1,2.30,.22,'#614d58');
-  world.box(x-8.5,2.42,z+11.52,2.72,2.01,.11,'#cdb9ab');
+  for(const pz of [z-6.7,z-1.7,z+3.0,z+8.0,z+12.8])for(const side of [-1,1])displaySconce(x+side*(w/2-1.15),3.9,pz);
+  // rear wall posters / projection window
+  world.box(x-13.2,4.10,z+12.25,3.1,4.60,.22,'#614d58');
+  world.box(x-13.2,4.22,z+12.42,2.72,4.01,.11,'#dbc6b0');
+  world.box(x-8.5,4.10,z+12.25,3.1,4.60,.22,'#614d58');
+  world.box(x-8.5,4.22,z+12.42,2.72,4.01,.11,'#cdb9ab');
  }else if(d.type==='hotel'){
   for(const sx of [x-8.3,x+7.5])ceilingPendant(sx,z+3.8,'#ffdfaf','#ac9378',3.94);
   world.box(x+7.2,2.73,z+5.76,3.85,.38,.14,'#9a7d61');
@@ -1700,47 +1706,90 @@ upper.box(O.x+3.2,UPPER+1.74,UB+4.61,2.80,.12,.82,'#ebd4ab');
 upper.box(O.x+3.2,UPPER+2.19,UB+4.68,1.8,.69,.12,'#9d8e80');
 upper.box(O.x+3.2,UPPER+2.25,UB+4.76,1.57,.50,.09,'#d8cab0');
 upper.box(O.x+3.2,UPPER+2.64,UB+4.82,1.35,.07,.07,'#564f4b');
+// v2.6: recognizable three-dimensional artifacts, not generic text-only cuboids.
+// All geometry stays inside the existing 2F world coordinate system.
 const chapterExhibits=new Builder();
-// First-chapter physical exhibits: framed ticket, letters, relationship board and indexed stills.
-chapterExhibits.box(O.x+7.25,UPPER+1.06,UB+4.35,3.10,.18,1.25,'#8d715a');
-chapterExhibits.box(O.x+7.25,UPPER+1.74,UB+4.35,2.84,1.18,1.03,'#d9cfc1');
-chapterExhibits.box(O.x+7.25,UPPER+1.78,UB+4.35,2.62,1.01,.90,'#f7f1e5');
-chapterExhibits.box(O.x+7.25,UPPER+1.85,UB+4.10,.85,.12,.48,'#d6b06e');
-chapterExhibits.box(O.x+6.70,UPPER+1.85,UB+4.55,.55,.05,.38,'#ead8bb');
-chapterExhibits.box(O.x+7.25,UPPER+1.85,UB+4.55,.55,.05,.38,'#ead8bb');
-chapterExhibits.box(O.x+7.80,UPPER+1.85,UB+4.55,.55,.05,.38,'#ead8bb');
-chapterExhibits.box(O.x+10.15,UPPER+1.18,UB+1.72,2.50,1.35,.88,'#7f6555');
-chapterExhibits.box(O.x+10.15,UPPER+1.94,UB+1.72,2.12,.13,.74,'#efe7d6');
-chapterExhibits.box(O.x+10.15,UPPER+2.48,UB+1.78,1.72,.88,.12,'#95857a');
-chapterExhibits.box(O.x+10.15,UPPER+2.54,UB+1.86,1.44,.70,.09,'#d6cab5');
-chapterExhibits.box(O.x+10.15,UPPER+1.12,O.z+3.65,2.55,.16,1.02,'#7c6656');
-chapterExhibits.box(O.x+10.15,UPPER+1.88,O.z+3.65,2.28,1.18,.80,'#dad4c8');
-chapterExhibits.box(O.x+10.15,UPPER+1.93,O.z+3.65,2.02,1.01,.68,'#f6efe4');
-for(let n=0;n<3;n++)chapterExhibits.box(O.x+9.60+n*.55,UPPER+1.98,O.z+3.70,.44,.05,.32,n===1?'#e6c47b':'#e8dbbf');
-chapterExhibits.box(O.x+10.10,UPPER+2.28,O.z+3.48,1.30,.05,.12,'#9f7f70');
-// v2.5: museum-grade vitrine silhouettes with bronze edges and frosted-blue tinted glass panels.
-// These are all actual world-space meshes; the chapter progress determines which notes are readable.
-for(const caseData of [
- {x:O.x+7.25,z:UB+4.35,w:3.13,d:1.35,h:1.43},
- {x:O.x+10.15,z:UB+1.72,w:2.54,d:.98,h:1.47},
- {x:O.x+10.15,z:O.z+3.65,w:2.58,d:1.09,h:1.39}
-]){
- const {x,z,w,d,h}=caseData;
- // Transparent appearance using narrow glass framing, no opaque shell covering the exhibit.
- chapterExhibits.box(x,UPPER+1.02,z,w+.11,.09,d+.13,'#ad9273');
- chapterExhibits.box(x,UPPER+1.05+h,z,w+.11,.08,d+.13,'#a8c5c4');
- for(const sx of [-1,1])for(const sz of [-1,1])chapterExhibits.box(x+sx*w*.5,UPPER+1.02+h*.5,z+sz*d*.5,.065,h,.068,'#a5c8c8');
- chapterExhibits.box(x,UPPER+1.03+h*.53,z+d*.5,w-.13,.035,.045,'#a6d8d7');
- chapterExhibits.box(x,UPPER+1.03+h*.53,z-d*.5,w-.13,.035,.045,'#a6d8d7');
- chapterExhibits.box(x,UPPER+.73,z+d*.62,w*.68,.24,.08,'#ead5b3');
- chapterExhibits.box(x,UPPER+.75,z+d*.67,w*.53,.08,.028,'#526b6c');
- // Small engraving lines on title plaques.
- for(let n=0;n<3;n++)chapterExhibits.box(x-w*.22,UPPER+.81-n*.065,z+d*.68,w*.32,.025,.018,n===0?'#8b6455':'#a28d78');
+const EXH={paper:'#f6eedb',linen:'#e6d2b4',gold:'#d2a66d',ink:'#4e4f55',wood:'#785d4f',red:'#8a4958',teal:'#55767c',glass:'#b0d3cc'};
+function exhibitBase(x,z,w,d){
+ chapterExhibits.box(x,UPPER+.45,z,w,.82,d,EXH.wood);
+ chapterExhibits.box(x,UPPER+.91,z,w+.11,.12,d+.10,'#c9ac83');
+ chapterExhibits.box(x,UPPER+.98,z,w-.10,.04,d-.10,'#3f4548');
+ // Thin non-opaque edges: clear sightlines through the case.
+ for(const sx of [-1,1])for(const sz of [-1,1])chapterExhibits.box(x+sx*(w/2-.07),UPPER+1.66,z+sz*(d/2-.07),.07,1.35,.07,EXH.glass);
+ chapterExhibits.box(x,UPPER+2.33,z,w+.08,.07,d+.08,EXH.glass);
+ for(const sx of [-1,1])chapterExhibits.box(x+sx*(w/2-.05),UPPER+2.30,z,.08,.06,d,EXH.gold);
+ chapterExhibits.box(x,UPPER+1.07,z+d/2+.08,w*.73,.18,.07,'#f3e6cc');
+ chapterExhibits.box(x,UPPER+1.08,z+d/2+.126,w*.55,.045,.013,EXH.ink);
 }
-// 1993 alternate-cut lightbox has a separate title plaque, frame and accent lamps.
-chapterExhibits.box(O.x+3.2,UPPER+2.86,UB+4.72,3.30,.16,.23,'#92785f');
-chapterExhibits.box(O.x+3.2,UPPER+2.88,UB+4.87,2.65,.085,.045,'#ead7ac');
-chapterExhibits.box(O.x+3.2,UPPER+3.15,UB+4.50,.19,.45,.20,'#f3e8ce');
+// 01. Film ticket: broad ivory ticket, detachable stubs, perforations and ink rows.
+{const x=O.x+7.25,z=UB+4.35;
+ exhibitBase(x,z,3.25,1.55);
+ chapterExhibits.box(x,UPPER+1.30,z,2.32,.10,.84,EXH.paper);
+ chapterExhibits.box(x-.87,UPPER+1.37,z,.37,.075,.82,EXH.red);
+ chapterExhibits.box(x-.65,UPPER+1.37,z,.035,.08,.75,EXH.gold);
+ for(let n=0;n<9;n++)chapterExhibits.box(x-.57,UPPER+1.39,z-.38+n*.095,.032,.018,.034,EXH.ink);
+ chapterExhibits.box(x+.25,UPPER+1.39,z-.23,1.27,.024,.065,'#5b6364');
+ chapterExhibits.box(x+.25,UPPER+1.39,z-.04,1.47,.024,.04,'#a88c74');
+ chapterExhibits.box(x+.08,UPPER+1.39,z+.17,1.05,.024,.04,'#a88c74');
+ for(let n=0;n<9;n++)chapterExhibits.box(x+.69+n*.054,UPPER+1.40,z+.28,.026,.017,.16,n%2?'#a07860':'#514d4a');
+ // small separate ticket stub
+ chapterExhibits.box(x+1.05,UPPER+1.25,z+.56,.70,.06,.25,'#e5c28e');
+}
+// 02. Three cream envelopes with triangular folded flaps and red wax stamps.
+{const x=O.x+10.15,z=UB+1.72;
+ exhibitBase(x,z,2.88,1.65);
+ for(let n=0;n<3;n++){
+  const xx=x+(n-1)*.81,zz=z+(n%2)*.11;
+  chapterExhibits.box(xx,UPPER+1.28,zz,.72,.09,.93,EXH.paper);
+  chapterExhibits.quad([xx-.35,UPPER+1.34,zz+.29],[xx+.35,UPPER+1.34,zz+.29],[xx,UPPER+1.35,zz-.20],[xx,UPPER+1.35,zz-.20],'#decab0');
+  chapterExhibits.cylinder(xx,UPPER+1.41,zz+.08,.105,.04,n===1?'#98535f':'#b46f65',12);
+  chapterExhibits.box(xx,UPPER+1.36,zz-.33,.38,.023,.035,'#9c8977');
+ }
+}
+// 03. Relationship board with portraits, connected nodes and little paper notes.
+{const x=O.x+10.15,z=O.z+3.65;
+ exhibitBase(x,z,2.90,1.65);
+ // Raised mini archival board, laid out horizontally.
+ chapterExhibits.box(x,UPPER+1.23,z,2.42,.17,1.13,'#bca588');
+ for(let n=0;n<3;n++){
+   const xx=x+(n-1)*.75,zz=z+(n%2)*.17;
+   chapterExhibits.box(xx,UPPER+1.37,zz,.52,.06,.57,'#efe6d6');
+   chapterExhibits.box(xx,UPPER+1.41,zz-.075,.34,.018,.28,['#785464','#9b7b5f','#617d83'][n]);
+   chapterExhibits.ball(xx,UPPER+1.47,zz-.11,.105,.065,.09,'#d6b094',4,7);
+   chapterExhibits.box(xx,UPPER+1.41,zz+.17,.34,.018,.022,'#9e8371');
+ }
+ chapterExhibits.beam([x-.48,UPPER+1.39,z+.27],[x+.48,UPPER+1.39,z+.27],.015,'#a45d62');
+ chapterExhibits.beam([x-.37,UPPER+1.39,z-.04],[x+.37,UPPER+1.39,z-.04],.013,'#bba37a');
+}
+// 04. An actual film canister, dual-reel projector, and framed platform still.
+{const x=O.x+3.15,z=UB+4.52;
+ chapterExhibits.box(x,UPPER+1.12,z,3.25,.30,1.27,EXH.wood);
+ chapterExhibits.box(x,UPPER+1.31,z,3.17,.09,1.26,'#ccb393');
+ for(const dx of [-.90,.90]){
+  chapterExhibits.cylinder(x+dx,UPPER+1.52,z,.50,.22,'#777d78',20);
+  chapterExhibits.cylinder(x+dx,UPPER+1.66,z,.35,.06,'#adb0a6',20);
+  chapterExhibits.cylinder(x+dx,UPPER+1.71,z,.10,.055,'#404d50',16);
+  for(let k=0;k<6;k++){
+   const a=k*Math.PI/3;
+   chapterExhibits.cylinder(x+dx+Math.cos(a)*.28,UPPER+1.70,z+Math.sin(a)*.28,.055,.03,'#353e43',8);
+  }
+ }
+ chapterExhibits.box(x,UPPER+1.53,z,1.20,.44,.55,'#4b6167');
+ chapterExhibits.box(x,UPPER+1.53,z+.33,.45,.22,.37,'#343b43');
+ chapterExhibits.cylinder(x+1.30,UPPER+1.48,z+.33,.30,.20,'#aa8a6e',18);
+ chapterExhibits.cylinder(x+1.30,UPPER+1.61,z+.33,.16,.06,'#ead4b0',12);
+ // Platform photo on the raised wall panel, recognizable silhouette and railway motif.
+ chapterExhibits.box(x,UPPER+2.86,z-.58,3.10,1.95,.18,'#68594f');
+ chapterExhibits.box(x,UPPER+2.86,z-.455,2.85,1.70,.10,'#e0d4bc');
+ chapterExhibits.box(x,UPPER+2.94,z-.38,2.60,1.38,.06,'#84958b');
+ chapterExhibits.box(x,UPPER+2.53,z-.336,2.60,.12,.06,'#756d64');
+ chapterExhibits.box(x-.43,UPPER+2.77,z-.285,1.32,.035,.025,'#e5d5ba');
+ chapterExhibits.box(x-.90,UPPER+2.95,z-.30,.10,1.04,.08,'#615e5c');
+ chapterExhibits.box(x+1.05,UPPER+2.95,z-.30,.10,1.04,.08,'#615e5c');
+ chapterExhibits.ball(x+.46,UPPER+3.12,z-.25,.135,.17,.09,'#3e4045',6,10);
+ chapterExhibits.box(x+.45,UPPER+2.70,z-.25,.24,.61,.12,'#544d4d');
+ chapterExhibits.box(x+.75,UPPER+2.69,z-.25,.30,.07,.12,'#544d4d');
+}
 const chapterExhibitsMesh=toMesh(chapterExhibits);
 // Distinct second-floor archive doorway with hinged mesh and open/close animation.
 const archiveDoorBuilder=new Builder();
@@ -2053,9 +2102,9 @@ const SEATS=[
  // 咖啡館原有木製餐椅，座面高度約 0.72m。避免新增占用走道的物件。
  ...[19,25].flatMap((tableX,j)=>[16,22].flatMap((z,k)=>[-1,1].map(side=>({id:'cafe'+j+k+side,name:'咖啡館座椅',x:tableX+side*1.8,z,heading:0,lift:.43,floor:1})))),
  // 大戲院五排 × 六席；雙側走道與中央走道均可以靠近座位觸發。
- ...[17.7,20.8,23.9,27.0,30.1].flatMap((z,row)=>[-10.2,-6.2,-2.2,2.2,6.2,10.2].map((offset,col)=>({
+ ...[19.2,22.2,25.4,28.6,31.8].flatMap((z,row)=>[-10.2,-6.2,-2.2,2.2,6.2,10.2].map((offset,col)=>({
   id:'cinema-'+row+'-'+col,name:'映灣戲院第'+(row+1)+'排 '+(col+1)+'號',x:77+offset,z,
-  heading:Math.PI,lift:.53,floor:1,indoor:'cinema',riseZ:.85
+  heading:Math.PI,lift:.58,floor:1,indoor:'cinema',riseZ:1.15
  })))
 ];
 function seatNear(){return SEATS.find(t=>state.floor===t.floor&&Math.hypot(state.x-t.x,state.z-t.z)<3.0)||null;}
@@ -2080,6 +2129,17 @@ function standUp(){
 }
 function stepHeightAt(x,z){
  if(state.floor!==1||state.vehicle)return 0;
+ // 映灣戲院：階梯式影廳，越後排越高。
+ const cinema=buildings.find(b=>b.id==='cinema');
+ if(cinema&&Math.abs(x-cinema.x)<cinema.w/2-2.0&&Math.abs(z-cinema.z)<cinema.d/2-1.0){
+  if(z>30.3)return 1.44;
+  if(z>27.1)return 1.08;
+  if(z>23.9)return .74;
+  if(z>20.7)return .42;
+  if(z>17.5)return .12;
+  if(z<12.0)return -.02; // front stage edge / screen apron
+  return 0;
+ }
  // 實體建築入口前的低踏階：保持前進方向不變，腳步自動抬升。
  for(const b of buildings){
   if(Math.abs(x-b.x)<b.doorW*.5+.48&&z>=b.front+.10&&z<=b.front+2.10)return .20;
@@ -2088,22 +2148,142 @@ function stepHeightAt(x,z){
  if([-50,0,50].some(v=>Math.abs(Math.abs(x-v)-5.95)<.45)||[-11,48].some(v=>Math.abs(Math.abs(z-v)-6.35)<.43))return .08;
  return 0;
 }
+// v2.8 · In-world projection: self-contained original moving film illustration.
+// The auditorium screen is an actual 3D mesh, not a static UI overlay or external video.
+const cinemaShow={mode:'preview',startedAt:performance.now(),frame:-1,mesh:null,lastRender:-1000};
+function cinemaChangeMode(mode,quiet=false){
+ cinemaShow.mode=mode;
+ cinemaShow.startedAt=performance.now();
+ cinemaShow.frame=-1;
+ if(!quiet)toast(mode==='playing'?'🎞️ 放映開始：大銀幕亮起，觀眾入座。':mode==='preview'?'影廳恢復開演前照明。':'放映結束，觀眾席燈光亮起。');
+}
+function cinemaControl(){
+ const opts=[
+  {text:'A · 開始放映原創電影片段',pick:()=>cinemaChangeMode('playing')},
+  {text:'B · 開演前：亮燈與預備畫面',pick:()=>cinemaChangeMode('preview')},
+  {text:'C · 散場：停止放映並亮燈',pick:()=>cinemaChangeMode('finished')}
+ ];
+ state.dialog={who:'映灣戲院｜35mm 放映控制台',lines:['你可以在此測試銀幕動畫、開映燈光與觀眾席。','本片為映灣市原創的《月台另一側》示意片段。'],index:0,choices:opts};
+ showDialog();
+}
+function cinemaFilmMesh(time){
+ const b=new Builder();
+ const z=9.72; // Screen surface facing the auditorium (+Z), in front of the white screen at z=9.66.
+ const X=77;
+ // Flat colored polygons placed on the real movie screen, with a frame and cinematic letterbox.
+ const q=(cx,cy,w,h,col,depth=0)=>b.box(X+cx,cy,z+depth,w,h,.014,col);
+ const sec=time/1000,scene=Math.floor(sec/13)%3,phase=sec%13;
+ const blue=scene===0?'#586c83':scene===1?'#8f7f7b':'#6d777d';
+ q(0,4.18,26.25,5.52,blue);
+ if(scene===0){
+  // harbor at dusk, moving ferry, distant islands, couple watching the sea
+  q(0,2.18,26.24,1.45,'#6c99a1',.03);
+  q(0,1.78,26.24,.72,'#3e6674',.04);
+  for(let i=0;i<6;i++)q(-11+i*4,3.12,.28,1.22,'#586d78',.035);
+  q(-4,2.49,7.4,.38,'#a6a29a',.05);
+  const ferryX=-10+(phase/13)*20;
+  q(ferryX,2.40,4.6,.35,'#e2cbb2',.08);q(ferryX+.7,2.80,1.4,.5,'#b3bbb4',.08);
+  q(8,3.06,.12,1.65,'#d6c0a8',.08);q(7.53,3.78,.96,.08,'#e3c8b4',.08);
+ }else if(scene===1){
+  // Railway platform, approaching train with a moving lamp stripe.
+  q(0,2.18,26.24,1.42,'#544f56',.03);
+  q(0,2.46,26.24,.13,'#cab29d',.05);
+  for(let i=0;i<6;i++){const px=-12+i*4.8;q(px,4.15,.20,3.23,'#b1a8a1',.04);q(px,5.71,2.20,.10,'#d9cab6',.04);}
+  q(-1,5.86,25.4,.25,'#525963',.06);
+  const trainX=12-phase*2.05;
+  q(trainX,3.07,10.8,1.13,'#a8b8b7',.09);
+  for(let i=0;i<4;i++)q(trainX-3.5+i*2.1,3.22,1.25,.48,'#d7c6ad',.12);
+ }else{
+  // Night city, reflected lamps on wet cobbles, the same two anonymous figures.
+  q(0,2.0,26.2,1.28,'#3e5364',.03);
+  for(let i=0;i<8;i++){const px=-12+i*3.5;q(px,3.40,2.2,2.7+(i%3)*.54,i%2?'#586075':'#464b61',.04);q(px+.55,4.20,.35,.3,'#e1bb8b',.06);}
+  for(let i=0;i<11;i++)q(-11+i*2.2,1.98,.65,.07,'#b69d8f',.07);
+ }
+ // Two characters who cross, stop, and look back — original visual narrative.
+ const walk=Math.sin(sec*.7)*.22;
+ const left=-3+Math.min(4.2,phase*.34),right=4-Math.min(4.1,phase*.34);
+ const figure=(x,body,head)=>{
+  q(x,2.55,1.00,1.57,body,.16);q(x,3.55,.76,.78,head,.17);
+  q(x-.35,1.52,.24,.71,body,.16);q(x+.35,1.52,.24,.71,body,.16);
+ };
+ figure(left+walk,'#343d50','#cbb6ac');figure(right-walk,'#634b58','#e0bfaa');
+ // Widescreen bars and subtle frame-marker animation.
+ q(0,7.02,26.25,.52,'#272a37',.2);q(0,1.43,26.25,.39,'#272a37',.2);
+ q(-12.1,6.8,.14,.12,'#d3b89e',.23);q(12.1,6.8,.14,.12,'#d3b89e',.23);
+ return toMesh(b);
+}
+function cinemaStandbyMesh(){
+ const b=new Builder();
+ b.box(77,4.18,9.72,26.25,5.5,.015,'#ddd9d0');
+ // Recessed art deco title frame with an illustration of the seaside.
+ b.box(77,4.12,9.755,17.4,4.30,.013,'#5c6c77');
+ b.box(77,2.75,9.78,17.2,1.56,.014,'#87a5a7');
+ for(let i=0;i<5;i++)b.box(70.0+i*3.0,4.58,9.79,.14,1.5,.02,'#8a978f');
+ b.box(77,6.19,9.79,19.3,.15,.025,'#d2bd9f');
+ return toMesh(b);
+}
+const cinemaPreviewMesh=cinemaStandbyMesh();
+// Seated patrons are real scene meshes, not text-only NPC labels.
+const cinemaPatronsBuilder=new Builder();
+for(const [row,col,head,shirt] of [
+ [0,0,'#dec1ab','#556675'],[0,5,'#dbb098','#85676f'],
+ [1,1,'#a87f6e','#77745d'],[1,4,'#dec3ac','#5c7774'],
+ [2,0,'#cda888','#68546c'],[2,5,'#e4c5aa','#48616e'],
+ [3,1,'#d8bba5','#947366'],[3,4,'#c29f8b','#728070'],
+ [4,0,'#b5917b','#67788a'],[4,2,'#e4b9a7','#765f72'],
+ [4,5,'#b99c83','#6d7b71']]){
+ const rowZ=[19.2,22.2,25.4,28.6,31.8],rowH=[.12,.42,.74,1.08,1.44];
+ const xs=[-10.2,-6.2,-2.2,2.2,6.2,10.2];
+ const x=77+xs[col],z=rowZ[row],h=rowH[row];
+ cinemaPatronsBuilder.box(x,h+1.20,z+.30,.87,1.22,.53,shirt);
+ cinemaPatronsBuilder.ball(x,h+1.99,z+.37,.39,.41,.36,head,5,8);
+ cinemaPatronsBuilder.box(x,h+2.32,z+.26,.75,.18,.68,'#34303a');
+ for(const side of [-1,1]){
+  cinemaPatronsBuilder.box(x+side*.22,h+.68,z-.12,.27,.30,.69,shirt);
+  cinemaPatronsBuilder.box(x+side*.22,h+.34,z-.44,.23,.54,.20,'#3f404c');
+ }
+}
+const cinemaPatronsMesh=toMesh(cinemaPatronsBuilder);
+function drawCinemaExperience(now,vp,activeRoom){
+ if(!activeRoom||activeRoom.id!=='cinema')return;
+ if(cinemaShow.mode==='playing'){
+  const frame=Math.floor((now-cinemaShow.startedAt)/250);
+  if(frame!==cinemaShow.frame){
+   cinemaShow.frame=frame;
+   if(cinemaShow.mesh)gl.deleteBuffer(cinemaShow.mesh.buf);
+   cinemaShow.mesh=cinemaFilmMesh(now-cinemaShow.startedAt);
+  }
+  // Temporarily restore screen lighting so projection remains visible while auditorium dims.
+  gl.uniform3fv(U.roomTint,new Float32Array([1.3,1.24,1.18]));
+  gl.uniform1f(U.roomBlend,1);
+  draw(cinemaShow.mesh,ID(),vp);
+  gl.uniform3fv(U.roomTint,new Float32Array(state.ambientColour));
+  gl.uniform1f(U.roomBlend,state.ambientAmount);
+ }else{
+  draw(cinemaPreviewMesh,ID(),vp);
+ }
+ draw(cinemaPatronsMesh,ID(),vp);
+}
+
 function openCollectionExhibit(key){
  const done=!!window.LoveFilmChapterOne?.getProgress?.().done;
  const exhibits={
-  ticket:{who:'館藏展示｜午夜試映票根',before:['這處展位正在整理，完成第一章後會陳列試映票根。','完成第一章後，這裡會陳列午夜試映的票根與索引卡。'],after:['玻璃展櫃裡放著「午夜試映票根」與整理好的索引卡。','票根旁附註：映灣戲院深夜試映，第一章《當哈利碰上莎莉》完成紀錄。','你可以清楚看見票面、日期與映灣戲院的舊版識別設計。']},
-  letters:{who:'館藏展示｜三封情書',before:['這處展位正在整理，第一章結束後會展示三封信的影本。','等第一章告一段落後，這裡會公開展示整理後的影本。'],after:['三封信被攤開陳列，依序標註「寫給小時候的妳」「寫給總是陪我的妳」「寫給現在的妳」。','旁邊說明寫著：原件由當事人保管，展出版本為館藏影本。','你可以近距離查閱信封、照片與附上的老電影票。']},
+  ticket:{who:'館藏實物｜午夜試映票根',before:['這處展位正在整理，完成第一章後會陳列試映票根。','完成第一章後，這裡會陳列午夜試映的票根與索引卡。'],after:['玻璃展櫃裡放著「午夜試映票根」與整理好的索引卡。','票根旁附註：映灣戲院深夜試映，第一章《當哈利碰上莎莉》完成紀錄。','你可以清楚看見票面、日期與映灣戲院的舊版識別設計。']},
+  letters:{who:'館藏實物｜三封情書',before:['這處展位正在整理，第一章結束後會展示三封信的影本。','等第一章告一段落後，這裡會公開展示整理後的影本。'],after:['三封信被攤開陳列，依序標註「寫給小時候的妳」「寫給總是陪我的妳」「寫給現在的妳」。','旁邊說明寫著：原件由當事人保管，展出版本為館藏影本。','你可以近距離查閱信封、照片與附上的老電影票。']},
   board:{who:'館藏展示｜關係紀錄板',before:['這塊紀錄板正在等待更新。'],after:['關係紀錄板以圖卡方式整理阮知音、陸以辰與主角在第一章中的選擇。','板面下方註明：這些決定將影響後續城市偶遇與部分對話。','旁邊的小卡提醒你，之後仍可回來查閱每一章館藏。']},
   still:{who:'館藏展示｜1993 年未公開片段',before:['這處展位還沒開放，等第一章完成後可查閱 1993 年未公開片段。'],after:['燈箱裡展示著《月台另一側》1993 年未公開片段的定格畫面。','標牌寫著：第二版／未採用。女子在月台邊回過頭，像是聽見有人叫她。','一旁還有膠卷盒、導演工作便條與館藏編號，整組展示看起來像真正的實體典藏。']}
  };
  const item=exhibits[key];
- state.dialog={who:item.who,lines:(done?item.after:item.before),index:0};
- showDialog();
+ if(!done){state.dialog={who:item.who,lines:item.before,index:0};showDialog();return;}
+ state.archiveViewing=true;
+ if(typeof window.showFilmArtifact==='function')window.showFilmArtifact(key,()=>{state.archiveViewing=false;});
+ else {state.archiveViewing=false;state.dialog={who:item.who,lines:item.after,index:0};showDialog();}
 }
 
 function buildTargets(){const t=[];for(const tSeat of SEATS)t.push({type:'seat',name:'坐下 · '+tSeat.name,x:tSeat.x,z:tSeat.z,floor:1,ref:tSeat});for(const v of vehicles)t.push({type:'vehicle',name:v.icon+' '+v.name,x:v.x,z:v.z,ref:v});for(const d of doors){const x=d.inner?d.x+1.35:d.ref.x;const z=d.z;t.push({type:'door',floor:d.floor||1,name:d.inner?'二樓電影收藏室':d.ref.name,x,z,ref:d});}for(const p of people)t.push({type:'npc',name:p.name,x:p.x,z:p.z,ref:p});t.push({type:'object',name:'閱讀港口電影節公告',x:4,z:71,lines:['第十五屆映灣電影節：如果愛情可以重新剪接，你會改變結局嗎？','映灣電影節開幕特別單元：那些來不及說出口的故事。']});t.push({type:'object',name:'查看1993年舊照片',floor:2,x:29,z:-46.5,lines:['照片裡是一對站在月台上的男女。背面寫著：1993。','（電影收藏室的故事線索已預留互動位置。）']});t.push({type:'object',name:'翻閱館藏索引卡',floor:2,x:19.2,z:-36.6,lines:['一整格一整格的索引卡，記錄著歷屆影展放映資料與私人捐贈片單。','其中幾張卡片被特別用紅線圈起來：1991、1993，以及「月台另一側」的工作底片。']});t.push({type:'object',name:'檢視老式放映機',floor:2,x:24.1,z:-48.0,lines:['這台 16mm 老式放映機被保養得很好，旁邊貼著維修紀錄。','最後一行註記寫著：有些畫面，只有在暗房裡才願意重新出現。']});t.push({type:'object',name:'閱讀影展工作手稿',floor:2,x:29.2,z:-36.4,lines:['桌上的手稿像是某一年策展提案的草稿。','頁角寫著一行字：如果愛情是一段被剪掉的鏡頭，那麼誰還記得它曾經存在？']});t.push({type:'object',name:'查看捐贈膠卷盒',floor:2,x:31.7,z:-47.0,lines:['金屬膠卷盒上貼著手寫標籤：匿名捐贈，請勿外借。','盒蓋背面留著鉛筆字：請把故事放回原來的位置。']});t.push({type:'object',name:'查看午夜試映票根',floor:2,x:33.2,z:-47.1,act:()=>openCollectionExhibit('ticket')});t.push({type:'object',name:'翻閱三封情書展示',floor:2,x:36.0,z:-44.4,act:()=>openCollectionExhibit('letters')});t.push({type:'object',name:'查看關係紀錄板',floor:2,x:36.0,z:-36.3,act:()=>openCollectionExhibit('board')});t.push({type:'object',name:'查看未公開片段燈箱',floor:2,x:29.2,z:-43.9,act:()=>openCollectionExhibit('still')});
  t.push({type:'object',name:'查看書店本週推薦',x:-22.4,z:-33.4,lines:['後頁書店把電影原著與劇本集排在靠窗的展示架上。','林夏禾在一張推薦書卡背面寫著：有些人喜歡故事的開頭，有些人只記得最後一句。']});
  t.push({type:'object',name:'查看咖啡館今日甜點',x:30.3,z:25.9,lines:['吧台的玻璃櫃裡有檸檬塔、奶油可頌與巧克力蛋糕。','店員說，映灣電影節開始後，最常賣完的是可以邊走邊吃的點心。']});
+ t.push({type:'object',name:'🎞️ 操作放映控制台',x:90.4,z:30.5,act:cinemaControl});
  t.push({type:'object',name:'查看戲院場次告示',x:77,z:27.0,lines:['映灣戲院的今日片單貼在售票窗口旁。','其中一張小小的舊片重映海報沒有片名，只寫著：月台另一側／1993。']});
  t.push({type:'object',name:'閱讀第一部電影街介紹',x:61,z:-61.5,lines:['光影起點街・Rue du Premier-Film。這條虛構街道向法國里昂的盧米埃電影歷史致意。','1895 年，盧米埃兄弟在里昂留下工廠工人下班的早期活動影像。現實中的第一部電影街位在里昂 Monplaisir 地區。','街道另一側的光影館與電影道具工坊可以直接開門進入。']});
  t.push({type:'object',name:'查看電影攝影機紀念裝置',x:77,z:-56.9,lines:['老式攝影機複製品的造型，紀念活動影像的誕生。','映灣電影節特別策劃「光與影的第一百一十三年」展覽：1895 到 2008，時光沿著電影膠卷向前。','這段電影節展覽文案屬於映灣市的虛構設定。']});
@@ -2632,7 +2812,7 @@ const currentRoom=!state.vehicle?buildings.find(inside):null;
   // Keep the camera below the actual ceiling, but allow a low eye position
   // when looking UP, so the viewing direction really tilts to the roof.
   const stairBlend=currentRoom.id==='office'?clamp((state.levelHeight-1.55)/3.1,0,1):0;
-  const ceilY=state.floor===2?UPPER+4.16:currentRoom.id==='office'?lerp(5.20,UPPER+4.12,stairBlend):4.82;
+  const ceilY=state.floor===2?UPPER+4.16:currentRoom.id==='office'?lerp(5.20,UPPER+4.12,stairBlend):currentRoom.id==='cinema'?7.20:4.82;
   eye[1]=clamp(baseFocusY+(eye[1]-baseFocusY)*ratio,state.levelHeight+.85,ceilY);
  }
  // Smooth interior colour grade for each business: cinematic mood, no lights/assets loaded remotely.
@@ -2642,7 +2822,8 @@ const currentRoom=!state.vehicle?buildings.find(inside):null;
   florist:[1.14,.99,.95],record:[1.00,.86,1.12],lumiere:[1.11,1.04,.90],workshop:[.93,1.04,1.12]
  };
  if(!state.ambientColour)state.ambientColour=[1,1,1];
- const mood=currentRoom?(ROOM_AMBIENCE[currentRoom.type]||[1,1,1]):[1,1,1];
+ const theaterPlaying=currentRoom?.id==='cinema'&&cinemaShow.mode==='playing';
+ const mood=theaterPlaying?[.40,.37,.47]:(currentRoom?(ROOM_AMBIENCE[currentRoom.type]||[1,1,1]):[1,1,1]);
  const ambianceEase=1-Math.exp(-dt*3.5);
  state.ambientAmount=lerp(state.ambientAmount||0,currentRoom?1:0,ambianceEase);
  for(let i=0;i<3;i++)state.ambientColour[i]=lerp(state.ambientColour[i],mood[i],ambianceEase);
@@ -2680,6 +2861,7 @@ for(const b of buildings){const isin=inside(b),roof=roofs.find(o=>o.id===b.id),s
  }
 for(const d of doors){const m=mul(translate(d.x,0,d.z),turnY(-(d.open||0))); // negative swings into room along x? in this coordinate system negative x rotation leads +z; choose open visually regardless
  draw(d.mesh,m,vp);}
+drawCinemaExperience(now,vp,currentRoom);
 for(const p of people){const dr=dist(p,state);if(touchMode&&dr>62)continue;if(dr<5.2)p.face=Math.atan2(p.x-state.x,p.z-state.z);
  if(SPEC_BY_NAME.has(p.name))drawCharacter(p.x,p.z,p.face,p.name,false,now/1000+p.phase);
  else drawExtraNPC(p,now/1000);}
@@ -2702,11 +2884,11 @@ for(const l of labels){const d=dist(state,l.b),pos=d<69?project([l.b.x,l.b.h+1.4
 for(const item of archiveWorldTags){
  const dr=Math.hypot(item.t.x-state.x,item.t.z-state.z);
  const pos=state.floor===2&&dr<8.2?project([item.t.x,UPPER+1.75,item.t.z],vp):null;
- const ok=pos&&!state.overlay&&!state.map&&!state.roster&&!state.characterPanel&&pos.x>30&&pos.x<innerWidth-30&&pos.y>30&&pos.y<innerHeight-50;
+ const ok=pos&&!state.overlay&&!state.map&&!state.roster&&!state.archiveViewing&&!state.characterPanel&&pos.x>30&&pos.x<innerWidth-30&&pos.y>30&&pos.y<innerHeight-50;
  item.el.style.display=ok?'block':'none';if(ok){item.el.style.left=pos.x+'px';item.el.style.top=pos.y+'px';}
 }
 for(const item of characterTags){const dr=dist(item.npc,state),pos=dr<28?project([item.npc.x,3.2,item.npc.z],vp):null;
- const visible=!!(pos&&pos.x>20&&pos.x<innerWidth-20&&pos.y>18&&pos.y<innerHeight-18&&!state.overlay&&!state.map&&!state.roster&&!state.characterPanel);
+ const visible=!!(pos&&pos.x>20&&pos.x<innerWidth-20&&pos.y>18&&pos.y<innerHeight-18&&!state.overlay&&!state.map&&!state.roster&&!state.archiveViewing&&!state.characterPanel);
  item.el.style.display=visible?'block':'none';if(visible){item.el.style.left=pos.x+'px';item.el.style.top=pos.y+'px';}}
 let area=state.x>54&&state.x<102&&state.z>-84&&state.z<-51?'光影起點街 · 里昂電影文化':'港口街區';for(const b of buildings)if(inside(b))area=b.name+(state.floor===2?' · 2F 電影收藏室':' · 1F');
  const home=buildings.find(inside),exitGuide=$('exitGuide');
@@ -2777,6 +2959,8 @@ renderStoryQuest=function(){
  $('questdesc').textContent=q.desc+(ch1.beat===11?'（'+['book','workshop','cinema'].filter(k=>ch1.flags[k]).length+'/3）':'');
 };
 function ch1Step(n){
+ if(n===8)cinemaChangeMode('playing',true);
+ else if(n===9&&cinemaShow.mode==='playing')cinemaChangeMode('finished',true);
  ch1.beat=Math.max(0,Math.min(14,n));ch1.done=ch1.beat===14;ch1Save();
  if(ch1.beat!==3)ch1RemoveTaxi();
  ch1BuildPoints();renderStoryQuest();if(typeof lockQuestActors==='function')lockQuestActors();
@@ -3636,4 +3820,32 @@ window.LoveFilmNPCLife={version:'2.0',getSchedule:()=>Object.fromEntries(Object.
  else addButton('debugChapterButton','🧪 測試：直接到第一章',enter);
 })();
 </script>
-</body></html>
+<style id="filmArtifactViewerStyle">
+#filmArtifactViewer{position:fixed;inset:0;z-index:90;display:none;background:rgba(14,26,31,.88);align-items:center;justify-content:center;padding:12px;box-sizing:border-box}
+#filmArtifactViewer.open{display:flex}#filmArtifactFrame{position:relative;width:min(1040px,96vw);max-height:95dvh;overflow:auto;background:#f7f0e4;border-radius:18px;padding:12px;box-shadow:0 18px 70px #0008;color:#29424a}
+#filmArtifactFrame h2{font-size:16px;margin:0 44px 10px 8px}#filmArtifactCanvas{display:block;width:100%;height:auto;aspect-ratio:1.65;background:#e5d8c3;border-radius:12px}
+#filmArtifactCaption{margin:10px 7px;font-size:13px;line-height:1.7;color:#51626a}#filmArtifactClose{position:absolute;top:8px;right:9px;background:#28575d;padding:8px 13px;z-index:1}
+@media(max-height:500px){#filmArtifactFrame{max-height:96dvh}#filmArtifactCanvas{width:auto;max-width:100%;max-height:55dvh;margin:auto}#filmArtifactCaption{font-size:11px;margin:5px}}
+</style>
+<div id="filmArtifactViewer" role="dialog" aria-modal="true" aria-label="電影館藏實物檢視"><div id="filmArtifactFrame"><button id="filmArtifactClose" type="button" aria-label="關閉館藏檢視">✕ 關閉</button><h2 id="filmArtifactTitle">電影收藏室 · 實物檢視</h2><canvas id="filmArtifactCanvas" width="990" height="600"></canvas><div id="filmArtifactCaption"></div></div></div><script id="filmArtifactViewerScript">
+(function(){'use strict';
+const v=document.getElementById('filmArtifactViewer'),can=document.getElementById('filmArtifactCanvas'),ctx=can.getContext('2d'),ttl=document.getElementById('filmArtifactTitle'),cap=document.getElementById('filmArtifactCaption');
+const W=990,H=600;let closeHandler=null;
+function rect(x,y,w,h,color){ctx.fillStyle=color;ctx.fillRect(x,y,w,h)}
+function line(x,y,a,b,c,width=2){ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(a,b);ctx.strokeStyle=c;ctx.lineWidth=width;ctx.stroke()}
+function round(x,y,w,h,r,color){ctx.fillStyle=color;ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fill()}
+function txt(t,x,y,size=20,color='#45525b',font='system-ui',weight='500'){ctx.fillStyle=color;ctx.font=weight+' '+size+'px '+font;ctx.fillText(t,x,y)}
+function circle(x,y,r,c){ctx.fillStyle=c;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill()}
+function paper(x,y,w,h,rot=0){ctx.save();ctx.translate(x+w/2,y+h/2);ctx.rotate(rot);ctx.shadowColor='#50413266';ctx.shadowBlur=25;ctx.shadowOffsetY=12;rect(-w/2,-h/2,w,h,'#f8f0d9');ctx.shadowColor='transparent';ctx.strokeStyle='#c3ad88';ctx.strokeRect(-w/2,-h/2,w,h);ctx.restore()}
+function stamp(x,y){circle(x,y,31,'#98505a');circle(x,y,25,'#b87978');txt('映',x-13,y+9,24,'#ecd4b7')}
+function star(x,y){ctx.save();ctx.translate(x,y);ctx.fillStyle='#d2b585';ctx.beginPath();for(let i=0;i<10;i++){let a=i*Math.PI/5-Math.PI/2,r=i%2?7:16;ctx.lineTo(Math.cos(a)*r,Math.sin(a)*r)}ctx.closePath();ctx.fill();ctx.restore()}
+function bg(){let g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'#776d60');g.addColorStop(1,'#3e514f');rect(0,0,W,H,g);for(let i=0;i<14;i++){line(i*83,0,i*83-150,H,'#ffffff06',2)}round(40,26,910,548,18,'#d6c8b1');round(55,41,880,518,10,'#efe8d9')}
+function ticket(){bg();paper(170,160,650,275);rect(170,160,130,275,'#9b5865');rect(295,160,10,275,'#d6bc91');for(let y=172;y<430;y+=17)circle(305,y,5,'#eee5d6');txt('YINGWAN',195,225,19,'#f0dec5','serif','700');txt('CINEMA',192,260,21,'#f0dec5','serif','700');txt('午夜',196,335,27,'#f0dec5');txt('試映',196,372,27,'#f0dec5');txt('映 灣 戲 院',352,227,36,'#504844','serif','700');line(352,244,756,244,'#b39c7b',2);txt('MIDNIGHT SCREENING',352,276,18,'#9a685f','serif','700');txt('當哈利碰上莎莉',352,337,30,'#503e3e','serif','700');txt('2008   •   23:30',355,391,19,'#68675d');rect(666,359,98,45,'#e0c89e');for(let i=0;i<19;i++)rect(674+i*4.5,368,(i%3)*.7+2,23,'#6a5850');star(796,178);txt('票根編號 01 / 06',171,485,17,'#766655')}
+function letters(){bg();for(let i=0;i<3;i++){let x=112+i*277,y=128+(i%2)*24;paper(x,y,247,355,-.018*(i-1));round(x+15,y+16,216,330,7,'#faf2e1');txt(['給小時候的妳','給陪在身邊的妳','給現在的妳'][i],x+33,y+75,21,'#66544b','serif','700');line(x+34,y+111,x+209,y+111,'#c6b69c');for(let j=0;j<7;j++)line(x+34,y+140+j*24,x+203-j%3*23,y+140+j*24,'#b2a28d',1.6);txt('致　阮知音',x+37,y+309,17,'#8e6d67');stamp(x+196,y+303)}txt('情書原件影本 · PRIVATE LETTERS',120,88,22,'#745f54','serif','700')}
+function board(){bg();round(118,86,752,440,9,'#9a775d');round(138,105,712,401,6,'#d7c09d');let pts=[[282,255],[510,220],[725,295]];pts.forEach(([x,y],i)=>{paper(x-92,y-91,184,190);rect(x-72,y-72,144,111,['#b48b91','#887c66','#72919a'][i]);circle(x,y-36,29,'#d5b094');round(x-41,y-6,82,39,25,['#704b56','#907255','#47646a'][i]);txt(['阮知音','陸以辰','主角'][i],x-45,y+77,19,'#594e46')});ctx.setLineDash([12,7]);line(372,250,417,241,'#bd6165',5);line(603,255,632,283,'#ab8c66',5);ctx.setLineDash([]);for(let i=0;i<5;i++){star(190+i*150,468)}txt('CHARACTER RELATIONS • CHAPTER 01',188,75,18,'#efe7d3')}
+function platform(){bg();round(116,73,759,455,10,'#6c574d');round(137,94,716,413,4,'#e4d6c0');const g=ctx.createLinearGradient(0,120,0,470);g.addColorStop(0,'#abb8ae');g.addColorStop(1,'#596d75');round(153,110,686,381,2,g);rect(153,366,686,125,'#6b7775');for(let i=0;i<7;i++)line(153+i*105,365,82+i*125,489,'#b1ad9d',5);rect(170,154,635,14,'#e2d3ad');for(const x of [208,408,608]){rect(x,165,15,207,'#77706b');rect(x-30,180,75,11,'#b6b2a2')}rect(195,328,475,19,'#adad9c');rect(180,352,496,10,'#4d5757');circle(653,277,27,'#3c3c42');round(625,307,57,129,15,'#574a54');rect(633,425,17,41,'#574a54');rect(662,425,17,41,'#574a54');line(686,355,731,336,'#574a54',8);rect(162,455,674,5,'#d7c4a9');txt('1993  第二版 / 未採用',181,145,25,'#293c43','serif','700');txt('月台另一側',184,469,20,'#eee0cc');txt('35mm FILM • ALTERNATE TAKE',545,470,13,'#eee0cc')}
+window.showFilmArtifact=function(key,onclose){if(typeof onclose==='function')closeHandler=onclose;const titles={ticket:'午夜試映 · 實體電影票',letters:'三封情書 · 手寫信件影本',board:'人物關係 · 館藏照片板',still:'1993 年《月台另一側》 · 定格畫面'};ttl.textContent=titles[key]||'電影收藏室';const captions={ticket:'把票根放大，可以辨認戲院名稱、電影名稱、時間與票根編號。',letters:'三封不同時期寫下的信，以實體紙張、封口蠟章與泛黃筆跡呈現。',board:'角色相片、姓名卡與關係連線都整理在展板上。',still:'1993 年的電影定格照：候車月台、鐵軌與回頭的人影，採原創風格化重繪。'};cap.textContent=captions[key]||'';({ticket,letters,board,still}[key]||ticket)();v.classList.add('open')};
+function close(){v.classList.remove('open');if(closeHandler){const fn=closeHandler;closeHandler=null;fn()}};
+document.getElementById('filmArtifactClose').addEventListener('click',close);v.addEventListener('click',e=>{if(e.target===v)close()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&v.classList.contains('open')){e.stopImmediatePropagation();close()}},true);
+})();
+</script></body></html>
