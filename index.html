@@ -1,4 +1,4 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no"><title>戀愛片場失控中｜映灣市 v2.1 · 休憩互動與手機地圖</title><style>
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no"><title>戀愛片場失控中｜映灣市 v3.6 · 電影感載入畫面與主選單</title><style>
 :root{--paper:#f9f4e9;--ink:#243943;--deep:#162c34;--teal:#2e626a;--gold:#e6b780;--fog:#d5e9e7}*{box-sizing:border-box}body{margin:0;overflow:hidden;background:#c6d9dd;color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans TC","Microsoft JhengHei",sans-serif}canvas#game{position:fixed;inset:0;width:100vw;height:100vh;display:block}#vignette{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 48%,rgba(22,44,52,.18) 100%)}.glass{background:rgba(249,244,233,.93);box-shadow:0 8px 32px rgba(20,48,56,.2);border:1px solid rgba(255,255,255,.8);backdrop-filter:blur(8px)}#brand{position:fixed;top:18px;left:20px;padding:12px 16px;border-radius:14px;pointer-events:none}#brand .eyebrow{font-size:10px;letter-spacing:2px;color:#7d8382;font-weight:800}#brand h1{margin:2px 0 0;font-size:19px;letter-spacing:1px}#brand small{font-size:11px;letter-spacing:.5px;color:#587178}#quest{position:fixed;top:106px;left:20px;width:250px;border-radius:13px;padding:14px 16px;pointer-events:none}#quest .tag{font-size:10px;font-weight:800;letter-spacing:1.5px;color:#b17d4f}#quest h2{font-size:15px;margin:5px 0 8px}#quest p{font-size:12px;line-height:1.65;margin:0;color:#4d6570}#mapbox{position:fixed;top:18px;right:18px;border-radius:14px;overflow:hidden;width:210px;height:206px}#minimap{display:block;width:210px;height:175px;background:#e8e3ce}#maplabel{height:31px;text-align:center;padding-top:7px;font-size:11px;letter-spacing:1px;color:#637176}#foot{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);white-space:nowrap;display:flex;gap:14px;align-items:center;padding:9px 16px;border-radius:24px;font-size:11px;pointer-events:none}kbd{border-radius:5px;border:1px solid #c2d3d4;box-shadow:0 1px #b6c6c7;padding:3px 6px;background:#fff;font:700 11px system-ui}#prompt{position:fixed;bottom:83px;left:50%;transform:translateX(-50%);color:white;background:rgba(19,42,48,.87);border:1px solid rgba(255,255,255,.3);border-radius:15px;padding:12px 20px;min-width:230px;text-align:center;font-size:14px;opacity:0;transition:opacity .15s;pointer-events:none}#prompt.show{opacity:1}#prompt b{display:inline-flex;background:#e5b780;color:#243943;width:25px;height:25px;border-radius:7px;align-items:center;justify-content:center;margin-right:9px}#toast{position:fixed;top:240px;right:20px;padding:12px 16px;border-radius:12px;color:#fff;background:rgba(19,49,57,.89);font-size:12px;max-width:240px;opacity:0;transition:opacity .4s;pointer-events:none}#toast.show{opacity:1}.worldtag{position:fixed;transform:translate(-50%,-50%);white-space:nowrap;border:1px solid #ffffffa8;background:#f8f1e4dd;border-radius:12px;padding:5px 10px;font-size:11px;font-weight:800;box-shadow:0 3px 10px #20303825;pointer-events:none;display:none}#overlay{position:fixed;inset:0;background:rgba(16,35,44,.58);display:flex;align-items:center;justify-content:center;z-index:10;padding:18px}#overlay.hidden{display:none}#modal{width:min(580px,95vw);max-height:90vh;overflow:auto;padding:31px 33px;border-radius:22px;box-shadow:0 18px 60px #08242a70}#modal .topline{font-size:11px;letter-spacing:3px;color:#b48058;font-weight:800}#modal h2{font-size:27px;margin:10px 0}#modal p{font-size:14px;line-height:1.9;color:#526269}#modal .controls{font-size:13px;padding:14px;background:#e5efec;border-radius:10px;line-height:2}button{appearance:none;border:0;background:var(--teal);color:white;border-radius:10px;padding:11px 19px;font-size:13px;font-weight:800;cursor:pointer;font-family:inherit}button:hover{background:#205056}button.soft{background:#e0ece8;color:#24505a}#modal .actions{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}#dialog{position:fixed;bottom:72px;left:50%;transform:translateX(-50%);width:min(720px,92vw);border-radius:17px;padding:19px 22px;z-index:5;display:none}#dialog.active{display:block}#speaker{font-size:13px;font-weight:900;color:#b17d4f;margin-bottom:8px}#line{font-size:16px;line-height:1.8;min-height:57px}#dialog button{float:right;margin-top:5px}#mapModal{display:none;position:fixed;inset:0;background:#142c36dd;z-index:6;align-items:center;justify-content:center}#mapModal.show{display:flex}#bigmapWrap{border-radius:20px;padding:22px;max-width:95vw}#bigmap{display:block;max-width:100%;width:640px;height:auto;background:#e4e5d5;border-radius:12px}#mapClose{margin-top:12px}#crosshair{position:fixed;left:50%;top:50%;width:4px;height:4px;border:1px solid #fff7;background:#fff6;transform:translate(-50%,-50%);border-radius:99px;pointer-events:none}#vehiclehud{position:fixed;right:20px;bottom:65px;border-radius:14px;padding:12px 15px;min-width:204px;background:rgba(19,42,48,.90);color:white;border:1px solid #ffffff38;display:none;z-index:3}#vehiclehud.show{display:block}#vehiclehud strong{font-size:17px}#vehiclehud .speed{font-size:20px;font-weight:900;color:#f0c88d}#vehiclehud small{display:block;font-size:11px;color:#d8e5e6;line-height:1.55;margin-top:6px}#status{position:fixed;left:20px;bottom:20px;color:#fff;background:#1a3640b7;border-radius:8px;padding:7px 10px;font-size:11px;pointer-events:none}@media(max-width:750px){#quest{top:96px;width:190px;padding:9px}#mapbox{width:145px;height:145px}#minimap{width:145px;height:121px}#maplabel{height:24px;padding-top:4px}#brand{padding:9px}#brand h1{font-size:14px}#foot{font-size:9px;gap:4px;bottom:9px;padding:7px 9px}#foot span:nth-child(3),#foot span:nth-child(4){display:none}#status{bottom:55px}#modal{padding:22px}}
 
 /* CAST v0.8 — player appearance editor, cast roster and NPC signage */
@@ -138,7 +138,49 @@
 .touchUI #envPanel .envRow button{min-height:35px}
 @media(max-width:780px) and (orientation:landscape){.touchUI #envPanel{top:51px;right:10px;max-height:calc(100dvh - 58px);width:min(295px,45vw)}}
 @media(max-height:430px) and (orientation:landscape){.touchUI #touchTools button{padding:6px 6px;min-width:38px;font-size:11px}.touchUI #envPanel .envRow button{min-height:30px;padding:5px 6px}}
-</style></head><body><canvas id="game"></canvas><div id="vignette"></div><div id="touchControls" aria-label="手機遊戲控制器">
+</style>
+<style id="v36-boot-style">
+#filmBoot{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:max(12px,env(safe-area-inset-top)) max(14px,env(safe-area-inset-right)) max(14px,env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left));background:radial-gradient(ellipse at 50% 36%,#32434e 0%,#152832 65%,#101d29 100%);color:#f7ebda;font-family:system-ui,-apple-system,'Noto Sans TC',sans-serif;box-sizing:border-box;transition:opacity .28s ease;overflow:auto}
+#filmBoot.is-hidden{opacity:0;pointer-events:none}
+#filmBoot .filmBootCard{width:min(480px,94vw);text-align:center;margin:auto;padding:24px 16px}
+#filmBoot .filmSlate{width:76px;height:62px;margin:0 auto 22px;transform:rotate(-7deg);position:relative;border-radius:5px;background:#e9cb9c;border:5px solid #d9b887;box-shadow:0 6px 30px #0004}
+#filmBoot .filmSlate:before{content:'';position:absolute;top:-22px;left:-7px;width:81px;height:17px;background:repeating-linear-gradient(65deg,#263944 0px,#263944 11px,#e9cb9c 12px,#e9cb9c 23px);border-radius:3px;transform:rotate(-8deg);border:2px solid #e9cb9c}
+#filmBoot .filmSlate:after{content:'01 / TAKE';position:absolute;top:16px;left:5px;right:5px;color:#253a40;font-size:12px;font-weight:900;letter-spacing:.8px}
+#filmBoot h1{font-size:clamp(24px,4.1vw,37px);letter-spacing:2px;margin:0 0 7px;font-weight:850}
+#filmBoot .bootEng{font-size:10px;letter-spacing:3px;color:#b5b9b2;margin:0 0 35px}
+#filmBoot .bootLabel{font-size:14px;color:#f4e1c5;margin:0 0 12px;font-weight:650}
+#filmBoot .bootRail{height:7px;background:#445761;border-radius:10px;overflow:hidden;position:relative;margin-bottom:12px}
+#filmBoot .bootRail::before{content:'';height:100%;display:block;width:38%;background:#dcbc8e;border-radius:10px;animation:bootSweep 1.6s ease-in-out infinite alternate}
+#filmBoot.done .bootRail::before{width:100%;animation:none}
+#filmBoot.failed .bootRail::before{width:100%;animation:none;background:#c7867d}
+@keyframes bootSweep{from{transform:translateX(-100%)}to{transform:translateX(285%)}}
+#filmBoot .bootDetail{color:#b2c2c3;font-size:12px;line-height:1.7;min-height:21px}
+#filmBoot .bootQuote{font-size:13px;color:#cdbda7;margin:29px 0 0;line-height:1.6}
+#filmBoot .bootError{margin:16px 0 0;color:#ffe2d7;line-height:1.5;background:#663c3a;padding:12px;border-radius:10px;font-size:12px;word-break:break-word}
+#filmBoot .bootTry{display:inline-block;margin:16px 5px 0;padding:10px 19px;color:#1d343b;background:#e0be8e;border:0;border-radius:10px;font:700 13px inherit;cursor:pointer}
+#filmBoot .bootTry[hidden],#filmBoot .bootError[hidden]{display:none}
+#modal #v36SaveHint{font-size:12px;margin:10px 0 0;color:#547176}
+#modal #v36NewGame{background:#e9e3d8;color:#28444d}
+#modal #v36ImportGame{background:#e0ece8;color:#28444d}
+@media(max-height:480px){#filmBoot .filmBootCard{padding:12px}#filmBoot .filmSlate{width:58px;height:47px;margin-bottom:12px}#filmBoot .filmSlate:before{width:63px}#filmBoot h1{font-size:24px}#filmBoot .bootEng{margin-bottom:15px}#filmBoot .bootQuote{margin-top:14px}}
+</style>
+</head><body><div id="filmBoot" role="status" aria-live="polite" aria-label="映灣市載入中"><div class="filmBootCard"><div class="filmSlate" aria-hidden="true"></div><h1>戀愛片場失控中</h1><p class="bootEng">LOVE, ACTION &amp; REACTION</p><p id="filmBootLabel" class="bootLabel">正在準備映灣市……</p><div class="bootRail" aria-hidden="true"></div><div class="bootDetail" id="filmBootDetail">檢查瀏覽器與遊戲初始化</div><p class="bootQuote">「每段愛情，都有一場意料之外的 NG。」</p><p class="bootError" id="filmBootError" hidden></p><button class="bootTry" id="filmBootRetry" type="button" hidden>重新嘗試載入</button></div></div>
+<script id="v36-boot-early">
+(function(){
+ const boot=document.getElementById('filmBoot'),label=document.getElementById('filmBootLabel'),detail=document.getElementById('filmBootDetail'),error=document.getElementById('filmBootError'),retry=document.getElementById('filmBootRetry');
+ let failed=false,finished=false;
+ const pretty={renderer:['正在建立映灣市場景','準備建築、街道與電影道具'],actors:['正在準備角色與劇情','讀取 NPC、任務與館藏互動'],saved:['正在檢查上次進度','確認本機存檔與主選單'],draw:['正在繪製城市第一個畫面','等待 WebGL 首次成功繪圖']};
+ function phase(key){if(failed||finished)return;const a=pretty[key];if(a){label.textContent=a[0];detail.textContent=a[1];}}
+ function fail(reason){if(failed||finished)return;failed=true;boot.classList.add('failed');boot.setAttribute('role','alert');label.textContent='載入失敗';detail.textContent='目前無法啟動 3D 城市，已保留瀏覽器存檔。';error.hidden=false;error.textContent=String(reason||'無法完成遊戲初始化').slice(0,300);retry.hidden=false;}
+ function ready(){if(failed||finished)return;if(!api.scriptsDone)return;finished=true;phase('draw');boot.classList.add('done');label.textContent='映灣市已準備完成';detail.textContent='即將進入遊戲主選單';requestAnimationFrame(()=>{requestAnimationFrame(()=>{boot.classList.add('is-hidden');setTimeout(()=>{boot.style.display='none'},340);})});}
+ const api={phase,fail,ready,scriptsDone:false,isFailed:()=>failed};window.__lovefilmBoot=api;
+ retry.addEventListener('click',()=>location.reload());
+ window.addEventListener('error',ev=>fail('程式錯誤：'+(ev.message||'未知錯誤')));
+ window.addEventListener('unhandledrejection',ev=>fail('資料初始化錯誤：'+(ev.reason?.message||String(ev.reason||'未知錯誤'))));
+ setTimeout(()=>{if(!finished&&!failed)fail('無法在合理時間內完成首個 3D 畫面。請嘗試重新整理，或改用支援 WebGL 的瀏覽器。')},25000);
+})();
+</script>
+<canvas id="game"></canvas><div id="vignette"></div><div id="touchControls" aria-label="手機遊戲控制器">
  <div id="touchStickZone" aria-label="移動與駕駛搖桿"><span class="touchHint">移動／駕駛</span><div id="touchStick"></div></div>
  <div id="touchActionPad"><button type="button" id="touchBrake" class="touchAction">煞車</button><button type="button" id="touchRun" class="touchAction">按住<br>跑步</button><button type="button" id="touchInteract" class="touchAction">互動<br>／上下車</button></div>
 </div><div id="touchTools"><button type="button" id="touchMap" aria-label="打開城市地圖">地圖</button><button type="button" id="touchCast" aria-label="主角外貌">造型</button><button type="button" id="touchRoster" aria-label="角色名冊">角色</button><button type="button" id="touchMenu" aria-label="暫停選單">選單</button><button type="button" id="touchEnv" aria-label="天氣與時間設定">環境</button></div><div id="touchCameraHelp">在畫面空白處滑動轉視角</div>
@@ -149,7 +191,7 @@
  <label>遊戲時間</label><div class="envRow"><button type="button" data-hour="390">晨光</button><button type="button" data-hour="720">正午</button><button type="button" data-hour="1080">黃昏</button><button type="button" data-hour="1320">夜晚</button></div>
  <div class="envRow"><button type="button" id="envAutoWeather">天氣自動：開</button><button type="button" id="envAutoTime">時間流動：開</button></div>
  <small>自動模式會隨遊戲時間變化，僅影響場景氣氛，不會重設序章進度。</small>
-</div><div id="exitGuide" aria-live="off"></div><div id="brand" class="glass"><div class="eyebrow">LOVE, ACTION & REACTION</div><h1>戀愛片場失控中</h1><small>映灣市 ｜ 海灣高樓街區 × 光影起點街 v3.4</small></div><div id="quest" class="glass"><div class="tag">自由探索 · 映灣電影文化街區</div><h2 id="questtitle">走進映灣市</h2><p id="questdesc">探索海灣山城與「光影起點街」；每棟室內都有專屬光線與陳設，走進店面鏡頭會自動拉近，也能自由抬頭看裝潢。</p></div><div id="mapbox" class="glass"><canvas id="minimap" width="420" height="350"></canvas><div id="maplabel">映灣市　·　山海水岸</div></div><div id="toast"></div><div id="prompt"><b>F</b><span id="promptText">互動</span></div><div id="crosshair"></div><div id="foot" class="glass"><span><kbd>W A S D</kbd> 移動</span><span><kbd>滑鼠</kbd> 視角／滾輪縮放</span><span><kbd>Shift</kbd> 奔跑</span><span><kbd>F</kbd> 互動／上車</span><span><kbd>C</kbd> 主角造型</span><span><kbd>Tab</kbd> 地圖</span><span><kbd>Esc</kbd> 選單</span></div><div id="vehiclehud"><div id="vehicleName">交通工具</div><div class="speed" id="vehicleSpeed">0 km/h</div><small id="vehicleHelp">W 加速 / S 倒車 / A D 轉向<br>空白鍵 煞車 / F 下車</small></div><div id="status">2008　·　映灣港　·　上午 10:15</div><div id="castActions"><button id="openCastSettings" title="自訂主角，快捷鍵 C">主角造型 <kbd>C</kbd></button><button id="openCastRoster" title="查看角色名冊，快捷鍵 K">角色名冊 <kbd>K</kbd></button></div><div id="dialog" class="glass"><div id="speaker"></div><div id="line"></div><div id="dialogChoices"></div><button id="nextLine">繼續 ›</button></div><div id="mapModal"><div id="bigmapWrap" class="glass"><div id="mapToolbar"><h2>映灣市 · 城市地圖</h2><div id="mapZoomControls"><button id="mapZoomOut" type="button" aria-label="地圖縮小">−</button><b id="mapZoomLabel">100%</b><button id="mapZoomIn" type="button" aria-label="地圖放大">＋</button></div></div><div id="bigmapViewport"><canvas id="bigmap" width="800" height="600"></canvas></div><div style="font-size:12px;color:#607078;margin-top:8px">黃色：玩家位置　·　圓點：可進入建築　·　圖示：可駕駛交通工具</div><button id="mapClose">返回城市</button></div></div><div id="overlay"><div id="modal" class="glass"><div class="topline" id="modalTop">CITY EXPLORATION / 01</div><h2 id="modalTitle">歡迎來到映灣市</h2><p id="modalDesc">《戀愛片場失控中》v3.4：完整後排平台、固定座位觀眾與安全上下台階。保留動態天空、日夜循環、雨天濕地效果、環境切換、館藏互動、主角自訂與五種交通工具。</p><div class="controls">🚲🚗🛵🐎⛵ 靠近交通工具按 <strong>F 上車／下車</strong><br>🚘 W 加速、S 煞車／倒車、A／D 轉向，腳踏車踩踏與雙手握把動作會跟隨速度；船隻請沿碼頭登船。<br>🚶 電腦：WASD 移動、Shift 奔跑、滑鼠轉視角。手機：左側搖桿移動／駕駛，右側空白處滑動轉視角，右下按鈕互動、跑步或煞車。<br>🎞️ 東北側「光影起點街」有兩棟可進入的電影展館，街邊按 F 查看史料<br>🏛️ 電影節辦公室內右側樓梯：<strong>直接步行上樓／下樓</strong>；二樓收藏室保留互動，主要室內空間則升級為更完整的家具擺設<br>🗺️ Tab 地圖 ｜ Esc 暫停 ｜ 可隨時儲存位置<br>👤 <strong>C</strong> 自訂主角　｜　<strong>K</strong> 角色名冊（可快速尋找 NPC）</div><div class="actions"><button id="startBtn">開始序章 · 映灣港</button><button class="soft" id="visitFilmStreet">前往光影起點街</button><button class="soft" id="coverCustomize">先設定主角外貌</button><button class="soft" id="saveBtn">儲存位置</button><button class="soft" id="resetBtn">回到港口</button></div><p style="font-size:11px;margin-bottom:0">v1.7：序章進度自動儲存；按右上角「天氣 / 時間」（手機按「環境」）可以預覽早晨、黃昏、夜景與雨天。建議手機橫向遊玩；儲存位置功能與原版相同。</p></div></div>
+</div><div id="exitGuide" aria-live="off"></div><div id="brand" class="glass"><div class="eyebrow">LOVE, ACTION & REACTION</div><h1>戀愛片場失控中</h1><small>映灣市 ｜ 海灣高樓街區 × 光影起點街 v3.7</small></div><div id="quest" class="glass"><div class="tag">自由探索 · 映灣電影文化街區</div><h2 id="questtitle">走進映灣市</h2><p id="questdesc">探索海灣山城與「光影起點街」；每棟室內都有專屬光線與陳設，走進店面鏡頭會自動拉近，也能自由抬頭看裝潢。</p></div><div id="mapbox" class="glass"><canvas id="minimap" width="420" height="350"></canvas><div id="maplabel">映灣市　·　山海水岸</div></div><div id="toast"></div><div id="prompt"><b>F</b><span id="promptText">互動</span></div><div id="crosshair"></div><div id="foot" class="glass"><span><kbd>W A S D</kbd> 移動</span><span><kbd>滑鼠</kbd> 視角／滾輪縮放</span><span><kbd>Shift</kbd> 奔跑</span><span><kbd>F</kbd> 互動／上車</span><span><kbd>C</kbd> 主角造型</span><span><kbd>Tab</kbd> 地圖</span><span><kbd>Esc</kbd> 選單</span></div><div id="vehiclehud"><div id="vehicleName">交通工具</div><div class="speed" id="vehicleSpeed">0 km/h</div><small id="vehicleHelp">W 加速 / S 倒車 / A D 轉向<br>空白鍵 煞車 / F 下車</small></div><div id="status">2008　·　映灣港　·　上午 10:15</div><div id="castActions"><button id="openCastSettings" title="自訂主角，快捷鍵 C">主角造型 <kbd>C</kbd></button><button id="openCastRoster" title="查看角色名冊，快捷鍵 K">角色名冊 <kbd>K</kbd></button></div><div id="dialog" class="glass"><div id="speaker"></div><div id="line"></div><div id="dialogChoices"></div><button id="nextLine">繼續 ›</button></div><div id="mapModal"><div id="bigmapWrap" class="glass"><div id="mapToolbar"><h2>映灣市 · 城市地圖</h2><div id="mapZoomControls"><button id="mapZoomOut" type="button" aria-label="地圖縮小">−</button><b id="mapZoomLabel">100%</b><button id="mapZoomIn" type="button" aria-label="地圖放大">＋</button></div></div><div id="bigmapViewport"><canvas id="bigmap" width="800" height="600"></canvas></div><div style="font-size:12px;color:#607078;margin-top:8px">黃色：玩家位置　·　圓點：可進入建築　·　圖示：可駕駛交通工具</div><button id="mapClose">返回城市</button></div></div><div id="overlay"><div id="modal" class="glass"><div class="topline" id="modalTop">CITY EXPLORATION / 01</div><h2 id="modalTitle">歡迎來到映灣市</h2><p id="modalDesc">映灣市正在放映你的故事。完成載入後，可以從上次存檔繼續，也能重新開始序章。</p><div class="controls">🚲🚗🛵🐎⛵ 靠近交通工具按 <strong>F 上車／下車</strong><br>🚘 W 加速、S 煞車／倒車、A／D 轉向，腳踏車踩踏與雙手握把動作會跟隨速度；船隻請沿碼頭登船。<br>🚶 電腦：WASD 移動、Shift 奔跑、滑鼠轉視角。手機：左側搖桿移動／駕駛，右側空白處滑動轉視角，右下按鈕互動、跑步或煞車。<br>🎞️ 東北側「光影起點街」有兩棟可進入的電影展館，街邊按 F 查看史料<br>🏛️ 電影節辦公室內右側樓梯：<strong>直接步行上樓／下樓</strong>；二樓收藏室保留互動，主要室內空間則升級為更完整的家具擺設<br>🗺️ Tab 地圖 ｜ Esc 暫停 ｜ 可隨時儲存位置<br>👤 <strong>C</strong> 自訂主角　｜　<strong>K</strong> 角色名冊（可快速尋找 NPC）</div><div class="actions"><button id="startBtn">開始序章 · 映灣港</button><button class="soft" id="visitFilmStreet">前往光影起點街</button><button class="soft" id="coverCustomize">先設定主角外貌</button><button class="soft" id="saveBtn">儲存位置</button><button class="soft" id="resetBtn">回到港口</button></div><p style="font-size:11px;margin-bottom:0">v1.7：序章進度自動儲存；按右上角「天氣 / 時間」（手機按「環境」）可以預覽早晨、黃昏、夜景與雨天。建議手機橫向遊玩；儲存位置功能與原版相同。</p></div></div>
 <div class="castLayer" id="castSettings" role="dialog" aria-modal="true" aria-label="主角外貌設定"><div class="castSheet">
  <div class="castHeader"><div><small>CHARACTER CUSTOMIZATION · 2008</small><h2>主角外貌設定</h2><p>你的外貌會同步用於城市步行、NPC 對話及交通工具上的人物。</p></div><button id="closeCastSettings" class="castClose" aria-label="關閉">×</button></div>
  <div class="castContent">
@@ -360,7 +402,7 @@ global.LoveSetCharacters={looks,presets,buildAppearance,spawnThree,findSpec,vers
 <script>
 (()=>{'use strict';
 const canvas=document.getElementById('game'),gl=canvas.getContext('webgl',{antialias:true,alpha:false,preserveDrawingBuffer:true});
-if(!gl){document.getElementById('modalDesc').textContent='瀏覽器目前無法啟用 WebGL。請使用新版 Chrome、Edge 或 Firefox，並確認已開啟硬體加速。';return;}
+if(!gl){window.__lovefilmBoot?.fail('目前無法啟用 WebGL 3D 繪圖。請使用最新 Chrome 或 Safari，確認裝置支援 WebGL 後重新嘗試。');document.getElementById('modalDesc').textContent='瀏覽器目前無法啟用 WebGL，無法載入 3D 城市。';return;}
 const $=id=>document.getElementById(id);const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));const lerp=(a,b,t)=>a+(b-a)*t;const mix3=(a,b,t)=>[lerp(a[0],b[0],t),lerp(a[1],b[1],t),lerp(a[2],b[2],t)];const hex=h=>{h=h.replace('#','');return [0,2,4].map(i=>parseInt(h.slice(i,i+2),16)/255)};
 const vs=`attribute vec3 aPos;attribute vec3 aNorm;attribute vec3 aCol;
 uniform mat4 uMvp;uniform mat4 uModel;uniform vec3 uEye;
@@ -406,6 +448,7 @@ function Builder(){this.v=[];}Builder.prototype.tri=function(a,b,c,color){const 
 Builder.prototype.cylinder=function(x,y,z,r,h,color,n=9){for(let i=0;i<n;i++){const a=i*2*Math.PI/n,b=(i+1)*2*Math.PI/n,ra=[x+Math.cos(a)*r,y-h/2,z+Math.sin(a)*r],rb=[x+Math.cos(b)*r,y-h/2,z+Math.sin(b)*r],ta=[ra[0],y+h/2,ra[2]],tb=[rb[0],y+h/2,rb[2]];this.quad(ra,rb,tb,ta,color);this.tri([x,y+h/2,z],ta,tb,color);}};
 Builder.prototype.pine=function(x,y,z,r,h,color,n=9){for(let i=0;i<n;i++){const a=i*2*Math.PI/n,b=(i+1)*2*Math.PI/n;this.tri([x+Math.cos(a)*r,y,z+Math.sin(a)*r],[x+Math.cos(b)*r,y,z+Math.sin(b)*r],[x,y+h,z],color);}};
 function toMesh(b){const arr=new Float32Array(b.v),buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,arr,gl.STATIC_DRAW);return {buf,count:arr.length/9};}function draw(mesh,model,viewProj){if(!mesh||!mesh.count)return;const m=model||ID();gl.bindBuffer(gl.ARRAY_BUFFER,mesh.buf);for(let i=0;i<3;i++){gl.enableVertexAttribArray(attrs[i]);gl.vertexAttribPointer(attrs[i],3,gl.FLOAT,false,36,i*12);}gl.uniformMatrix4fv(U.model,false,m);gl.uniformMatrix4fv(U.mvp,false,mul(viewProj,m));gl.drawArrays(gl.TRIANGLES,0,mesh.count);}
+window.__lovefilmBoot?.phase('renderer');
 const world=new Builder(),roofs=[],shells=[],interiorWalls=new Map(),doors=[],buildings=[],people=[],furnitureColliders=[];const C={sand:'#e9ddbd',road:'#7e9697',sidewalk:'#d7d1be',sea:'#77b6c7',sea2:'#a6d6dc',wood:'#826557',green:'#6a9981',gold:'#ddb26d'};
 world.box(0,-.29,-7,220,.4,187,C.sand);world.box(0,-.19,138,260,.25,115,C.sea);world.box(0,-.13,81,210,.25,17,'#d5c7a8');
 for(const x of [-50,0,50]){world.box(x,-.07,-3,11,.15,172,C.road);world.box(x-6,-.02,-3,1,.12,172,C.sidewalk);world.box(x+6,-.02,-3,1,.12,172,C.sidewalk);for(let z=-79;z<74;z+=9)world.box(x,.02,z,.17,.03,4,'#f5eacb');}
@@ -2424,7 +2467,7 @@ function openCollectionExhibit(key){
  else {state.archiveViewing=false;state.dialog={who:item.who,lines:item.after,index:0};showDialog();}
 }
 
-function buildTargets(){const t=[];for(const tSeat of SEATS)t.push({type:'seat',name:'坐下 · '+tSeat.name,x:tSeat.x,z:tSeat.z,floor:1,ref:tSeat});for(const v of vehicles)t.push({type:'vehicle',name:v.icon+' '+v.name,x:v.x,z:v.z,ref:v});for(const d of doors){const x=d.inner?d.x+1.35:d.ref.x;const z=d.z;t.push({type:'door',floor:d.floor||1,name:d.inner?'二樓電影收藏室':d.ref.name,x:(d.ref.id==='cinema'&&!d.inner?x:x),z:(d.ref.id==='cinema'&&!d.inner?z+.95:z),ref:d});}for(const p of people)t.push({type:'npc',name:p.name,x:p.x,z:p.z,ref:p});t.push({type:'object',name:'閱讀港口電影節公告',x:4,z:71,lines:['第十五屆映灣電影節：如果愛情可以重新剪接，你會改變結局嗎？','映灣電影節開幕特別單元：那些來不及說出口的故事。']});t.push({type:'object',name:'查看1993年舊照片',floor:2,x:29,z:-46.5,lines:['照片裡是一對站在月台上的男女。背面寫著：1993。','（電影收藏室的故事線索已預留互動位置。）']});t.push({type:'object',name:'翻閱館藏索引卡',floor:2,x:19.2,z:-36.6,lines:['一整格一整格的索引卡，記錄著歷屆影展放映資料與私人捐贈片單。','其中幾張卡片被特別用紅線圈起來：1991、1993，以及「月台另一側」的工作底片。']});t.push({type:'object',name:'檢視老式放映機',floor:2,x:24.1,z:-48.0,lines:['這台 16mm 老式放映機被保養得很好，旁邊貼著維修紀錄。','最後一行註記寫著：有些畫面，只有在暗房裡才願意重新出現。']});t.push({type:'object',name:'閱讀影展工作手稿',floor:2,x:29.2,z:-36.4,lines:['桌上的手稿像是某一年策展提案的草稿。','頁角寫著一行字：如果愛情是一段被剪掉的鏡頭，那麼誰還記得它曾經存在？']});t.push({type:'object',name:'查看捐贈膠卷盒',floor:2,x:31.7,z:-47.0,lines:['金屬膠卷盒上貼著手寫標籤：匿名捐贈，請勿外借。','盒蓋背面留著鉛筆字：請把故事放回原來的位置。']});t.push({type:'object',name:'查看午夜試映票根',floor:2,x:33.2,z:-47.1,act:()=>openCollectionExhibit('ticket')});t.push({type:'object',name:'翻閱三封情書展示',floor:2,x:36.0,z:-44.4,act:()=>openCollectionExhibit('letters')});t.push({type:'object',name:'查看關係紀錄板',floor:2,x:36.0,z:-36.3,act:()=>openCollectionExhibit('board')});t.push({type:'object',name:'查看未公開片段燈箱',floor:2,x:29.2,z:-43.9,act:()=>openCollectionExhibit('still')});
+function buildTargets(){const t=[];for(const tSeat of SEATS)t.push({type:'seat',name:'坐下 · '+tSeat.name,x:tSeat.x,z:tSeat.z,floor:1,ref:tSeat});for(const v of vehicles)t.push({type:'vehicle',name:v.icon+' '+v.name,x:v.x,z:v.z,ref:v});for(const d of doors){const x=d.inner?d.x+1.35:d.ref.x;const z=d.z;t.push({type:'door',floor:d.floor||1,name:d.inner?'二樓電影收藏室':d.ref.name,x,z:(!d.inner&&d.ref?.id==='cinema'?z+.95:z),ref:d});}for(const p of people)t.push({type:'npc',name:p.name,x:p.x,z:p.z,ref:p});t.push({type:'object',name:'閱讀港口電影節公告',x:4,z:71,lines:['第十五屆映灣電影節：如果愛情可以重新剪接，你會改變結局嗎？','映灣電影節開幕特別單元：那些來不及說出口的故事。']});t.push({type:'object',name:'查看1993年舊照片',floor:2,x:29,z:-46.5,lines:['照片裡是一對站在月台上的男女。背面寫著：1993。','（電影收藏室的故事線索已預留互動位置。）']});t.push({type:'object',name:'翻閱館藏索引卡',floor:2,x:19.2,z:-36.6,lines:['一整格一整格的索引卡，記錄著歷屆影展放映資料與私人捐贈片單。','其中幾張卡片被特別用紅線圈起來：1991、1993，以及「月台另一側」的工作底片。']});t.push({type:'object',name:'檢視老式放映機',floor:2,x:24.1,z:-48.0,lines:['這台 16mm 老式放映機被保養得很好，旁邊貼著維修紀錄。','最後一行註記寫著：有些畫面，只有在暗房裡才願意重新出現。']});t.push({type:'object',name:'閱讀影展工作手稿',floor:2,x:29.2,z:-36.4,lines:['桌上的手稿像是某一年策展提案的草稿。','頁角寫著一行字：如果愛情是一段被剪掉的鏡頭，那麼誰還記得它曾經存在？']});t.push({type:'object',name:'查看捐贈膠卷盒',floor:2,x:31.7,z:-47.0,lines:['金屬膠卷盒上貼著手寫標籤：匿名捐贈，請勿外借。','盒蓋背面留著鉛筆字：請把故事放回原來的位置。']});t.push({type:'object',name:'查看午夜試映票根',floor:2,x:33.2,z:-47.1,act:()=>openCollectionExhibit('ticket')});t.push({type:'object',name:'翻閱三封情書展示',floor:2,x:36.0,z:-44.4,act:()=>openCollectionExhibit('letters')});t.push({type:'object',name:'查看關係紀錄板',floor:2,x:36.0,z:-36.3,act:()=>openCollectionExhibit('board')});t.push({type:'object',name:'查看未公開片段燈箱',floor:2,x:29.2,z:-43.9,act:()=>openCollectionExhibit('still')});
  t.push({type:'object',name:'查看書店本週推薦',x:-22.4,z:-33.4,lines:['後頁書店把電影原著與劇本集排在靠窗的展示架上。','林夏禾在一張推薦書卡背面寫著：有些人喜歡故事的開頭，有些人只記得最後一句。']});
  t.push({type:'object',name:'查看咖啡館今日甜點',x:30.3,z:25.9,lines:['吧台的玻璃櫃裡有檸檬塔、奶油可頌與巧克力蛋糕。','店員說，映灣電影節開始後，最常賣完的是可以邊走邊吃的點心。']});
  t.push({type:'object',name:'🎞️ 操作放映控制台',x:90.4,z:30.5,act:cinemaControl});
@@ -2541,6 +2584,7 @@ function mobileInput(){if(!touchMode)return;keys.KeyW=touchMove.y<-.22;keys.KeyS
  action.innerHTML=state.sitting?'起身':state.vehicle?'下車<br>／下船':state.dialog?'繼續': '互動<br>／上車';
  $('touchTools').style.pointerEvents='auto';
 }
+window.__lovefilmBoot?.phase('actors');
 // render model for protagonist and NPCs
 
 // ===== CAST RENDERER / v0.3 : 原始 WebGL 幾何資料的角色模型對接 =====
@@ -2910,7 +2954,25 @@ function project(pt,mat){const x=pt[0],y=pt[1],z=pt[2],w=mat[3]*x+mat[7]*y+mat[1
 function tick(now){requestAnimationFrame(tick);if(touchMode&&now-lastTime<31)return;let dt=clamp((now-lastTime)/1000,0,.05);lastTime=now;resize();mobileInput();updateWeather(dt);if(state.timeAutomatic&&!state.overlay&&!state.map&&!state.dialog)state.timeMinutes=(state.timeMinutes+dt*2.0)%1440;
 const moving=!state.overlay&&!state.map&&!state.dialog&&!state.characterPanel&&!state.roster&&!state.sitting;let vF=0,vR=0;if(moving&&!state.vehicle){if(keys.KeyW||keys.ArrowUp)vF++;if(keys.KeyS||keys.ArrowDown)vF--;if(keys.KeyD||keys.ArrowRight)vR++;if(keys.KeyA||keys.ArrowLeft)vR--;}
 if(touchMode&&!state.vehicle){vF=-touchMove.y;vR=touchMove.x;}const length=Math.hypot(vF,vR);state.run=!!(keys.ShiftLeft||keys.ShiftRight);let velocity=length?(state.run?(buildings.some(inside)?6.8:8.8):(buildings.some(inside)?4.3:5.2)):0;if(length&&!state.vehicle){vF/=length;vR/=length;const dx=(-Math.sin(state.yaw)*vF+Math.cos(state.yaw)*vR)*velocity*dt*(touchMode?Math.min(1,length):1),dz=(-Math.cos(state.yaw)*vF-Math.sin(state.yaw)*vR)*velocity*dt*(touchMode?Math.min(1,length):1);
- if(canWalk(state.x+dx,state.z))state.x+=dx;if(canWalk(state.x,state.z+dz))state.z+=dz;state.dir=Math.atan2(-dx,-dz);state.walkPhase+=dt*velocity;}
+ // v3.7 collision-safe substeps: never skip a wall or a row of seats on a low frame-rate device.
+ const count=Math.max(1,Math.ceil(Math.hypot(dx,dz)/.18));
+ for(let part=0;part<count;part++){
+  const sx=dx/count,sz=dz/count;
+  const validStep=(x,z)=>{
+   if(!canWalk(x,z))return false;
+   const from=stepHeightAt(state.x,state.z),to=stepHeightAt(x,z);
+   // Sudden theatre tier jumps are blocked; use the aisle steps instead.
+   // Door threshold is an exception: previous builds have a raised rear landing and
+   // a lower street outside. Never lock a player inside the theatre at that seam.
+   const theater=buildings.find(b=>b.id==='cinema');
+   const atTheaterDoor=theater&&Math.abs(x-theater.x)<theater.doorW/2+.8&&
+      Math.max(z,state.z)>theater.front-2.0&&Math.min(z,state.z)<theater.front+2.8;
+   return Math.abs(to-from)<.93||!!atTheaterDoor;
+  };
+  if(validStep(state.x+sx,state.z))state.x+=sx;
+  if(validStep(state.x,state.z+sz))state.z+=sz;
+ }
+ state.dir=Math.atan2(-dx,-dz);state.walkPhase+=dt*velocity;}
 if(state.vehicle)updateVehicle(state.vehicle,dt,keys,moving);
 syncOfficeLevel();
 const seatedLift=state.sitting?(state.sitting.platformY??stepHeightAt(state.sitting.x,state.sitting.z)):stepHeightAt(state.x,state.z);
@@ -3046,6 +3108,7 @@ let area=state.x>54&&state.x<102&&state.z>-84&&state.z<-51?'光影起點街 · �
   exitGuide.classList.add('show');
  }else exitGuide.classList.remove('show');
  if(state.z>73)area=state.vehicle?.type==='boat'?'映灣近海':'海灣步道';const clockText=formatTime(state.timeMinutes),dayLabel=timePalette(state.timeMinutes).label;$('status').textContent='2008　·　'+castPlayer.name+'　·　'+area+(state.vehicle?'　·　'+state.vehicle.name:'')+'　·　'+weather.name+' / '+dayLabel+'　·　'+clockText;drawCastPreview(now);
+ if(window.__lovefilmBoot?.scriptsDone)window.__lovefilmBoot.ready();
 }
 requestAnimationFrame(tick);
 
@@ -3841,11 +3904,187 @@ const saveActionBar=document.createElement('div');saveActionBar.id='saveActionBa
 for(const [button,label] of [[exportSave,'匯出存檔'],[importSave,'匯入存檔']]){const copy=document.createElement('button');copy.className='soft';copy.type='button';copy.textContent=label;copy.onclick=()=>button.click();saveActionBar.appendChild(copy);}
 const menuAction=$('modal').querySelector('.actions');if(menuAction)menuAction.after(saveActionBar);
 $('saveBtn').onclick=()=>persistWholeGame(false);
+window.__lovefilmBoot?.phase('saved');
 const savedGame=localStorage.getItem('lovescene_city_v02');
 if(savedGame&&story.stage>0){$('modalDesc').textContent='已找到上次存檔。點擊「繼續遊戲」會回到先前的位置和劇情進度。遊戲每 8 秒自動儲存，切換分頁與重新整理前也會儲存。';$('startBtn').textContent='繼續遊戲';}
+
+// v3.6 main menu — existing pause overlay remains available while playing.
+(function setupFilmMainMenu(){
+ const actionRow=$('modal').querySelector('.actions');if(!actionRow)return;
+ const startButton=$('startBtn');
+ startButton.textContent=savedGame?'繼續遊戲':'開始序章';
+ const note=document.createElement('p');note.id='v36SaveHint';
+ note.textContent=savedGame?'已讀取瀏覽器中上次儲存的位置。可繼續遊戲，或另行匯出備份。':'尚未找到遊戲進度。首次遊玩可按「開始序章」。';
+ actionRow.before(note);
+ const fresh=document.createElement('button');fresh.id='v36NewGame';fresh.type='button';fresh.className='soft';fresh.textContent='開始新遊戲';
+ fresh.addEventListener('click',()=>{
+  if(!confirm('開始新遊戲會清除本瀏覽器的遊戲位置、劇情與角色進度。建議先使用「匯出存檔」備份。確定重新開始嗎？'))return;
+  // Only remove known game keys. Other websites or unrelated settings are untouched.
+  window.__lovefilmSwitchingSave=true;
+  for(const key of saveBundleKeys)localStorage.removeItem(key);
+  localStorage.removeItem('lovescene_city_v01');
+  location.reload();
+ });
+ const importBtn=document.createElement('button');importBtn.id='v36ImportGame';importBtn.type='button';importBtn.className='soft';importBtn.textContent='匯入存檔';importBtn.onclick=()=>importSave.click();
+ actionRow.insertBefore(fresh,actionRow.children[1]||null);
+ actionRow.appendChild(importBtn);
+ // The existing character setting entry remains; keep normal save/export actions intact.
+ $('modalTop').textContent='LOVE, ACTION & REACTION · MAIN MENU';
+ $('modalTitle').textContent='映灣市 · 主選單';
+ $('modalDesc').textContent='2008 年，映灣電影節即將開幕。你可以繼續上次的故事，或重新開始一場浪漫而失控的冒險。';
+})();
+window.__lovefilmBoot?.phase('draw');
 window.LoveFilmSave={version:'2.2',save:()=>persistWholeGame(false),keys:saveBundleKeys.slice()};
 window.LoveFilmNPCLife={version:'2.0',getSchedule:()=>Object.fromEntries(Object.entries(LIFE_CAST).map(([k,c])=>[k,c.schedule.map(([hour,p])=>({hour,place:LIFE_PLACES[p].name}))])),getRelationships:()=>({...life.affinity}),getLocations:()=>Object.fromEntries([...lifePeople].map(([n,r])=>[n,{x:r.person.x,z:r.person.z,slot:r.slot}]))};
 /* === END LOVEFILM NPC DAILY LIFE === */
+
+/* === v3.7 STABILITY + MISSION NAVIGATION ===
+   Additive: no edits to main quest flags, side-quest progress, cast, weather or saved-game schema.
+   Navigation is a direction indicator and interactive map marker, not claimed street-path routing.
+ */
+const LF_NAV_KEY='lovefilm_navigation_v37';
+let lfNavChoice='main',lfNavEnabled=true,lfNavLastSafe=null,lfNavSavedPositionChecked=false,lfNavLastDraw=0;
+try{const cfg=JSON.parse(localStorage.getItem(LF_NAV_KEY)||'null');if(cfg){lfNavChoice=typeof cfg.choice==='string'?cfg.choice:'main';lfNavEnabled=cfg.enabled!==false;}}catch(_e){}
+function lfNavStore(){try{localStorage.setItem(LF_NAV_KEY,JSON.stringify({choice:lfNavChoice,enabled:lfNavEnabled}));}catch(_e){}}
+// Save/export can include the preference without touching the existing progression keys.
+if(!saveBundleKeys.includes(LF_NAV_KEY))saveBundleKeys.push(LF_NAV_KEY);
+if(window.LoveFilmSave?.keys&&!window.LoveFilmSave.keys.includes(LF_NAV_KEY))window.LoveFilmSave.keys.push(LF_NAV_KEY);
+function lfSafePosition(x,z){try{return Number.isFinite(x)&&Number.isFinite(z)&&canWalk(x,z);}catch(_e){return false;}}
+function lfRecoveryCandidates(){
+ const list=[];
+ if(lfNavLastSafe)list.push(lfNavLastSafe);
+ // Nearest grid search allows a furniture collision or a broken old save to be recovered.
+ for(const r of [0,1,2,3,4,6,8,12])for(let k=0;k<24;k++){
+  const a=k*Math.PI/12;
+  list.push({x:state.x+Math.cos(a)*r,z:state.z+Math.sin(a)*r,floor:state.floor});
+ }
+ if(state.floor===2)list.push({x:26,z:-34,floor:1},{x:26,z:-40,floor:1});
+ else if(state.x>57&&state.z>7&&state.z<40)list.push({x:77,z:37.5,floor:1},{x:77,z:29,floor:1});
+ list.push({x:-8,z:61,floor:1});
+ return list;
+}
+function lfFindRecovery(){
+ const originalFloor=state.floor;
+ try{for(const pos of lfRecoveryCandidates()){
+  state.floor=pos.floor||1;
+  if(lfSafePosition(pos.x,pos.z))return pos;
+ }}finally{state.floor=originalFloor;}
+ return {x:-8,z:61,floor:1};
+}
+function lfRecover(show=true){
+ if(state.vehicle){state.vehicle.speed=0;state.vehicle=null;document.getElementById('vehiclehud')?.classList.remove('show');}
+ if(state.sitting)state.sitting=null;
+ const found=lfFindRecovery();
+ state.x=found.x;state.z=found.z;state.floor=found.floor||1;
+ state.levelHeight=state.floor===2?UPPER:0;
+ state.stepLift=state.floor===1?stepHeightAt(state.x,state.z):0;
+ if(typeof state.stairTransition!=='undefined')state.stairTransition=null;
+ lfNavLastSafe={x:state.x,z:state.z,floor:state.floor};
+ persistWholeGame(true);
+ if(show)toast('已將角色移至安全位置，原本的劇情與收藏不受影響。');
+}
+function lfMissionList(){
+ const a=[];
+ if(story.stage<13){const q=storyFocus();a.push({id:'main',label:'序章主線',title:STORY_BEATS[story.stage].title,desc:STORY_BEATS[story.stage].desc,x:q.x,z:q.z,floor:q.floor||1});}
+ else if(!ch1.done){const q=ch1CurrentFocus()||CH1_BEATS[ch1.beat];a.push({id:'main',label:'第一章主線',title:CH1_BEATS[ch1.beat].title,desc:CH1_BEATS[ch1.beat].desc,x:q.x,z:q.z,floor:q.floor||1});}
+ for(const k of Object.keys(sideInfo)){
+  if(!sideUnlocked(k)||sideDone(k))continue;
+  const q=sideInfo[k],n=side.progress[k],loc=q.locations[n];if(!loc)continue;
+  a.push({id:k,label:'城市支線',title:q.name,desc:loc.name,x:loc.x,z:loc.z,floor:loc.floor||1});
+ }
+ return a;
+}
+function lfMission(){
+ const choices=lfMissionList();
+ return choices.find(m=>m.id===lfNavChoice)||choices[0]||null;
+}
+function lfTarget(){
+ const q=lfMission();if(!q)return null;
+ // A 2F item must be reached via the office door and its walkable interior stairs.
+ if(q.floor===2&&state.floor!==2){
+  const b=buildings.find(b=>b.id==='office');
+  const indoors=b&&Math.abs(state.x-b.x)<b.w/2-1&&Math.abs(state.z-b.z)<b.d/2-1;
+  if(!indoors)return {...q,x:b.x,z:b.front+1.4,label:'先進入電影節辦公室'};
+  return {...q,x:stair.x,z:stair.fromZ,label:'先走上右側樓梯'};
+ }
+ return {...q,label:q.floor===2?'二樓：'+q.title:q.title};
+}
+function lfDistance(t){return Math.round(Math.hypot(t.x-state.x,t.z-state.z));}
+const lfNavCss=document.createElement('style');lfNavCss.id='lfNavigationStyle';lfNavCss.textContent=`
+#lfNavBar{position:fixed;top:max(48px,env(safe-area-inset-top) + 8px);left:50%;transform:translateX(-50%);z-index:18;width:min(385px,calc(100vw - 310px));min-width:190px;font:12px/1.35 system-ui;color:#f4e8d8}
+#lfNavToggle{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;padding:10px 13px;border-radius:13px;background:#153d4de9;color:#f7eee2;border:1px solid #d3e1dc88;box-shadow:0 4px 14px #102f3955;cursor:pointer;text-align:left}
+#lfNavArrow{font-size:21px;color:#ebbd79;font-weight:800;display:inline-flex;align-items:center;justify-content:center;width:26px;flex:0 0 26px}
+#lfNavTitle{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}
+#lfNavRange{color:#f4d09b;white-space:nowrap;font-size:11px}
+#lfNavPanel{display:none;max-height:min(58dvh,440px);overflow:auto;margin-top:7px;background:#f6f0e5;color:#294954;border:1px solid #8aa6a9;border-radius:14px;padding:13px;box-shadow:0 10px 25px #001b2355}
+#lfNavPanel.open{display:block}#lfNavPanel h3{font-size:15px;margin:0 0 7px}#lfNavPanel p{font-size:11px;margin:6px 0 11px;line-height:1.5;color:#58737b}
+.lfNavItem{display:block;width:100%;border:1px solid #b6cecc;border-radius:10px;background:white;color:#244955;text-align:left;padding:8px 9px;margin:7px 0;cursor:pointer;font-size:12px}
+.lfNavItem.active{background:#d8ebe6;border-color:#397c83}.lfNavItem small{display:block;color:#61777b;margin-top:3px;font-size:10px}
+#lfNavTools{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}#lfNavTools button{background:#2d6470;color:white;font-size:11px;padding:8px 10px;border:0;border-radius:9px;cursor:pointer}
+#lfNavStatus{font-size:10px;color:#5f7780;margin-top:9px;line-height:1.45}
+.touchUI #lfNavBar{top:max(43px,env(safe-area-inset-top) + 7px);left:50%;width:min(325px,calc(100vw - 320px));min-width:170px}
+.touchUI #lfNavToggle{padding:7px 9px;font-size:11px}.touchUI #lfNavPanel{max-height:55dvh}
+@media(max-width:680px){#lfNavBar,.touchUI #lfNavBar{top:auto;bottom:max(119px,env(safe-area-inset-bottom) + 95px);left:50%;width:min(290px,45vw);min-width:155px}#lfNavPanel{position:absolute;bottom:100%;left:0;right:0;margin-bottom:8px;max-height:43dvh}#lfNavToggle{padding:7px 9px}#lfNavRange{font-size:10px}}
+`;document.head.appendChild(lfNavCss);
+const lfBar=document.createElement('div');lfBar.id='lfNavBar';lfBar.innerHTML=`<button type="button" id="lfNavToggle" aria-label="任務導航選單" aria-expanded="false"><span id="lfNavArrow">➤</span><span id="lfNavTitle">正在讀取任務導航</span><span id="lfNavRange"></span></button><div id="lfNavPanel"><h3>任務追蹤</h3><p>選擇你想追蹤的主線或城市支線；方向箭頭指向目標，地圖同步標示位置。遇到建築請自行開門進入。</p><div id="lfNavItems"></div><div id="lfNavTools"><button id="lfNavMap" type="button">開啟地圖</button><button id="lfNavVisibility" type="button">關閉指引</button><button id="lfNavRecover" type="button">角色脫困</button></div><div id="lfNavStatus">N 開啟追蹤面板（電腦）</div></div>`;document.body.appendChild(lfBar);
+const lfToggle=document.getElementById('lfNavToggle'),lfPanel=document.getElementById('lfNavPanel');
+function lfNavClose(){lfPanel.classList.remove('open');lfToggle.setAttribute('aria-expanded','false');}
+function lfNavToggle(){const open=!lfPanel.classList.contains('open');lfPanel.classList.toggle('open',open);lfToggle.setAttribute('aria-expanded',String(open));if(open)lfNavDrawItems();}
+lfToggle.addEventListener('click',lfNavToggle);
+document.getElementById('lfNavMap').onclick=()=>{lfNavClose();if(!state.overlay&&!state.dialog&&!state.map)toggleMap();};
+document.getElementById('lfNavRecover').onclick=()=>{lfNavClose();if(state.overlay)start();lfRecover();};
+document.getElementById('lfNavVisibility').onclick=()=>{lfNavEnabled=!lfNavEnabled;lfNavStore();lfNavRefresh();lfNavDrawItems();};
+function lfNavDrawItems(){
+ const list=document.getElementById('lfNavItems');list.replaceChildren();
+ const tasks=lfMissionList();
+ if(!tasks.length){const p=document.createElement('p');p.textContent='目前沒有未完成的任務，可以自由探索映灣市。';list.appendChild(p);}
+ for(const q of tasks){const b=document.createElement('button');b.type='button';b.className='lfNavItem'+(lfNavChoice===q.id?' active':'');b.textContent=q.label+'｜'+q.title;const sub=document.createElement('small');sub.textContent=q.desc+(q.floor===2?' · 二樓':'');b.appendChild(sub);
+  b.onclick=()=>{lfNavChoice=q.id;lfNavEnabled=true;if(q.id!=='main')sideBegin(q.id);lfNavStore();lfNavRefresh();lfNavDrawItems();lfNavClose();toast('已追蹤：'+q.title);};list.appendChild(b);}
+ document.getElementById('lfNavVisibility').textContent=lfNavEnabled?'隱藏方向指引':'顯示方向指引';
+}
+function lfNavRefresh(){
+ const available=lfMissionList(),mission=lfMission(),target=lfTarget();
+ lfBar.style.display=state.overlay||state.dialog||state.map||state.characterPanel||state.roster||document.getElementById('sideJournal')?.classList.contains('open')?'none':'';
+ const t=document.getElementById('lfNavTitle'),a=document.getElementById('lfNavArrow'),r=document.getElementById('lfNavRange');
+ if(!target){t.textContent='城市自由探索 · 尚無追蹤任務';a.textContent='◇';r.textContent='';return;}
+ if(!lfNavEnabled){t.textContent='導航已隱藏 · 點擊可開啟';a.textContent='—';r.textContent='';return;}
+ t.textContent=target.label;a.textContent='➤';r.textContent=lfDistance(target)+'m';
+ // Player yaw 0 faces -Z; relative angle towards goal drives the compass arrow.
+ const direction=Math.atan2(-(target.x-state.x),-(target.z-state.z));
+ a.style.transform='rotate('+((direction-state.yaw)*180/Math.PI)+'deg)';
+ document.getElementById('lfNavStatus').textContent=target.floor===2?'二樓物件請從辦公室樓梯進入；導航會先帶你找到樓梯。':'指向目標的方向與直線距離，並非街道導航路線。';
+}
+// Use a single combined map marker regardless of the original main and sidequest decorators.
+const lfPrevMap=drawMap;
+drawMap=function(cv,large){lfPrevMap(cv,large);
+ if(!lfNavEnabled)return;
+ const q=lfMission(),goal=lfTarget();if(!q||!goal)return;
+ const ctx=cv.getContext('2d'),sx=cv.width/220,sy=cv.height/285;
+ const px=(state.x+110)*sx,py=(state.z+88)*sy,gx=(goal.x+110)*sx,gy=(goal.z+88)*sy;
+ ctx.save();ctx.strokeStyle='#c56c39';ctx.lineWidth=large?3:1.8;ctx.setLineDash(large?[9,7]:[4,4]);ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(gx,gy);ctx.stroke();ctx.setLineDash([]);
+ ctx.beginPath();ctx.arc(gx,gy,large?15:8,0,Math.PI*2);ctx.fillStyle='#ffdc92';ctx.fill();ctx.strokeStyle='#9e573f';ctx.lineWidth=large?3:2;ctx.stroke();ctx.font='bold '+(large?17:10)+'px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='#603c31';ctx.fillText('➤',gx,gy);ctx.restore();
+};
+window.addEventListener('keydown',e=>{if(e.code==='KeyN'&&!e.repeat&&!state.characterPanel&&!state.roster&&!state.overlay&&!state.dialog&&!state.map){e.preventDefault();e.stopImmediatePropagation();lfNavToggle();}},true);
+window.addEventListener('pointerdown',e=>{if(lfPanel.classList.contains('open')&&!lfBar.contains(e.target))lfNavClose();});
+// A recovery control also remains available from the pause menu or mobile quick menu.
+const lfQuickRecover=document.createElement('button');lfQuickRecover.type='button';lfQuickRecover.textContent='🛟 角色脫困';lfQuickRecover.onclick=()=>{if(state.overlay)start();lfRecover();};
+if(touchMode)document.getElementById('touchTools')?.appendChild(lfQuickRecover);
+const lfPauseRecover=document.createElement('button');lfPauseRecover.type='button';lfPauseRecover.className='soft';lfPauseRecover.textContent='🛟 角色脫困';lfPauseRecover.onclick=()=>{if(state.overlay)start();lfRecover();};
+document.querySelector('#modal .actions')?.appendChild(lfPauseRecover);
+// One-time recovery after all core systems and collisions have been constructed.
+function lfNavValidateLoaded(){if(lfNavSavedPositionChecked)return;lfNavSavedPositionChecked=true;
+ if(!state.vehicle&&!lfSafePosition(state.x,state.z)){lfRecover(false);toast('舊存檔位置與碰撞物重疊，已自動移到安全位置。');}
+ else if(!state.vehicle)lfNavLastSafe={x:state.x,z:state.z,floor:state.floor};
+}
+lfNavValidateLoaded();
+setInterval(()=>{
+ try{
+  if(!state.overlay&&!state.vehicle&&!state.sitting&&lfSafePosition(state.x,state.z))lfNavLastSafe={x:state.x,z:state.z,floor:state.floor};
+  lfNavRefresh();
+ }catch(e){console.warn('導航更新暫停:',e.message);}
+},250);
+lfNavDrawItems();lfNavRefresh();
+/* === END v3.7 === */
 
 })();</script>
 <style id="v21-responsive">
@@ -4001,4 +4240,4 @@ window.showFilmArtifact=function(key,onclose){if(typeof onclose==='function')clo
 function close(){v.classList.remove('open');if(closeHandler){const fn=closeHandler;closeHandler=null;fn()}};
 document.getElementById('filmArtifactClose').addEventListener('click',close);v.addEventListener('click',e=>{if(e.target===v)close()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&v.classList.contains('open')){e.stopImmediatePropagation();close()}},true);
 })();
-</script></body></html>
+</script><script id="v36-boot-done">window.__lovefilmBoot&&(window.__lovefilmBoot.scriptsDone=true);</script></body></html>
