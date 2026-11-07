@@ -1,4 +1,4 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no"><title>戀愛片場失控中｜映灣市 v3.6 · 電影感載入畫面與主選單</title><style>
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no"><title>戀愛片場失控中｜第二章直接進入測試版 v4.7</title><style>
 :root{--paper:#f9f4e9;--ink:#243943;--deep:#162c34;--teal:#2e626a;--gold:#e6b780;--fog:#d5e9e7}*{box-sizing:border-box}body{margin:0;overflow:hidden;background:#c6d9dd;color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans TC","Microsoft JhengHei",sans-serif}canvas#game{position:fixed;inset:0;width:100vw;height:100vh;display:block}#vignette{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 48%,rgba(22,44,52,.18) 100%)}.glass{background:rgba(249,244,233,.93);box-shadow:0 8px 32px rgba(20,48,56,.2);border:1px solid rgba(255,255,255,.8);backdrop-filter:blur(8px)}#brand{position:fixed;top:18px;left:20px;padding:12px 16px;border-radius:14px;pointer-events:none}#brand .eyebrow{font-size:10px;letter-spacing:2px;color:#7d8382;font-weight:800}#brand h1{margin:2px 0 0;font-size:19px;letter-spacing:1px}#brand small{font-size:11px;letter-spacing:.5px;color:#587178}#quest{position:fixed;top:106px;left:20px;width:250px;border-radius:13px;padding:14px 16px;pointer-events:none}#quest .tag{font-size:10px;font-weight:800;letter-spacing:1.5px;color:#b17d4f}#quest h2{font-size:15px;margin:5px 0 8px}#quest p{font-size:12px;line-height:1.65;margin:0;color:#4d6570}#mapbox{position:fixed;top:18px;right:18px;border-radius:14px;overflow:hidden;width:210px;height:206px}#minimap{display:block;width:210px;height:175px;background:#e8e3ce}#maplabel{height:31px;text-align:center;padding-top:7px;font-size:11px;letter-spacing:1px;color:#637176}#foot{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);white-space:nowrap;display:flex;gap:14px;align-items:center;padding:9px 16px;border-radius:24px;font-size:11px;pointer-events:none}kbd{border-radius:5px;border:1px solid #c2d3d4;box-shadow:0 1px #b6c6c7;padding:3px 6px;background:#fff;font:700 11px system-ui}#prompt{position:fixed;bottom:83px;left:50%;transform:translateX(-50%);color:white;background:rgba(19,42,48,.87);border:1px solid rgba(255,255,255,.3);border-radius:15px;padding:12px 20px;min-width:230px;text-align:center;font-size:14px;opacity:0;transition:opacity .15s;pointer-events:none}#prompt.show{opacity:1}#prompt b{display:inline-flex;background:#e5b780;color:#243943;width:25px;height:25px;border-radius:7px;align-items:center;justify-content:center;margin-right:9px}#toast{position:fixed;top:240px;right:20px;padding:12px 16px;border-radius:12px;color:#fff;background:rgba(19,49,57,.89);font-size:12px;max-width:240px;opacity:0;transition:opacity .4s;pointer-events:none}#toast.show{opacity:1}.worldtag{position:fixed;transform:translate(-50%,-50%);white-space:nowrap;border:1px solid #ffffffa8;background:#f8f1e4dd;border-radius:12px;padding:5px 10px;font-size:11px;font-weight:800;box-shadow:0 3px 10px #20303825;pointer-events:none;display:none}#overlay{position:fixed;inset:0;background:rgba(16,35,44,.58);display:flex;align-items:center;justify-content:center;z-index:10;padding:18px}#overlay.hidden{display:none}#modal{width:min(580px,95vw);max-height:90vh;overflow:auto;padding:31px 33px;border-radius:22px;box-shadow:0 18px 60px #08242a70}#modal .topline{font-size:11px;letter-spacing:3px;color:#b48058;font-weight:800}#modal h2{font-size:27px;margin:10px 0}#modal p{font-size:14px;line-height:1.9;color:#526269}#modal .controls{font-size:13px;padding:14px;background:#e5efec;border-radius:10px;line-height:2}button{appearance:none;border:0;background:var(--teal);color:white;border-radius:10px;padding:11px 19px;font-size:13px;font-weight:800;cursor:pointer;font-family:inherit}button:hover{background:#205056}button.soft{background:#e0ece8;color:#24505a}#modal .actions{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}#dialog{position:fixed;bottom:72px;left:50%;transform:translateX(-50%);width:min(720px,92vw);border-radius:17px;padding:19px 22px;z-index:5;display:none}#dialog.active{display:block}#speaker{font-size:13px;font-weight:900;color:#b17d4f;margin-bottom:8px}#line{font-size:16px;line-height:1.8;min-height:57px}#dialog button{float:right;margin-top:5px}#mapModal{display:none;position:fixed;inset:0;background:#142c36dd;z-index:6;align-items:center;justify-content:center}#mapModal.show{display:flex}#bigmapWrap{border-radius:20px;padding:22px;max-width:95vw}#bigmap{display:block;max-width:100%;width:640px;height:auto;background:#e4e5d5;border-radius:12px}#mapClose{margin-top:12px}#crosshair{position:fixed;left:50%;top:50%;width:4px;height:4px;border:1px solid #fff7;background:#fff6;transform:translate(-50%,-50%);border-radius:99px;pointer-events:none}#vehiclehud{position:fixed;right:20px;bottom:65px;border-radius:14px;padding:12px 15px;min-width:204px;background:rgba(19,42,48,.90);color:white;border:1px solid #ffffff38;display:none;z-index:3}#vehiclehud.show{display:block}#vehiclehud strong{font-size:17px}#vehiclehud .speed{font-size:20px;font-weight:900;color:#f0c88d}#vehiclehud small{display:block;font-size:11px;color:#d8e5e6;line-height:1.55;margin-top:6px}#status{position:fixed;left:20px;bottom:20px;color:#fff;background:#1a3640b7;border-radius:8px;padding:7px 10px;font-size:11px;pointer-events:none}@media(max-width:750px){#quest{top:96px;width:190px;padding:9px}#mapbox{width:145px;height:145px}#minimap{width:145px;height:121px}#maplabel{height:24px;padding-top:4px}#brand{padding:9px}#brand h1{font-size:14px}#foot{font-size:9px;gap:4px;bottom:9px;padding:7px 9px}#foot span:nth-child(3),#foot span:nth-child(4){display:none}#status{bottom:55px}#modal{padding:22px}}
 
 /* CAST v0.8 — player appearance editor, cast roster and NPC signage */
@@ -165,6 +165,39 @@
 @media(max-height:480px){#filmBoot .filmBootCard{padding:12px}#filmBoot .filmSlate{width:58px;height:47px;margin-bottom:12px}#filmBoot .filmSlate:before{width:63px}#filmBoot h1{font-size:24px}#filmBoot .bootEng{margin-bottom:15px}#filmBoot .bootQuote{margin-top:14px}}
 </style>
 </head><body><div id="filmBoot" role="status" aria-live="polite" aria-label="映灣市載入中"><div class="filmBootCard"><div class="filmSlate" aria-hidden="true"></div><h1>戀愛片場失控中</h1><p class="bootEng">LOVE, ACTION &amp; REACTION</p><p id="filmBootLabel" class="bootLabel">正在準備映灣市……</p><div class="bootRail" aria-hidden="true"></div><div class="bootDetail" id="filmBootDetail">檢查瀏覽器與遊戲初始化</div><p class="bootQuote">「每段愛情，都有一場意料之外的 NG。」</p><p class="bootError" id="filmBootError" hidden></p><button class="bootTry" id="filmBootRetry" type="button" hidden>重新嘗試載入</button></div></div>
+<script id="v47-chapter2-test-early">
+/* Standalone Chapter II test environment. All game storage keys are shadowed,
+   so regular-game saves on the same origin are never overwritten. */
+(function(){'use strict';
+ const rawGet=Storage.prototype.getItem,rawSet=Storage.prototype.setItem,rawRemove=Storage.prototype.removeItem;
+ const prefix='lovefilm_test_ch02_v47__';
+ const scope=/^(lovefilm_|lovescene_)/;
+ const actual=window.localStorage;
+ const original=(key)=>rawGet.call(actual,key);
+ const testKey=(key)=>prefix+key;
+ const fresh=original(testKey('__initialized'))!=='yes';
+ if(fresh){
+  let ending='friends';
+  try{const prev=JSON.parse(original('lovefilm_ch1_v18')||'null');if(prev&&typeof prev.ending==='string'&&prev.ending)ending=prev.ending;}catch(_){}
+  const seeds={
+   'lovefilm_prologue_v16':{stage:13,finished:true,introShown:true},
+   'lovefilm_ch1_v18':{beat:14,introSeen:true,flags:{},approach:null,opinion:null,finalChoice:null,ending,done:true},
+   'lovefilm_chapter02_v46':{main:0,mainFlags:{},mainChoices:{},side:{s04:0,s05:0,s06:0},sideChoices:{},collection:{},active:'main',visited:[],revision:1},
+   'lovescene_city_v02':{x:24,z:-32.5,yaw:0,pitch:.24,floor:1,vehicleId:null,cameraZoom:1}
+  };
+  for(const [key,val] of Object.entries(seeds))rawSet.call(actual,testKey(key),JSON.stringify(val));
+  rawSet.call(actual,testKey('__initialized'),'yes');
+ }
+ Storage.prototype.getItem=function(key){const k=String(key);return rawGet.call(this,this===actual&&scope.test(k)?testKey(k):k);};
+ Storage.prototype.setItem=function(key,value){const k=String(key);return rawSet.call(this,this===actual&&scope.test(k)?testKey(k):k,value);};
+ Storage.prototype.removeItem=function(key){const k=String(key);return rawRemove.call(this,this===actual&&scope.test(k)?testKey(k):k);};
+ window.LoveFilmCh2Testing={active:true,reset:function(){
+  const keep=[];for(let i=0;i<actual.length;i++){const key=actual.key(i);if(key&&key.startsWith(prefix))keep.push(key);}
+  for(const key of keep)rawRemove.call(actual,key);
+  location.reload();
+ },startNew:function(){this.reset();}};
+})();
+</script>
 <script id="v36-boot-early">
 (function(){
  const boot=document.getElementById('filmBoot'),label=document.getElementById('filmBootLabel'),detail=document.getElementById('filmBootDetail'),error=document.getElementById('filmBootError'),retry=document.getElementById('filmBootRetry');
@@ -191,7 +224,7 @@
  <label>遊戲時間</label><div class="envRow"><button type="button" data-hour="390">晨光</button><button type="button" data-hour="720">正午</button><button type="button" data-hour="1080">黃昏</button><button type="button" data-hour="1320">夜晚</button></div>
  <div class="envRow"><button type="button" id="envAutoWeather">天氣自動：開</button><button type="button" id="envAutoTime">時間流動：開</button></div>
  <small>自動模式會隨遊戲時間變化，僅影響場景氣氛，不會重設序章進度。</small>
-</div><div id="exitGuide" aria-live="off"></div><div id="brand" class="glass"><div class="eyebrow">LOVE, ACTION & REACTION</div><h1>戀愛片場失控中</h1><small>映灣市 ｜ 海灣高樓街區 × 光影起點街 v4.5</small></div><div id="quest" class="glass"><div class="tag">自由探索 · 映灣電影文化街區</div><h2 id="questtitle">走進映灣市</h2><p id="questdesc">探索海灣山城與「光影起點街」；每棟室內都有專屬光線與陳設，走進店面鏡頭會自動拉近，也能自由抬頭看裝潢。</p></div><div id="mapbox" class="glass"><canvas id="minimap" width="420" height="350"></canvas><div id="maplabel">映灣市　·　山海水岸</div></div><div id="toast"></div><div id="prompt"><b>F</b><span id="promptText">互動</span></div><div id="crosshair"></div><div id="foot" class="glass"><span><kbd>W A S D</kbd> 移動</span><span><kbd>滑鼠</kbd> 視角／滾輪縮放</span><span><kbd>Shift</kbd> 奔跑</span><span><kbd>F</kbd> 互動／上車</span><span><kbd>C</kbd> 主角造型</span><span><kbd>Tab</kbd> 地圖</span><span><kbd>Esc</kbd> 選單</span></div><div id="vehiclehud"><div id="vehicleName">交通工具</div><div class="speed" id="vehicleSpeed">0 km/h</div><small id="vehicleHelp">W 加速 / S 倒車 / A D 轉向<br>空白鍵 煞車 / F 下車</small></div><div id="status">2008　·　映灣港　·　上午 10:15</div><div id="castActions"><button id="openCastSettings" title="自訂主角，快捷鍵 C">主角造型 <kbd>C</kbd></button><button id="openCastRoster" title="查看角色名冊，快捷鍵 K">角色名冊 <kbd>K</kbd></button></div><div id="dialog" class="glass"><div id="speaker"></div><div id="line"></div><div id="dialogChoices"></div><button id="nextLine">繼續 ›</button></div><div id="mapModal"><div id="bigmapWrap" class="glass"><div id="mapToolbar"><h2>映灣市 · 城市地圖</h2><div id="mapZoomControls"><button id="mapZoomOut" type="button" aria-label="地圖縮小">−</button><b id="mapZoomLabel">100%</b><button id="mapZoomIn" type="button" aria-label="地圖放大">＋</button></div></div><div id="bigmapViewport"><canvas id="bigmap" width="800" height="600"></canvas></div><div style="font-size:12px;color:#607078;margin-top:8px">黃色：玩家位置　·　圓點：可進入建築　·　圖示：可駕駛交通工具</div><button id="mapClose">返回城市</button></div></div><div id="overlay"><div id="modal" class="glass"><div class="topline" id="modalTop">CITY EXPLORATION / 01</div><h2 id="modalTitle">歡迎來到映灣市</h2><p id="modalDesc">映灣市正在放映你的故事。完成載入後，可以從上次存檔繼續，也能重新開始序章。</p><div class="controls">🚲🚗🛵🐎⛵ 靠近交通工具按 <strong>F 上車／下車</strong><br>🚘 W 加速、S 煞車／倒車、A／D 轉向，腳踏車踩踏與雙手握把動作會跟隨速度；船隻請沿碼頭登船。<br>🚶 電腦：WASD 移動、Shift 奔跑、滑鼠轉視角。手機：左側搖桿移動／駕駛，右側空白處滑動轉視角，右下按鈕互動、跑步或煞車。<br>🎞️ 東北側「光影起點街」有兩棟可進入的電影展館，街邊按 F 查看史料<br>🏛️ 電影節辦公室內右側樓梯：<strong>直接步行上樓／下樓</strong>；二樓收藏室保留互動，主要室內空間則升級為更完整的家具擺設<br>🗺️ Tab 地圖 ｜ Esc 暫停 ｜ 可隨時儲存位置<br>👤 <strong>C</strong> 自訂主角　｜　<strong>K</strong> 角色名冊（可快速尋找 NPC）</div><div class="actions"><button id="startBtn">開始序章 · 映灣港</button><button class="soft" id="visitFilmStreet">前往光影起點街</button><button class="soft" id="coverCustomize">先設定主角外貌</button><button class="soft" id="saveBtn">儲存位置</button><button class="soft" id="resetBtn">回到港口</button></div><p style="font-size:11px;margin-bottom:0">v1.7：序章進度自動儲存；按右上角「天氣 / 時間」（手機按「環境」）可以預覽早晨、黃昏、夜景與雨天。建議手機橫向遊玩；儲存位置功能與原版相同。</p></div></div>
+</div><div id="exitGuide" aria-live="off"></div><div id="brand" class="glass"><div class="eyebrow">LOVE, ACTION & REACTION</div><h1>戀愛片場失控中</h1><small>映灣市 ｜ 海灣高樓街區 × 光影起點街 v4.6</small></div><div id="quest" class="glass"><div class="tag">自由探索 · 映灣電影文化街區</div><h2 id="questtitle">走進映灣市</h2><p id="questdesc">探索海灣山城與「光影起點街」；每棟室內都有專屬光線與陳設，走進店面鏡頭會自動拉近，也能自由抬頭看裝潢。</p></div><div id="mapbox" class="glass"><canvas id="minimap" width="420" height="350"></canvas><div id="maplabel">映灣市　·　山海水岸</div></div><div id="toast"></div><div id="prompt"><b>F</b><span id="promptText">互動</span></div><div id="crosshair"></div><div id="foot" class="glass"><span><kbd>W A S D</kbd> 移動</span><span><kbd>滑鼠</kbd> 視角／滾輪縮放</span><span><kbd>Shift</kbd> 奔跑</span><span><kbd>F</kbd> 互動／上車</span><span><kbd>C</kbd> 主角造型</span><span><kbd>Tab</kbd> 地圖</span><span><kbd>Esc</kbd> 選單</span></div><div id="vehiclehud"><div id="vehicleName">交通工具</div><div class="speed" id="vehicleSpeed">0 km/h</div><small id="vehicleHelp">W 加速 / S 倒車 / A D 轉向<br>空白鍵 煞車 / F 下車</small></div><div id="status">2008　·　映灣港　·　上午 10:15</div><div id="castActions"><button id="openCastSettings" title="自訂主角，快捷鍵 C">主角造型 <kbd>C</kbd></button><button id="openCastRoster" title="查看角色名冊，快捷鍵 K">角色名冊 <kbd>K</kbd></button></div><div id="dialog" class="glass"><div id="speaker"></div><div id="line"></div><div id="dialogChoices"></div><button id="nextLine">繼續 ›</button></div><div id="mapModal"><div id="bigmapWrap" class="glass"><div id="mapToolbar"><h2>映灣市 · 城市地圖</h2><div id="mapZoomControls"><button id="mapZoomOut" type="button" aria-label="地圖縮小">−</button><b id="mapZoomLabel">100%</b><button id="mapZoomIn" type="button" aria-label="地圖放大">＋</button></div></div><div id="bigmapViewport"><canvas id="bigmap" width="800" height="600"></canvas></div><div style="font-size:12px;color:#607078;margin-top:8px">黃色：玩家位置　·　圓點：可進入建築　·　圖示：可駕駛交通工具</div><button id="mapClose">返回城市</button></div></div><div id="overlay"><div id="modal" class="glass"><div class="topline" id="modalTop">CITY EXPLORATION / 01</div><h2 id="modalTitle">歡迎來到映灣市</h2><p id="modalDesc">映灣市正在放映你的故事。完成載入後，可以從上次存檔繼續，也能重新開始序章。</p><div class="controls">🚲🚗🛵🐎⛵ 靠近交通工具按 <strong>F 上車／下車</strong><br>🚘 W 加速、S 煞車／倒車、A／D 轉向，腳踏車踩踏與雙手握把動作會跟隨速度；船隻請沿碼頭登船。<br>🚶 電腦：WASD 移動、Shift 奔跑、滑鼠轉視角。手機：左側搖桿移動／駕駛，右側空白處滑動轉視角，右下按鈕互動、跑步或煞車。<br>🎞️ 東北側「光影起點街」有兩棟可進入的電影展館，街邊按 F 查看史料<br>🏛️ 電影節辦公室內右側樓梯：<strong>直接步行上樓／下樓</strong>；二樓收藏室保留互動，主要室內空間則升級為更完整的家具擺設<br>🗺️ Tab 地圖 ｜ Esc 暫停 ｜ 可隨時儲存位置<br>👤 <strong>C</strong> 自訂主角　｜　<strong>K</strong> 角色名冊（可快速尋找 NPC）</div><div class="actions"><button id="startBtn">開始序章 · 映灣港</button><button class="soft" id="visitFilmStreet">前往光影起點街</button><button class="soft" id="coverCustomize">先設定主角外貌</button><button class="soft" id="saveBtn">儲存位置</button><button class="soft" id="resetBtn">回到港口</button></div><p style="font-size:11px;margin-bottom:0">v1.7：序章進度自動儲存；按右上角「天氣 / 時間」（手機按「環境」）可以預覽早晨、黃昏、夜景與雨天。建議手機橫向遊玩；儲存位置功能與原版相同。</p></div></div>
 <div class="castLayer" id="castSettings" role="dialog" aria-modal="true" aria-label="主角外貌設定"><div class="castSheet">
  <div class="castHeader"><div><small>CHARACTER CUSTOMIZATION · 2008</small><h2>主角外貌設定</h2><p>你的外貌會同步用於城市步行、NPC 對話及交通工具上的人物。</p></div><button id="closeCastSettings" class="castClose" aria-label="關閉">×</button></div>
  <div class="castContent">
@@ -2011,6 +2044,25 @@ function exhibitBase(x,z,w,d){
  chapterExhibits.ball(x+.46,UPPER+3.12,z-.25,.135,.17,.09,'#3e4045',6,10);
  chapterExhibits.box(x+.45,UPPER+2.70,z-.25,.24,.61,.12,'#544d4d');
  chapterExhibits.box(x+.75,UPPER+2.69,z-.25,.30,.07,.12,'#544d4d');
+}
+// Second chapter: three recognizable miniature classic-film props in the existing 2F gallery.
+// Exhibition cases represent museum-grade reproductions, not 1993 investigation artifacts.
+{const x=O.x-6.7,z=UB+4.35;
+ exhibitBase(x,z,2.35,1.25);
+ for(let i=0;i<4;i++){const xx=x-.72+i*.45;chapterExhibits.box(xx,UPPER+1.45,z-.03,.34,.74,.045,'#f6eedc');chapterExhibits.box(xx,UPPER+1.49,z+.005,.22,.055,.012,'#47535b');chapterExhibits.box(xx,UPPER+1.28,z+.008,.19,.035,.012,'#47535b');}
+}
+{const x=O.x-2.5,z=UB+4.35;
+ exhibitBase(x,z,2.35,1.25);
+ chapterExhibits.box(x,UPPER+1.36,z,.88,.65,.65,'#bd665f');
+ chapterExhibits.box(x,UPPER+1.70,z,1.03,.07,.72,'#efd4b4');
+ chapterExhibits.box(x,UPPER+1.70,z,.13,.09,.78,'#d5b57e');
+ chapterExhibits.box(x,UPPER+1.43,z+.34,.14,.54,.045,'#dfbe8e');
+}
+{const x=O.x+1.70,z=UB+4.35;
+ exhibitBase(x,z,2.35,1.25);
+ chapterExhibits.box(x,UPPER+1.48,z,1.43,.70,.68,'#849eaa');
+ chapterExhibits.box(x,UPPER+1.50,z+.37,1.16,.55,.032,'#e8d9c1');
+ for(let i=0;i<3;i++){chapterExhibits.ball(x-.43+i*.43,UPPER+1.53,z+.41,.10,.14,.05,'#b78d76',5,8);chapterExhibits.box(x-.43+i*.43,UPPER+1.32,z+.42,.20,.23,.07,i===1?'#9a6b78':'#65827b');}
 }
 const chapterExhibitsMesh=toMesh(chapterExhibits);
 // Distinct second-floor archive doorway with hinged mesh and open/close animation.
@@ -4015,6 +4067,269 @@ if(savedGame&&story.stage>0){$('modalDesc').textContent='已找到上次存檔�
 window.__lovefilmBoot?.phase('draw');
 window.LoveFilmSave={version:'2.2',save:()=>persistWholeGame(false),keys:saveBundleKeys.slice()};
 window.LoveFilmNPCLife={version:'2.0',getSchedule:()=>Object.fromEntries(Object.entries(LIFE_CAST).map(([k,c])=>[k,c.schedule.map(([hour,p])=>({hour,place:LIFE_PLACES[p].name}))])),getRelationships:()=>({...life.affinity}),getLocations:()=>Object.fromEntries([...lifePeople].map(([n,r])=>[n,{x:r.person.x,z:r.person.z,slot:r.slot}]))};
+/* === CHAPTER TWO v4.6 — Love Actually / playable quests and classic-film gallery === */
+const CH2_KEY='lovefilm_chapter02_v46';
+const ch2={main:0,mainFlags:{},mainChoices:{},side:{s04:0,s05:0,s06:0},sideChoices:{},collection:{},active:'main',visited:[],revision:1};
+try{const x=JSON.parse(localStorage.getItem(CH2_KEY)||'null');if(x&&typeof x==='object'){
+ ch2.main=Math.max(0,Math.min(18,Number(x.main)||0));ch2.mainFlags=x.mainFlags||{};ch2.mainChoices=x.mainChoices||{};
+ for(const k of Object.keys(ch2.side))ch2.side[k]=Math.max(0,Math.min(4,Number(x.side?.[k])||0));
+ ch2.sideChoices=x.sideChoices||{};ch2.collection=x.collection||{};ch2.active=x.active||'main';ch2.visited=Array.isArray(x.visited)?x.visited:[];
+}}catch(e){}
+function ch2Save(){try{localStorage.setItem(CH2_KEY,JSON.stringify(ch2));}catch(e){}}
+if(!saveBundleKeys.includes(CH2_KEY))saveBundleKeys.push(CH2_KEY);
+if(window.LoveFilmSave?.keys&&!window.LoveFilmSave.keys.includes(CH2_KEY))window.LoveFilmSave.keys.push(CH2_KEY);
+function ch2Unlocked(){return !!ch1.done;}
+const ch2Collection=[
+ {id:'notting_door',movie:'新娘百分百（1999）',name:'藍色大門微縮模型',hint:'經典電影文化展示｜第一章之前的電影卡',default:true},
+ {id:'harry_table',movie:'當哈利碰上莎莉（1989）',name:'紐約熟食店餐桌',hint:'致敬經典餐廳場景',default:true},
+ {id:'love_cards',movie:'愛是您・愛是我（2003）',name:'手寫告白字卡',hint:'完成第二章主線 09'},
+ {id:'love_gift',movie:'愛是您・愛是我（2003）',name:'聖誕禮物盒',hint:'完成支線 S04'},
+ {id:'love_airport',movie:'愛是您・愛是我（2003）',name:'機場重逢微縮模型',hint:'完成支線 S05'},
+ {id:'sunshine_hoodie',movie:'王牌冤家（2004）',name:'橘色連帽外套',hint:'第三章預留'},
+ {id:'mood_cheongsam',movie:'花樣年華（2000）',name:'旗袍復刻品',hint:'後續章節預留'},
+ {id:'lalaland_piano',movie:'樂來越愛你（2016）',name:'爵士鋼琴模型',hint:'後續章節預留'},
+ {id:'atonement_dress',movie:'贖罪（2007）',name:'綠色絲質禮服',hint:'獨立電影支線預留'}
+];
+function ch2Has(id){const item=ch2Collection.find(x=>x.id===id);return !!(item&&(ch2.collection[id]||(item.default&&ch1.done)));}
+function ch2Unlock(id){ch2.collection[id]=true;ch2Save();toast('🎞 經典電影收藏解鎖：'+(ch2Collection.find(x=>x.id===id)?.name||id));}
+const ch2MainNames=['07｜電影節辦公室・寄錯的情書','07｜調查三名收件人','07｜海港郵局・比對紀錄','07｜返回辦公室・選擇做法',
+ '08｜中央廣場・三則訊息','08｜探訪三位主角','08｜全城浪漫之夜・居民互動','08｜發現 1993 年電影票',
+ '09｜廣場放映事故','09｜控制室・檢查三項資料','09｜預覽神秘影片','09｜決定影片的處理方式','09｜恢復放映設備',
+ '09｜協助公開告白','09｜觀看市民愛情短片','09｜散場後的戀愛事件','09｜二樓收藏室・電影道具','09｜神秘訊息・第三章預告','第二章已完成'];
+const CH2_LOC={office:{x:24,z:-34},book:{x:-28,z:-35},cinema:{x:77,z:29},harbor:{x:-7,z:75},cafe:{x:29,z:18},florist:{x:77,z:-34},plaza:{x:5,z:67},post:{x:-73,z:27},upper:{x:24.1,z:-48,floor:2},booth:{x:78,z:29}};
+function ch2Point(id,name,doit,floor){const p=CH2_LOC[id];return {type:'chapter2',name,x:p.x,z:p.z,floor:floor||p.floor||1,act:doit};}
+function ch2Talk(who,lines,after){ch1Talk(who,lines,after);}
+function ch2Choose(who,lines,opts){ch1Choose(who,lines,opts.map(o=>({text:o[0],pick:o[1]})));}
+function ch2Progress(n){ch2.main=n;ch2Save();ch2Refresh();toast(n>=18?'🎬 第二章完成！':'第二章目標：'+ch2MainNames[n]);}
+function ch2Flag(k){ch2.mainFlags[k]=true;ch2Save();ch2Refresh();}
+function ch2Travel(name,k,loc,lines){return ch2Point(loc,name,()=>ch2Talk(name,lines,()=>{ch2Flag(k);if(['ruan','jiang','lin'].every(x=>ch2.mainFlags['07_'+x]))ch2Progress(2);if(['ruan','jiang','lin'].every(x=>ch2.mainFlags['08_'+x]))ch2Progress(6);}));}
+function ch2Missions(){
+ if(!ch2Unlocked()||ch2.main>=18)return [];
+ const t=[],m=ch2.main,add=(id,name,fn)=>t.push(ch2Point(id,name,fn));
+ if(m===0)add('office','07 · 找彭小滿',()=>ch2Choose('彭小滿 · 寄錯的情書',[
+  '彭小滿：「出事了！這次有三十八個人收到別人的情書，其中七個人已婚。」',
+  '主角：「這比電影節的煙火事故還嚴重。」',
+  '方景森：「先查登記簿、郵寄箱與電腦紀錄。不要擅自拆閱私人信件。」'],[
+  ['先查看三項異常資料',()=>ch2Talk('電影節調查',['你查閱登記簿、郵寄標籤及電腦修改紀錄。','阮知音、江予白、林夏禾的三封信，找不到正常的寄件紀錄。','你取得收件人清單。'],()=>ch2Progress(1))]]));
+ if(m===1){
+  if(!ch2.mainFlags['07_ruan'])t.push(ch2Travel('07 · 阮知音的情書','07_ruan','book',[
+   '阮知音：「我以為這是以辰寫的，信裡有我們以前說過的話。」',
+   ch1.ending==='together'?'「我們已經交往了，我不希望一封寄錯的信讓我們再次誤會。」':'「我們現在還是朋友。我不確定自己希望這封信是誰寫的。」',
+   '你取得郵寄標籤編碼，並答應尊重信件隱私。']));
+  if(!ch2.mainFlags['07_jiang'])t.push(ch2Travel('07 · 江予白的票根','07_jiang','cinema',[
+   '江予白：「這封信提到一張戲院尚未重開時的票根，很奇怪。」',
+   '「我小時候也見過一張類似的票根。也許你該查查當年的放映紀錄。」',
+   '你取得老電影票根的照片。']));
+  if(!ch2.mainFlags['07_lin'])t.push(ch2Travel('07 · 林夏禾的舊印章','07_lin','harbor',[
+   '林夏禾：「信封背面的圖案，我小時候在家裡的舊箱子看過。」',
+   '「有些故事明明已經結束，卻還在影響很多人。」',
+   '你拍下 1993 年電影節印章；信件原件仍由她保管。']));
+ }
+ if(m===2)add('post','07 · 海港郵局・查核資料',()=>ch2Choose('海港郵局',[
+  '職員：「依照電影節的授權，我可以提供這一批信的處理紀錄。」',
+  '三筆資料中，阮知音於 10:12 登錄、江予白於 10:13 登錄、林夏禾卻在凌晨 02:17 被修改。',
+  '哪一筆最可疑？'],[
+   ['A · 阮知音',()=>toast('再查看修改時間，仍可重新查詢。')],
+   ['B · 江予白',()=>toast('這筆屬正常作業時間，請重新比對。')],
+   ['C · 林夏禾（02:17）',()=>ch2Talk('郵局職員',['「答對了。但目前無法查明操作人的身分。」','你取得一份授權的異常紀錄影本。'],()=>ch2Progress(3))]
+  ]));
+ if(m===3)add('office','07 · 向方景森回報',()=>ch2Choose('方景森',[
+  '方景森看見 1993 年的印章時突然不說話。',
+  '方景森：「那一年的事情，已經過去很久了。」',
+  '彭小滿：「可是有人在今年用那個印章寄信啊！」',
+  '你打算先找誰繼續調查？'],[
+   ['告訴林夏禾',()=>{ch2.mainChoices.m07='lin';ch2Progress(4);} ],
+   ['與江予白討論',()=>{ch2.mainChoices.m07='jiang';ch2Progress(4);} ],
+   ['先保管證據',()=>{ch2.mainChoices.m07='careful';ch2Progress(4);} ]
+  ]));
+ if(m===4)add('plaza','08 · 彭小滿與三通電話',()=>ch2Talk('彭小滿',[
+  '廣場正在準備「全城浪漫之夜」。',
+  '彭小滿：「大家明明都想被愛，卻又很怕讓別人知道。」',
+  '你的手機同時收到阮知音、江予白、林夏禾的訊息。',
+  '可以自由選擇拜訪順序，三位都能見到。'],()=>ch2Progress(5)));
+ if(m===5){
+  if(!ch2.mainFlags['08_ruan'])add('book','08 · 阮知音・感情疑問',()=>ch2Choose('阮知音',[
+   ch1.ending==='together'?'阮知音：「交往之後，很多事情反而不知道該怎麼問以辰。」':'阮知音：「以辰可能要離開映灣市。我希望他過得好，但有點捨不得。」',
+   '「如果是你，你會怎麼做？」'],[
+   ['鼓勵坦白溝通',()=>{ch2.mainChoices.ruan='talk';ch2Flag('08_ruan');if(ch2.mainFlags['08_jiang']&&ch2.mainFlags['08_lin'])ch2Progress(6);}],
+   ['先尊重彼此空間',()=>{ch2.mainChoices.ruan='space';ch2Flag('08_ruan');if(ch2.mainFlags['08_jiang']&&ch2.mainFlags['08_lin'])ch2Progress(6);}]
+  ]));
+  if(!ch2.mainFlags['08_jiang'])add('cinema','08 · 江予白・最後一班船',()=>ch2Choose('江予白',[
+   '放映機投出《最後一班船》一小段舊影像：女子獨自站在港口。',
+   '江予白：「這部 1991 年的電影，我小時候看過。結局卻跟現在的版本不同。」',
+   '「有些故事連拍完都很困難。」'],[
+   ['你是不是很在意這部電影？',()=>{ch2.mainChoices.jiang='empathy';ch2Flag('08_jiang');if(ch2.mainFlags['08_ruan']&&ch2.mainFlags['08_lin'])ch2Progress(6);}],
+   ['你是不是想約我看電影？',()=>{ch2.mainChoices.jiang='flirt';ch2Flag('08_jiang');if(ch2.mainFlags['08_ruan']&&ch2.mainFlags['08_lin'])ch2Progress(6);}]
+  ]));
+  if(!ch2.mainFlags['08_lin'])add('harbor','08 · 林夏禾・被剪掉的照片',()=>ch2Choose('林夏禾',[
+   '林夏禾展示一張 1993 年工作人員合照，其中一人的面孔被剪去。',
+   '照片背面寫著：「1993.08.17」。',
+   '林夏禾：「我不知道家人為什麼不願意談那一年。」'],[
+   ['我陪妳找答案',()=>{ch2.mainChoices.lin='support';ch2Flag('08_lin');if(ch2.mainFlags['08_ruan']&&ch2.mainFlags['08_jiang'])ch2Progress(6);}],
+   ['我們先蒐集證據',()=>{ch2.mainChoices.lin='investigate';ch2Flag('08_lin');if(ch2.mainFlags['08_ruan']&&ch2.mainFlags['08_jiang'])ch2Progress(6);}]
+  ]));
+ }
+ if(m===6)add('plaza','08 · 協助浪漫之夜',()=>ch2Talk('彭小滿',[
+  '彭小滿：「昨晚才寄錯情書，今天還要讓大家上台告白？對，所以需要你！」',
+  '你幫忙安排觀眾座位、尋找遺失的紀念日禮物，也協助一名緊張的單戀者。',
+  '一名男子走上台：「最想告白的人……是我家的貓奶油！」',
+  '彭小滿：「明年的活動規則我要寫得更清楚！」'],()=>ch2Progress(7)));
+ if(m===7)add('plaza','08 · 查閱奇怪的電影票',()=>ch2Talk('廣場放映設備',[
+  '工作人員發現控制箱夾著一張舊票。',
+  '《最後一班船》｜1993.08.17｜20:30｜G-17。',
+  '票根背面寫著：「如果當晚有人留下來，結局就會不同嗎？」',
+  '此時廣場銀幕突然變黑，放映清單被人替換。'],()=>ch2Progress(8)));
+ if(m===8)add('plaza','09 · 廣場放映事故',()=>ch2Talk('彭小滿',[
+  '廣場一片黑暗，有人誤以為是藝術電影，竟開始鼓掌。',
+  '彭小滿：「備份不見了，網路也斷了！我現在辭職還來得及嗎？」',
+  '主角：「可能要先把麥克風關掉。」',
+  '你決定前往老電影院控制室調查。'],()=>ch2Progress(9)));
+ if(m===9){const clues=[['computer','播放電腦：異常修改紀錄'],['backup','離線備份：市民短片仍在'],['access','出入紀錄：未署名的訪客']];
+  for(const [id,name] of clues)if(!ch2.mainFlags['09_'+id])add('booth','09 · '+name,()=>ch2Talk('放映控制室',[name,'你完成檢查，將資料整理進獨立劇情線索檔案。'],()=>{ch2Flag('09_'+id);if(clues.every(x=>ch2.mainFlags['09_'+x[0]]))ch2Progress(10);}));
+ }
+ if(m===10)add('booth','09 · 預覽 1993 年影像',()=>ch2Talk('1993 年・未知影片',[
+  '畫面中一名女子站在老戲院門口：「你答應過，等電影拍完，就會告訴我真相。」',
+  '鏡頭外男子：「如果我說出來，妳還會留下來嗎？」',
+  '方景森關閉螢幕。林夏禾質問他為何始終避談 1993 年。',
+  '方景森終於承認：「影片裡的人，我認識其中一個。」'],()=>ch2Progress(11)));
+ if(m===11)add('booth','09 · 影片要怎麼處理？',()=>ch2Choose('方景森與林夏禾',[
+  '方景森擔心公開影像傷害當事人，林夏禾希望找回真相。',
+  '這段影像的調查副本會安全保留；玩家決定是否對外徵求線索。'],[
+  ['先備份，照常放映',()=>{ch2.mainChoices.film='preserve';ch2Progress(12);} ],
+  ['公開可確認的資訊徵求線索',()=>{ch2.mainChoices.film='public';ch2Progress(12);} ],
+  ['暫停放映，請方景森私下說明',()=>{ch2.mainChoices.film='private';ch2Progress(12);} ]
+ ]));
+ if(m===12)add('plaza','09 · 恢復放映',()=>ch2Talk('彭小滿',[
+  '你協助工作人員恢復銀幕、音響與離線的市民短片。',
+  '彭小滿：「電影是找回來了，可是觀眾快走光了！」',
+  '你們決定先開放觀眾分享愛情故事，讓活動繼續。'],()=>ch2Progress(13)));
+ if(m===13)add('plaza','09 · 協助阿哲告白',()=>ch2Choose('阿哲與小芸',[
+  '阿哲在舞台上緊張到忘詞：「我認識她七年了，但有些話一直不說，時間也不會替我說。」',
+  '他望向台下的小芸，卻說不出接下來的話。'],[
+  ['鼓勵他自己說',()=>{ch2.mainChoices.confession='encourage';ch2Talk('阿哲與小芸',['阿哲：「小芸，我喜歡妳。」','小芸：「你知道我要去工作，不是去別的星球吧？先約吃飯再說。」'],()=>ch2Progress(14));}],
+  ['幫他念前半段',()=>{ch2.mainChoices.confession='help';ch2Talk('阿哲與小芸',['你幫忙念前半段，把最後一句留給阿哲。','小芸：「先從一起吃晚餐開始吧。」'],()=>ch2Progress(14));}],
+  ['請他私下談',()=>{ch2.mainChoices.confession='private';ch2Talk('阿哲與小芸',['阿哲邀請小芸放映結束後私下談。','她點頭同意。你們把選擇留給當事人。'],()=>ch2Progress(14));}]
+ ]));
+ if(m===14)add('plaza','09 · 看完今晚的愛情電影',()=>ch2Talk('彭小滿',[
+  '市民拍攝的愛情短片終於恢復放映。',
+  ch1.ending==='together'?'阮知音與陸以辰坐在一起，安靜地看著銀幕。':'阮知音與陸以辰仍以朋友身分參加放映。',
+  '彭小滿：「你說他們十年後還會在一起嗎？」',
+  '主角：「不知道，但希望他們明天都不用加班。」',
+  '彭小滿：「你真的很難聊天。」'],()=>ch2Progress(15)));
+ if(m===15)add('harbor','09 · 散場後的邀約',()=>ch2Choose('散場後・海港夜色',[
+  '觀眾陸續離開，你可以找一位角色聊天，或選擇一個人回家。',
+  '阮知音與陸以辰如已交往，將保留原本的伴侶關係。'],[
+  ['陪林夏禾散步',()=>{ch2.mainChoices.romance='lin';ch2Talk('林夏禾',['「我比較怕自己習慣有人陪。」','主角：「那我可以多陪妳一段時間。」','林夏禾：「你對每個人都這樣說嗎？」'],()=>ch2Progress(16));}],
+  ['與江予白去電影院',()=>{ch2.mainChoices.romance='jiang';ch2Talk('江予白',['「你覺得喜歡一個人就應該告訴他嗎？」','主角：「不然他永遠不知道。」','江予白：「我可能需要練習。」'],()=>ch2Progress(16));}],
+  ['回家休息',()=>{ch2.mainChoices.romance='none';ch2Progress(16);}]
+ ]));
+ if(m===16)t.push(ch2Point('upper','09 · 經典電影收藏室',()=>ch2Talk('二樓電影收藏室',[
+  '《愛是您・愛是我》（2003）專區新增「手寫告白字卡」致敬復刻模型。',
+  '經典電影道具存放在收藏室；1993 年信件、照片與放映檔案歸入獨立劇情檔案。',
+  '你翻閱字卡與電影介紹，回想今晚每個人的選擇。'],()=>{ch2Unlock('love_cards');ch2Progress(17);}),2));
+ if(m===17)t.push(ch2Point('upper','09 · 收到神秘訊息',()=>ch2Talk('未知寄件者',[
+  '手機出現陌生訊息：「你找到那卷影片了嗎？」',
+  '「明天去老電影院。不要相信你記得的每一件事。」',
+  '放映小間傳出聲音：「如果有一天我把你忘了，你會怎麼辦？」',
+  '男人說：「那我就想辦法讓妳重新認識我。」',
+  '第三章《王牌冤家》將從記憶的謎題展開。'],()=>ch2Progress(18)),2));
+ return t;
+}
+const ch2SideInfo={
+ s04:{name:'S04｜替別人寫的情書',unlocked:()=>ch2.main>=1,steps:[
+  ['office','陸以辰的工作室', '陸以辰：「有人委託我代筆情書，卻留了一個不存在的地址。」','你找到花束包裝紙、訂金收據，與「每週四下午的咖啡」線索。'],
+  ['florist','花信花店・許晨安','許晨安：「是我委託的。我喜歡語晴五年了，但不敢寄出。」','他請你幫忙整理心情，沒有授權你擅自告訴語晴。'],
+  ['cafe','灣邊咖啡館・蘇語晴','蘇語晴：「晨安最近沒來。他每週都來，我已經習慣了。」','她也留意著那個總點不燙拿鐵的客人。'],
+  ['florist','完成未寄出的情書','許晨安終於決定與語晴坦誠談話。','蘇語晴需要時間思考，兩人尊重彼此的步調。'] ],reward:'love_gift'},
+ s05:{name:'S05｜沒有人記得的紀念日',unlocked:()=>ch2.main>=7,steps:[
+  ['plaza','周伯遠・忘記的日期','周伯遠：「今天是我和太太結婚四十週年，我居然忘了！」','你答應協助準備一場驚喜。'],
+  ['book','找回當年約會的線索','你發現兩人第一次約會其實在老電影院。','他記成了海濱餐廳，連花的種類也記錯了。'],
+  ['cafe','葉淑芬的小秘密','葉淑芬：「這回我早就買好兩張電影票了。」','她早已看穿丈夫準備驚喜的心思。'],
+  ['cinema','四十年後的電影散場','周伯遠：「紀念日我又忘了，對不起。」','葉淑芬：「那明天一起去買蛋糕。」','兩人挽著手離開老電影院。'] ],reward:'love_airport'},
+ s06:{name:'S06｜最後一排的觀眾',unlocked:()=>ch2.main>=18,steps:[
+  ['cinema','江予白的發現','江予白：「一位老人連續三天買 G-16、G-17，卻總是一個人來。」','G-17 正是你在 1993 年票根看到的座位。'],
+  ['cinema','1993 年放映名冊','名冊記錄沈維川是當年的放映員，程映真是場務協調員。','交接紀錄寫著「20:30，G-17 保留」。'],
+  ['cafe','沈維川的等待','沈維川：「她以前總是遲到，我習慣幫她留位子。」','「那年電影節結束，我留下來，她卻走了。」'],
+  ['cinema','當年沒有播完的電影','沈維川：「《最後一班船》播到一半，銀幕就黑了。」','「當年有人想讓那部電影消失。」','沈維川終於說：「下次只幫我留一張票就好。」'] ],reward:null}
+};
+function ch2SideTargets(){if(!ch2Unlocked())return [];const out=[];
+ for(const [id,s] of Object.entries(ch2SideInfo)){if(!s.unlocked()||ch2.side[id]>=4)continue;
+  const step=ch2.side[id],r=s.steps[step];out.push(ch2Point(r[0],s.name+' · '+r[1],()=>{
+   ch2.active=id;const finish=()=>{ch2.side[id]++;ch2Save();if(ch2.side[id]===4){if(s.reward)ch2Unlock(s.reward);toast(s.name+' 完成！');}ch2Refresh();};
+   if(step===3&&id==='s04')ch2Choose('許晨安與蘇語晴',r.slice(2),[
+    ['當面表達心意',()=>{ch2.sideChoices.s04='speak';finish();}],
+    ['把信交給她',()=>{ch2.sideChoices.s04='letter';finish();}],
+    ['再給彼此一點時間',()=>{ch2.sideChoices.s04='wait';finish();}]
+   ]);
+   else if(step===3&&id==='s05')ch2Choose('周伯遠與葉淑芬',r.slice(2),[
+    ['依照丈夫的驚喜',()=>{ch2.sideChoices.s05='husband';finish();}],
+    ['依照妻子的計畫',()=>{ch2.sideChoices.s05='wife';finish();}],
+    ['兩人的安排一起實現',()=>{ch2.sideChoices.s05='together';finish();}]
+   ]);
+   else ch2Talk(r[1],r.slice(2),finish);
+  }));}
+ return out;
+}
+function ch2Targets(){return [...ch2Missions(),...ch2SideTargets()];}
+function ch2Nearby(){if(!ch2Unlocked()||state.overlay||state.map||state.dialog||state.vehicle||state.characterPanel||state.roster||ch2Sheet.classList.contains('open'))return null;
+ let a=null,score=4.2;for(const t of ch2Targets())if(t.floor===state.floor){const d=Math.hypot(state.x-t.x,state.z-t.z);const s=d+(t.type==='chapter2'&&t.name.startsWith('S')?.3:0);if(d<4.2&&s<score){a=t;score=s;}}return a;}
+const ch2NearestOriginal=nearest;
+nearest=function(){return ch2Nearby()||ch2NearestOriginal();};
+const ch2InteractOriginal=interact;
+interact=function(){if(!state.dialog){const t=ch2Nearby();if(t){t.act();return;}}ch2InteractOriginal();};
+const ch2MapOriginal=drawMap;
+drawMap=function(cv,large){ch2MapOriginal(cv,large);if(!ch2Unlocked())return;const ctx=cv.getContext('2d'),sx=cv.width/220,sy=cv.height/285;
+ for(const t of ch2Targets()){if(t.floor!==state.floor)continue;const x=(t.x+110)*sx,y=(t.z+88)*sy;ctx.fillStyle=t.name.startsWith('S')?'#528c9b':'#d69a56';ctx.beginPath();ctx.arc(x,y,large?11:7,0,Math.PI*2);ctx.fill();ctx.fillStyle='#ffffff';ctx.font='bold '+(large?14:10)+'px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(t.name.startsWith('S')?'✦':'2',x,y);}}
+const ch2CSS=document.createElement('style');ch2CSS.textContent=`
+#ch2Button{position:fixed;bottom:186px;left:20px;z-index:9;background:#845965e9;border:1px solid #f6e9dba8;padding:9px 12px}
+#ch2Sheet{display:none;position:fixed;inset:0;z-index:32;background:#112b37df;align-items:center;justify-content:center;padding:12px}
+#ch2Sheet.open{display:flex}#ch2Sheet article{width:min(690px,96vw);max-height:90dvh;overflow:auto;background:#fbf4e8;border-radius:19px;padding:22px;color:#294953}
+#ch2Sheet h2{font-size:23px;margin:4px 0 9px}#ch2Sheet h3{font-size:15px;margin:16px 0 6px}#ch2Sheet p{font-size:12px;line-height:1.7;color:#596d70}
+.ch2item{border:1px solid #c6d3cb;padding:10px;margin:7px 0;border-radius:10px;background:white;display:flex;justify-content:space-between;gap:9px;align-items:center}
+.ch2item span{font-size:12px;line-height:1.5}.ch2item button{font-size:11px;flex-shrink:0;padding:8px 10px}
+.ch2Actions{display:flex;gap:8px;justify-content:space-between;align-items:center}.ch2Tabs{display:flex;gap:8px;margin:9px 0}.ch2Tabs button{background:#4c7478}
+.touchUI #ch2Button{position:static!important;padding:7px 9px}.touchUI #ch2Sheet article{padding:14px}
+`;document.head.appendChild(ch2CSS);
+const ch2Sheet=document.createElement('div');ch2Sheet.id='ch2Sheet';ch2Sheet.innerHTML='<article><div class="ch2Actions"><b>🎞 第二章 · 愛是您・愛是我</b><button id="ch2Close">返回城市</button></div><div class="ch2Tabs"><button data-tab="quests">任務</button><button data-tab="gallery">經典電影收藏</button><button data-tab="evidence">劇情線索</button></div><div id="ch2Content"></div></article>';document.body.appendChild(ch2Sheet);
+let ch2Tab='quests';
+function ch2Open(tab='quests'){ch2Tab=tab;ch2Draw();ch2Sheet.classList.add('open');if(document.pointerLockElement===canvas)document.exitPointerLock();}
+function ch2Close(){ch2Sheet.classList.remove('open');}
+document.getElementById('ch2Close').onclick=ch2Close;
+ch2Sheet.addEventListener('click',e=>{if(e.target===ch2Sheet)ch2Close();});
+ch2Sheet.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{ch2Tab=b.dataset.tab;ch2Draw();});
+function ch2Draw(){const host=document.getElementById('ch2Content');host.replaceChildren();const h=document.createElement('h2'),p=document.createElement('p');
+ if(ch2Tab==='gallery'){
+  h.textContent='經典愛情電影收藏室';p.textContent='僅收藏經典電影道具的致敬復刻模型。尚未開放的章節會保留空展位，1993 年證物不會放在此處。';host.append(h,p);
+  for(const item of ch2Collection){const el=document.createElement('div');el.className='ch2item';const txt=document.createElement('span');txt.textContent=(ch2Has(item.id)?'✦ 已收藏｜':'🔒 未解鎖｜')+item.movie+' · '+item.name+'（'+item.hint+'）';el.append(txt);if(ch2Has(item.id)){const b=document.createElement('button');b.textContent='鑑賞';b.onclick=()=>{ch2Close();ch2Talk(item.movie,[item.name,'經典電影致敬復刻展示。可在 3D 收藏室觀察模型與場景細節。','此收藏不代表拍攝現場使用的原始道具。']);};el.append(b);}host.append(el);}
+ }else if(ch2Tab==='evidence'){
+  h.textContent='1993 年・劇情線索檔案';p.textContent='保存匿名情書、修改紀錄、舊照片、放映紀錄與口述歷史；與經典電影收藏品嚴格分開。';host.append(h,p);
+  const facts=[['07','情書寄送資料與舊電影節印章',ch2.main>=4],['08','《最後一班船》放映紀錄與 G-17 票根',ch2.main>=8],['09','1993 年被替換的影片副本',ch2.main>=12],['S06','沈維川口述歷史',ch2.side.s06>=4]];
+  for(const [id,v,on] of facts){const row=document.createElement('div');row.className='ch2item';row.textContent=(on?'📁 ':'🔒 ')+id+'｜'+v;host.append(row);}
+ }else{
+  h.textContent='第二章任務手帳';p.textContent=ch2Unlocked()?('主線進度：'+(ch2.main>=18?'第二章完成':ch2MainNames[ch2.main])+'。橘色目標是主線，藍色 ✦ 是支線。玩家自行走到地點按 F／觸控互動。'):'完成第一章後自動解鎖第二章。';host.append(h,p);
+  for(const [id,s] of Object.entries(ch2SideInfo)){const row=document.createElement('div');row.className='ch2item';const label=document.createElement('span');label.textContent=(ch2.side[id]===4?'✓ ':s.unlocked()?'✦ ':'🔒 ')+s.name+'（'+ch2.side[id]+'/4）';row.append(label);
+   if(s.unlocked()&&ch2.side[id]<4){const b=document.createElement('button');b.textContent='追蹤';b.onclick=()=>{ch2.active=id;ch2Save();ch2Close();toast('已追蹤 '+s.name+'，在地圖中查看 ✦');};row.append(b);}host.append(row);}
+  const row=document.createElement('div');row.className='ch2item';row.textContent=ch2.main>=18?'✓ 第二章主線完成':'🎬 第二章主線 '+(ch2Unlocked()?ch2MainNames[ch2.main]:'尚未解鎖');host.prepend(row);
+ }
+}
+const ch2Button=document.createElement('button');ch2Button.id='ch2Button';ch2Button.textContent='🎞 第二章 / 收藏';ch2Button.onclick=()=>ch2Open();
+if(touchMode)$('touchTools').appendChild(ch2Button);else document.body.appendChild(ch2Button);
+window.addEventListener('keydown',e=>{if(ch2Sheet.classList.contains('open')&&(['KeyW','KeyA','KeyS','KeyD','KeyF','Tab','Space','Escape'].includes(e.code))){e.preventDefault();e.stopImmediatePropagation();if(e.code==='Escape')ch2Close();}},true);
+function ch2Refresh(){ch2Save();if(ch2Unlocked()&&!state.overlay&&ch2.main<18){const q=ch2Missions()[0];if(q){$('quest').querySelector('.tag').textContent='第二章 · 愛是您・愛是我';$('questtitle').textContent=ch2MainNames[ch2.main];$('questdesc').textContent='前往 '+q.name+'（其餘路線可自由探索）';}}}
+const ch2QuestOld=renderStoryQuest;
+renderStoryQuest=function(){ch2QuestOld();if(ch2Unlocked())ch2Refresh();};
+const lfMissionListBeforeCh2=lfMissionList;
+lfMissionList=function(){const arr=lfMissionListBeforeCh2();if(ch2Unlocked()){
+  if(ch2.main<18){const p=ch2Missions()[0];if(p)arr.unshift({id:'main',label:'第二章主線',title:ch2MainNames[ch2.main],desc:p.name,x:p.x,z:p.z,floor:p.floor});}
+  for(const [id,s] of Object.entries(ch2SideInfo))if(s.unlocked()&&ch2.side[id]<4){const q=ch2SideTargets().find(t=>t.name.startsWith(s.name));if(q)arr.push({id:'ch2_'+id,label:'第二章支線',title:s.name,desc:q.name,x:q.x,z:q.z,floor:q.floor});}
+ }return arr;};
+// nav selections from prior chapter can coexist; disable automatic old-side activation for ch2 IDs.
+const oldSideBegin=sideBegin;
+sideBegin=function(id){if(String(id).startsWith('ch2_')){ch2.active=id.slice(4);ch2Save();return;}return oldSideBegin(id);};
+window.LoveFilmChapterTwo={version:'4.6',progress:()=>JSON.parse(JSON.stringify(ch2)),collection:()=>ch2Collection.map(x=>({...x,unlocked:ch2Has(x.id)})),open:ch2Open};
+ch2Refresh();
+/* === END CHAPTER TWO === */
+
 /* === END LOVEFILM NPC DAILY LIFE === */
 
 /* === v3.7 STABILITY + MISSION NAVIGATION ===
@@ -4246,51 +4561,6 @@ lfNavDrawItems();lfNavRefresh();
 }
 </style>
 
-<script id="v23-chapter-debug">
-(()=>{'use strict';
- const BACKUP='lovefilm_v23_before_ch1_test';
- const STORY='lovefilm_prologue_v16';
- const CHAPTER='lovefilm_ch1_v18';
- const cityKey='lovescene_city_v02';
- const saveKeys=window.LoveFilmSave?.keys||[cityKey,STORY,CHAPTER,'lovefilm_ch1_sidequests_v19'];
- // Use the canonical chapter key exposed in the source if it differs across builds.
- const chapterActual=(saveKeys.find(k=>k.includes('chapter')&&!k.includes('side'))||CHAPTER);
- const tools=document.getElementById('touchTools');
- const menu=document.querySelector('#modal .actions');
- const isTesting=()=>!!localStorage.getItem(BACKUP);
- function switchReload(){window.__lovefilmSwitchingSave=true;location.reload();}
- function enter(){
-   if(isTesting()){alert('目前已經在測試模式。若要重試，請先恢復正式存檔。');return;}
-   if(!confirm('要從第一章開頭開始測試嗎？\n\n目前正式進度會先備份，測試期間的任務與位置會獨立儲存。之後可按「恢復正式存檔」回到原進度。'))return;
-   try{
-     window.LoveFilmSave?.save?.();
-     const snapshot={createdAt:new Date().toISOString(),keys:{}};
-     for(const key of saveKeys)snapshot.keys[key]=localStorage.getItem(key);
-     localStorage.setItem(BACKUP,JSON.stringify(snapshot));
-     window.__lovefilmSwitchingSave=true;
-     const prologue=JSON.parse(localStorage.getItem(STORY)||'{}');
-     prologue.stage=13;prologue.finished=true;prologue.introShown=true;
-     localStorage.setItem(STORY,JSON.stringify(prologue));
-     localStorage.setItem(chapterActual,JSON.stringify({beat:0,introSeen:false,flags:{},approach:null,opinion:null,finalChoice:null,ending:null,done:false}));
-     const city=JSON.parse(localStorage.getItem(cityKey)||'{}');
-     Object.assign(city,{x:26,z:-24,yaw:0,pitch:.25,floor:1,vehicleId:null,cameraZoom:1});
-     localStorage.setItem(cityKey,JSON.stringify(city));
-     switchReload();
-   }catch(e){window.__lovefilmSwitchingSave=false;alert('無法啟動測試：'+e.message);}
- }
- function restore(){
-   if(!isTesting())return;
-   if(!confirm('確定恢復測試前的正式進度？\n\n目前第一章測試期間的進度將被捨棄。'))return;
-   try{const backup=JSON.parse(localStorage.getItem(BACKUP));window.__lovefilmSwitchingSave=true;
-     for(const [key,val] of Object.entries(backup.keys)){if(val===null)localStorage.removeItem(key);else localStorage.setItem(key,val);}
-     localStorage.removeItem(BACKUP);switchReload();
-   }catch(e){window.__lovefilmSwitchingSave=false;alert('恢復失敗：'+e.message);}
- }
- function addButton(id,label,fn){const b=document.createElement('button');b.id=id;b.type='button';b.textContent=label;b.addEventListener('click',fn);if(tools)tools.appendChild(b);if(menu){const copy=document.createElement('button');copy.className='soft';copy.type='button';copy.textContent=label;copy.addEventListener('click',fn);menu.appendChild(copy);}return b;}
- if(isTesting()){addButton('debugRestoreButton','↩ 恢復正式存檔',restore);const badge=document.createElement('div');badge.id='debugChapterBadge';badge.textContent='🧪 第一章測試模式';document.body.appendChild(badge);}
- else addButton('debugChapterButton','🧪 測試：直接到第一章',enter);
-})();
-</script>
 <style id="filmArtifactViewerStyle">
 #filmArtifactViewer{position:fixed;inset:0;z-index:90;display:none;background:rgba(14,26,31,.88);align-items:center;justify-content:center;padding:12px;box-sizing:border-box}
 #filmArtifactViewer.open{display:flex}#filmArtifactFrame{position:relative;width:min(1040px,96vw);max-height:95dvh;overflow:auto;background:#f7f0e4;border-radius:18px;padding:12px;box-shadow:0 18px 70px #0008;color:#29424a}
@@ -4319,4 +4589,22 @@ window.showFilmArtifact=function(key,onclose){if(typeof onclose==='function')clo
 function close(){v.classList.remove('open');if(closeHandler){const fn=closeHandler;closeHandler=null;fn()}};
 document.getElementById('filmArtifactClose').addEventListener('click',close);v.addEventListener('click',e=>{if(e.target===v)close()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&v.classList.contains('open')){e.stopImmediatePropagation();close()}},true);
 })();
-</script><script id="v36-boot-done">window.__lovefilmBoot&&(window.__lovefilmBoot.scriptsDone=true);</script></body></html>
+</script><script id="v36-boot-done">window.__lovefilmBoot&&(window.__lovefilmBoot.scriptsDone=true);</script><style id="v47-test-styles">
+#ch2TestBadge{position:fixed;top:7px;left:50%;transform:translateX(-50%);z-index:16;background:#6d4c68;color:#fff;border:1px solid #f0deca;border-radius:24px;padding:6px 14px;box-shadow:0 4px 20px #0005;font-size:12px;font-weight:800;pointer-events:none}
+#ch2TestReset{background:#855873;color:white}
+.touchUI #ch2TestBadge{font-size:10px;top:max(3px,env(safe-area-inset-top));left:50%;padding:3px 8px;max-width:130px;text-align:center}
+</style>
+<script id="v47-test-ui">
+(function(){'use strict';
+ const badge=document.createElement('div');badge.id='ch2TestBadge';badge.textContent='🧪 第二章測試版';document.body.appendChild(badge);
+ const title=document.querySelector('#modalTitle');if(title)title.textContent='第二章 · 愛是您・愛是我';
+ const intro=document.querySelector('#modalDesc');if(intro)intro.textContent='此版本直接從第二章任務 07「全城最糟糕的告白」開始。測試進度與正式遊戲分開保存，不會覆蓋原本的存檔。';
+ const start=document.getElementById('startBtn');if(start)start.textContent='▶ 直接進入第二章';
+ const top=document.getElementById('modalTop');if(top)top.textContent='CHAPTER TWO · TEST BUILD';
+ const controls=document.querySelector('#modal .controls');if(controls){const note=document.createElement('div');note.style.cssText='margin-bottom:9px;padding:9px 11px;border-radius:8px;background:#f4e0cb;color:#6a4751;font-weight:800';note.textContent='開始位置：電影節辦公室｜主線任務 07｜F 互動，手機點右下互動鍵';controls.prepend(note);}
+ function addButton(container){if(!container)return;const b=document.createElement('button');b.type='button';b.id=container.id==='touchTools'?'ch2TestResetTouch':'ch2TestReset';b.className='soft';b.textContent='↺ 重置第二章測試';b.onclick=()=>{if(confirm('重置第二章測試進度？只會清除測試版的資料，正式存檔不受影響。'))window.LoveFilmCh2Testing.reset();};container.appendChild(b);}
+ addButton(document.querySelector('#modal .actions'));
+ addButton(document.getElementById('touchTools'));
+ const btn=document.getElementById('ch2Button');if(btn)btn.textContent='🎞 第二章任務 / 收藏';
+})();
+</script></body></html>
