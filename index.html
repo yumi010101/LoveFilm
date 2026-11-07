@@ -423,7 +423,7 @@ const data=[
  {id:'record',name:'舊唱片行',x:-77,z:20,w:23,d:20,h:9.7,wall:'#d2c1a9',roof:'#7a675a',type:'record'},
  {id:'home',name:'主角公寓',x:-26,z:20,w:26,d:22,h:24.4,wall:'#e2c9af',roof:'#7d7772',type:'home'},
  {id:'cafe',name:'灣邊咖啡館',x:26,z:20,w:26,d:22,h:9.5,wall:'#d5d2b3',roof:'#7b7256',type:'cafe'},
- {id:'cinema',name:'映灣戲院',x:77,z:20,w:36,d:28,h:20.8,wall:'#d6b9a9',roof:'#614f63',type:'cinema'},
+ {id:'cinema',name:'映灣戲院',x:77,z:20,w:36,d:28,h:24.8,wall:'#d6b9a9',roof:'#614f63',type:'cinema'},
  {id:'lumiere',name:'盧米埃光影館',x:65,z:-75,w:16,d:12,h:14.1,wall:'#eadcc3',roof:'#49545c',type:'lumiere'},
  {id:'workshop',name:'里昂電影道具工坊',x:88,z:-75,w:16,d:12,h:11.7,wall:'#d6ab91',roof:'#855a51',type:'workshop'}];
 for(const d of data){d.front=d.z+d.d/2;d.doorW=2.6;d.doorOpen=0;d.targetOpen=false;d.hinge=d.x-d.doorW/2;buildings.push(d);const sh=new Builder(),rf=new Builder(),h=d.h,w=d.w,dep=d.d,xx=d.x,zz=d.z,front=d.front,back=zz-dep/2,l=xx-w/2,r=xx+w/2;
@@ -877,15 +877,29 @@ for(const d of buildings){
   }
  }
  facadeMeshes.push({id:d.id,mesh:toMesh(e)});
- // Camera-friendly interior cutaway: waist-height wall segments persist after entering.
- ins.box(x,1.08,ba+.27,w,2.16,.50,'#f2e7da');
- for(const side of [-1,1]){
-  ins.box(x+side*(w/2-.28),1.15,z,.45,2.30,dep-.8,'#eee1d1');
-  ins.box(x+side*(w/2-.29),.22,z,.49,.44,dep-.65,'#b6a18a');
-  const split=(w-d.doorW)/2;
-  ins.box(x+side*(w/2-split/2),.75,fr-.28,split,1.5,.47,'#f0e2d0');
+ // Camera-friendly interior cutaway: cinema keeps tall side and rear walls so the room feels genuinely high.
+ if(d.type==='cinema'){
+  ins.box(x,1.18,ba+.27,w,2.36,.50,'#f2e7da');
+  for(const side of [-1,1]){
+   ins.box(x+side*(w/2-.30),4.25,z,.50,8.50,dep-.8,'#eee1d1');
+   ins.box(x+side*(w/2-.31),.22,z,.54,.44,dep-.65,'#b6a18a');
+   ins.box(x+side*(w/2-.45),7.55,z,.22,6.10,dep-.92,'#c7aeb0');
+   ins.box(x+side*(w/2-.65),4.25,z,.20,8.30,dep-.92,'#d8c0bf');
+   const split=(w-d.doorW)/2;
+   ins.box(x+side*(w/2-split/2),1.10,fr-.28,split,2.20,.47,'#f0e2d0');
+  }
+  ins.box(x,8.12,z+dep/2-.32,w-.72,7.90,.20,'#dbc8c0');
+  ins.box(x,2.32,ba+.60,w-.70,.12,.15,'#d4c0ac');
+ }else{
+  ins.box(x,1.08,ba+.27,w,2.16,.50,'#f2e7da');
+  for(const side of [-1,1]){
+   ins.box(x+side*(w/2-.28),1.15,z,.45,2.30,dep-.8,'#eee1d1');
+   ins.box(x+side*(w/2-.29),.22,z,.49,.44,dep-.65,'#b6a18a');
+   const split=(w-d.doorW)/2;
+   ins.box(x+side*(w/2-split/2),.75,fr-.28,split,1.5,.47,'#f0e2d0');
+  }
+  ins.box(x,2.12,ba+.60,w-.70,.10,.15,'#d4c0ac');
  }
- ins.box(x,2.12,ba+.60,w-.70,.10,.15,'#d4c0ac');
  interiorShells.push({id:d.id,mesh:toMesh(ins)});
  // The room retains a ceiling and warm built-in lighting as the exterior roof is hidden.
  // Keeping these in individual meshes ensures they never block the outside city camera.
@@ -904,10 +918,12 @@ for(const d of buildings){
   ceil.box(x+10.2,cy-.10,z-12.32,5.10,.16,.42,'#ddcfb7');
   ceil.box(x+10.2,cy-.10,z-2.16,5.10,.16,.42,'#ddcfb7');
  }else if(d.type==='cinema'){
-  ceil.box(x,7.55,z,w-.74,.24,dep-.76,'#efe4dc');
-  ceil.box(x,7.18,z-8.8,w-2.2,.16,3.10,'#cab0b1');
+  ceil.box(x,10.2,z,w-.74,.28,dep-.76,'#efe4dc');
+  ceil.box(x,9.62,z-8.8,w-2.2,.18,3.10,'#cab0b1');
+  ceil.box(x,9.10,z,w-5.8,.14,dep-.95,'#b49095');
+  for(const rx of [-w*.28,0,w*.28])ceil.box(x+rx,9.68,z,.16,.92,dep-.98,'#8c7077');
  }else ceil.box(x,5.05,z,w-.74,.20,dep-.76,d.type==='cinema'?'#f1e6de':'#f5ebd9');
- const cy=d.type==='office'?5.53:(d.type==='cinema'?7.55:5.05);
+ const cy=d.type==='office'?5.53:(d.type==='cinema'?10.2:5.05);
  for(const sx of [-w*.28,0,w*.28]){
   if(d.type==='office'&&sx>0)continue;
   ceil.box(x+sx,cy-.16,z,.12,.16,dep-.80,d.type==='cinema'?'#b79b9e':'#d8c8ac');
@@ -1057,45 +1073,104 @@ for(const d of buildings){
   world.box(x+7.1,1.35,z+5.95,1.8,.10,.42,'#d4be9a');
   world.box(x+7.1,1.56,z+5.95,1.1,.22,.20,'#7e8f8e');
  }else if(d.type==='cinema'){
-  // Proper stepped cinema auditorium: high ceiling, giant screen, sloped seating tiers.
-  world.box(x,.085,z+2.0,4.6,.065,20.8,'#72515b');
+  // Truly stepped auditorium with dramatic tier differences and a taller screen wall.
+  world.box(x,.085,z+2.1,4.9,.065,21.0,'#72515b');
   // giant screen wall and frame
-  world.box(x,3.95,z-10.9,w-3.0,8.10,.22,'#322d3f');
-  world.box(x,3.95,z-10.55,w-7.6,6.65,.14,'#f3e8d5');
-  world.box(x,4.18,z-10.34,w-9.3,5.55,.08,'#f8f2e8');
-  world.box(x,7.55,z-10.85,w-2.4,.28,.48,'#4a4055');
+  world.box(x,5.10,z-11.1,w-2.6,10.40,.24,'#2f2b3d');
+  world.box(x,5.05,z-10.72,w-8.0,8.40,.14,'#f3e8d5');
+  world.box(x,5.28,z-10.50,w-9.8,7.10,.08,'#fbf6ed');
+  world.box(x,9.65,z-11.0,w-2.0,.30,.52,'#4a4055');
   // front stage below screen
-  world.box(x,.36,z-7.85,w-8.0,.72,4.05,'#68414a');
-  world.box(x,.71,z-6.18,w-8.4,.10,.26,'#d9c195');
-  // stepped floor platforms for 5 rows
-  const rowZ=[z-0.8,z+2.2,z+5.4,z+8.6,z+11.8];
-  const rowH=[.12,.42,.74,1.08,1.44];
+  world.box(x,.42,z-7.95,w-8.6,.84,4.30,'#68414a');
+  world.box(x,.83,z-6.10,w-9.0,.10,.28,'#d9c195');
+  // stepped floor platforms for 5 rows - much more obvious rise.
+  const rowZ=[z-0.6,z+2.6,z+6.0,z+9.6,z+13.2];
+  const rowH=[.18,.78,1.46,2.18,2.96];
   const seatCols=[-10.2,-6.2,-2.2,2.2,6.2,10.2];
   for(let r=0;r<rowZ.length;r++){
-   world.box(x,rowH[r]/2,rowZ[r],w-6.2,rowH[r],2.55,r%2?'#86656f':'#7a5d66');
-   world.box(x,rowH[r]+.04,rowZ[r]-1.23,w-6.2,.08,.18,'#aa8d6d');
+   world.box(x,rowH[r]/2,rowZ[r],w-6.2,rowH[r],2.75,r%2?'#86656f':'#7a5d66');
+   world.box(x,rowH[r]+.05,rowZ[r]-1.34,w-6.2,.10,.20,'#aa8d6d');
+   // visible stair risers at both sides and centre aisle
+   world.box(x-1.55,rowH[r]/2,rowZ[r],.55,rowH[r],2.75,'#6d545d');
+   world.box(x+1.55,rowH[r]/2,rowZ[r],.55,rowH[r],2.75,'#6d545d');
    for(const side of [-1,1]){
-    world.box(x+side*1.58,rowH[r]+.08,rowZ[r],.36,.10,.22,'#edb977');
-    world.box(x+side*1.58,rowH[r]+.16,rowZ[r],.20,.05,.12,'#ffefc9');
+    world.box(x+side*1.72,rowH[r]+.10,rowZ[r],.38,.10,.22,'#edb977');
+    world.box(x+side*1.72,rowH[r]+.18,rowZ[r],.20,.05,.12,'#ffefc9');
    }
    for(const off of seatCols){
     const sx=x+off,base=rowH[r];
-    furnitureBox(sx,base+.61,rowZ[r],1.72,.28,1.44,'#8f5c68');
-    furnitureBox(sx,base+1.10,rowZ[r]+.60,1.72,.98,.27,'#744b58');
+    furnitureBox(sx,base+.66,rowZ[r],1.74,.30,1.44,'#8f5c68');
+    furnitureBox(sx,base+1.18,rowZ[r]+.60,1.74,1.04,.28,'#744b58');
     for(const side of [-1,1]){
-      world.box(sx+side*.85,base+.70,rowZ[r],.14,.46,1.34,'#4b3b43');
-      world.cylinder(sx+side*.85,base+.96,rowZ[r]-.28,.095,.11,'#d7b69b',7);
+      world.box(sx+side*.86,base+.74,rowZ[r],.14,.48,1.34,'#4b3b43');
+      world.cylinder(sx+side*.86,base+1.02,rowZ[r]-.28,.095,.11,'#d7b69b',7);
     }
-    world.box(sx,base+.45,rowZ[r]-.42,.92,.07,.49,'#aa7472');
+    world.box(sx,base+.48,rowZ[r]-.42,.92,.07,.49,'#aa7472');
    }
   }
   // side rails rising with the tiers
-  for(const side of [-1,1])for(let r=0;r<rowZ.length;r++)world.box(x+side*(w/2-1.05),1.22+rowH[r]*.8,rowZ[r],.14,1.35,.74,'#ddb77f');
+  for(const side of [-1,1])for(let r=0;r<rowZ.length;r++)world.box(x+side*(w/2-1.05),1.55+rowH[r]*.85,rowZ[r],.14,1.80,.78,'#ddb77f');
+  // v3.0 Real, visible side stairs: two uninterrupted walkways beside seat banks.
+  // 4 shallow risers across each 3.2m run, rather than an abstract floor-height change.
+  const stairRise=[.18,.78,1.46,2.18,2.96];
+  const stairCenterZ=[z-.6,z+2.6,z+6.0,z+9.6,z+13.2];
+  for(const side of [-1,1]){
+   const aisleX=x+side*13.1;
+   // A distinct dark runner is visible between the seats and side wall.
+   world.box(aisleX,.030,z+3.4,2.30,.055,22.0,'#574650');
+   for(let r=0;r<stairCenterZ.length;r++){
+    const oldRise=r===0?0:stairRise[r-1],newRise=stairRise[r];
+    const fromZ=stairCenterZ[r]-1.46;
+    for(let j=0;j<4;j++){
+     const top=oldRise+(newRise-oldRise)*(j+1)/4;
+     const stepZ=fromZ+j*.70+.35;
+     world.box(aisleX,top/2+.018,stepZ,2.30,top+.036,.70,'#69535d');
+     world.box(aisleX,top+.045,stepZ-.29,2.28,.085,.10,'#c6ad84');
+     world.box(aisleX+side*.84,top+.09,stepZ-.18,.23,.08,.22,'#f6d39b');
+    }
+   }
+   // Raised timber safety handrail follows the slope on the outer edge.
+   for(let r=0;r<stairCenterZ.length;r++){
+    const yy=stairRise[r]+1.0,zz=stairCenterZ[r];
+    world.box(aisleX+side*1.25,yy/2,zz,.10,yy,.10,'#514149');
+    world.box(aisleX+side*1.25,yy+.06,zz,.22,.12,3.12,'#c39b77');
+   }
+  }
+  // Acoustical felt wall treatment: separated padded panels, timber slats, and low uplights.
+  for(const side of [-1,1]){
+    const wallX=x+side*(w/2-.82);
+    for(let i=0;i<7;i++){
+      const zz=z-7.4+i*3.12;
+      world.box(wallX,5.12,zz,.28,4.45,2.45,i%2?'#624851':'#70515b');
+      world.box(wallX-side*.20,5.12,zz,.10,3.93,2.12,i%2?'#84626b':'#77545c');
+      for(let slat=-1;slat<=1;slat++)world.box(wallX-side*.28,5.12,zz+slat*.64,.08,4.0,.045,'#b08a72');
+      world.box(wallX-side*.33,2.82,zz,.13,.18,1.50,'#e4c48e');
+    }
+    // Continuous wall skirting and soft up-light line.
+    world.box(wallX-side*.30,1.42,z+2.0,.16,.13,22.0,'#a97e6c');
+  }
+  // The stage gets a physical proscenium, a pleated red house curtain and visible footlights.
+  world.box(x,.62,z-7.50,w-9.2,1.24,2.35,'#533742');
+  world.box(x,1.27,z-6.58,w-9.0,.13,.28,'#d4b58e');
+  world.box(x,9.35,z-10.12,w-4.6,.45,.62,'#5b3446');
+  for(const side of [-1,1]){
+    for(let fold=0;fold<11;fold++){
+      const curtainX=x+side*14.8+(fold-5)*.205;
+      world.box(curtainX,5.12,z-9.98,.19,8.48,.42,fold%2?'#733949':'#995367');
+    }
+    world.box(x+side*15.7,5.30,z-9.7,.42,8.8,.55,'#4d3043');
+    world.box(x+side*15.70,4.72,z-9.22,.46,.20,.12,'#d3ac79');
+  }
+  for(let lamp=0;lamp<13;lamp++){
+    const lx=x-12.0+lamp*2.0;
+    world.cylinder(lx,1.39,z-6.61,.13,.13,'#e4be79',9);
+    world.ball(lx,1.52,z-6.61,.11,.095,.11,'#ffefc4',4,8);
+  }
   // rear entry platform / projection booth hint
-  world.box(x,.20,z+13.5,w-5.2,.40,2.65,'#5b3943');
-  for(const k of [-5,-4,-3,-2,-1,0,1,2,3,4,5])world.box(x+k*1.08,.64,z+13.3,.70,.18,.12,'#ffedc9');
-  world.box(x-12.8,4.9,z+11.8,1.25,.78,1.30,'#3f444f');
-  world.box(x+12.8,4.9,z+11.8,1.25,.78,1.30,'#3f444f');
+  world.box(x,1.60,z+15.0,w-5.2,3.20,2.90,'#5b3943');
+  for(const k of [-5,-4,-3,-2,-1,0,1,2,3,4,5])world.box(x+k*1.08,3.10,z+14.8,.70,.18,.12,'#ffedc9');
+  world.box(x-12.8,6.20,z+12.3,1.25,.78,1.30,'#3f444f');
+  world.box(x+12.8,6.20,z+12.3,1.25,.78,1.30,'#3f444f');
  }else if(d.type==='florist'){
   for(const sx of [x-7,x+7])for(const sz of [z-5,z,z+5]){
    furnitureBox(sx,.83,sz,2.75,.12,2.55,'#c39876');
@@ -1188,14 +1263,14 @@ for(const d of buildings){
   // tall curtains framing the giant screen
   for(const side of [-1,1])for(let fold=0;fold<9;fold++){
    const px=x+side*(w/2-4.5)+(fold-4)*.26;
-   world.box(px,3.9,z-10.2,.18,6.85,.30,fold%2?'#6d3e50':'#895366');
+   world.box(px,5.2,z-10.2,.18,9.10,.30,fold%2?'#6d3e50':'#895366');
   }
-  for(const pz of [z-6.7,z-1.7,z+3.0,z+8.0,z+12.8])for(const side of [-1,1])displaySconce(x+side*(w/2-1.15),3.9,pz);
+  for(const pz of [z-6.7,z-1.7,z+3.0,z+8.0,z+12.8])for(const side of [-1,1])displaySconce(x+side*(w/2-1.15),5.4,pz);
   // rear wall posters / projection window
-  world.box(x-13.2,4.10,z+12.25,3.1,4.60,.22,'#614d58');
-  world.box(x-13.2,4.22,z+12.42,2.72,4.01,.11,'#dbc6b0');
-  world.box(x-8.5,4.10,z+12.25,3.1,4.60,.22,'#614d58');
-  world.box(x-8.5,4.22,z+12.42,2.72,4.01,.11,'#cdb9ab');
+  world.box(x-13.2,5.55,z+12.25,3.1,7.50,.22,'#614d58');
+  world.box(x-13.2,5.72,z+12.42,2.72,6.60,.11,'#dbc6b0');
+  world.box(x-8.5,5.55,z+12.25,3.1,7.50,.22,'#614d58');
+  world.box(x-8.5,5.72,z+12.42,2.72,6.60,.11,'#cdb9ab');
  }else if(d.type==='hotel'){
   for(const sx of [x-8.3,x+7.5])ceilingPendant(sx,z+3.8,'#ffdfaf','#ac9378',3.94);
   world.box(x+7.2,2.73,z+5.76,3.85,.38,.14,'#9a7d61');
@@ -2102,9 +2177,9 @@ const SEATS=[
  // 咖啡館原有木製餐椅，座面高度約 0.72m。避免新增占用走道的物件。
  ...[19,25].flatMap((tableX,j)=>[16,22].flatMap((z,k)=>[-1,1].map(side=>({id:'cafe'+j+k+side,name:'咖啡館座椅',x:tableX+side*1.8,z,heading:0,lift:.43,floor:1})))),
  // 大戲院五排 × 六席；雙側走道與中央走道均可以靠近座位觸發。
- ...[19.2,22.2,25.4,28.6,31.8].flatMap((z,row)=>[-10.2,-6.2,-2.2,2.2,6.2,10.2].map((offset,col)=>({
+ ...[19.4,22.6,26.0,29.6,33.2].flatMap((z,row)=>[-10.2,-6.2,-2.2,2.2,6.2,10.2].map((offset,col)=>({
   id:'cinema-'+row+'-'+col,name:'映灣戲院第'+(row+1)+'排 '+(col+1)+'號',x:77+offset,z,
-  heading:Math.PI,lift:.58,floor:1,indoor:'cinema',riseZ:1.15
+  heading:Math.PI,lift:.66,floor:1,indoor:'cinema',riseZ:1.45
  })))
 ];
 function seatNear(){return SEATS.find(t=>state.floor===t.floor&&Math.hypot(state.x-t.x,state.z-t.z)<3.0)||null;}
@@ -2129,15 +2204,27 @@ function standUp(){
 }
 function stepHeightAt(x,z){
  if(state.floor!==1||state.vehicle)return 0;
- // 映灣戲院：階梯式影廳，越後排越高。
+ // 映灣戲院：真正的階梯式影廳，越後排越高。
  const cinema=buildings.find(b=>b.id==='cinema');
  if(cinema&&Math.abs(x-cinema.x)<cinema.w/2-2.0&&Math.abs(z-cinema.z)<cinema.d/2-1.0){
-  if(z>30.3)return 1.44;
-  if(z>27.1)return 1.08;
-  if(z>23.9)return .74;
-  if(z>20.7)return .42;
-  if(z>17.5)return .12;
-  if(z<12.0)return -.02; // front stage edge / screen apron
+  // Side aisles use 4 intermediate elevations per row, aligned with the visible stairs.
+  if(Math.abs(x-cinema.x)>11.8 && Math.abs(x-cinema.x)<15.0){
+   const centers=[19.4,22.6,26.0,29.6,33.2],levels=[.18,.78,1.46,2.18,2.96];
+   for(let r=0;r<centers.length;r++){
+    const start=centers[r]-1.46,end=start+2.80;
+    if(z>=start&&z<end){
+     const old=r===0?0:levels[r-1],delta=levels[r]-old;
+     const n=Math.max(1,Math.min(4,Math.floor((z-start)/.70)+1));
+     return old+delta*n/4;
+    }
+   }
+  }
+  if(z>31.4)return 2.96;
+  if(z>28.0)return 2.18;
+  if(z>24.8)return 1.46;
+  if(z>21.6)return .78;
+  if(z>18.4)return .18;
+  if(z<12.4)return -.02; // front stage edge / screen apron
   return 0;
  }
  // 實體建築入口前的低踏階：保持前進方向不變，腳步自動抬升。
@@ -2232,7 +2319,7 @@ for(const [row,col,head,shirt] of [
  [3,1,'#d8bba5','#947366'],[3,4,'#c29f8b','#728070'],
  [4,0,'#b5917b','#67788a'],[4,2,'#e4b9a7','#765f72'],
  [4,5,'#b99c83','#6d7b71']]){
- const rowZ=[19.2,22.2,25.4,28.6,31.8],rowH=[.12,.42,.74,1.08,1.44];
+ const rowZ=[19.4,22.6,26.0,29.6,33.2],rowH=[.18,.78,1.46,2.18,2.96];
  const xs=[-10.2,-6.2,-2.2,2.2,6.2,10.2];
  const x=77+xs[col],z=rowZ[row],h=rowH[row];
  cinemaPatronsBuilder.box(x,h+1.20,z+.30,.87,1.22,.53,shirt);
