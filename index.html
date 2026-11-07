@@ -1,4 +1,4 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no"><title>戀愛片場失控中｜映灣市 v2.0 · 第一章＋支線＋NPC 日常生活</title><style>
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no"><title>戀愛片場失控中｜映灣市 v2.1 · 休憩互動與手機地圖</title><style>
 :root{--paper:#f9f4e9;--ink:#243943;--deep:#162c34;--teal:#2e626a;--gold:#e6b780;--fog:#d5e9e7}*{box-sizing:border-box}body{margin:0;overflow:hidden;background:#c6d9dd;color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans TC","Microsoft JhengHei",sans-serif}canvas#game{position:fixed;inset:0;width:100vw;height:100vh;display:block}#vignette{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 48%,rgba(22,44,52,.18) 100%)}.glass{background:rgba(249,244,233,.93);box-shadow:0 8px 32px rgba(20,48,56,.2);border:1px solid rgba(255,255,255,.8);backdrop-filter:blur(8px)}#brand{position:fixed;top:18px;left:20px;padding:12px 16px;border-radius:14px;pointer-events:none}#brand .eyebrow{font-size:10px;letter-spacing:2px;color:#7d8382;font-weight:800}#brand h1{margin:2px 0 0;font-size:19px;letter-spacing:1px}#brand small{font-size:11px;letter-spacing:.5px;color:#587178}#quest{position:fixed;top:106px;left:20px;width:250px;border-radius:13px;padding:14px 16px;pointer-events:none}#quest .tag{font-size:10px;font-weight:800;letter-spacing:1.5px;color:#b17d4f}#quest h2{font-size:15px;margin:5px 0 8px}#quest p{font-size:12px;line-height:1.65;margin:0;color:#4d6570}#mapbox{position:fixed;top:18px;right:18px;border-radius:14px;overflow:hidden;width:210px;height:206px}#minimap{display:block;width:210px;height:175px;background:#e8e3ce}#maplabel{height:31px;text-align:center;padding-top:7px;font-size:11px;letter-spacing:1px;color:#637176}#foot{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);white-space:nowrap;display:flex;gap:14px;align-items:center;padding:9px 16px;border-radius:24px;font-size:11px;pointer-events:none}kbd{border-radius:5px;border:1px solid #c2d3d4;box-shadow:0 1px #b6c6c7;padding:3px 6px;background:#fff;font:700 11px system-ui}#prompt{position:fixed;bottom:83px;left:50%;transform:translateX(-50%);color:white;background:rgba(19,42,48,.87);border:1px solid rgba(255,255,255,.3);border-radius:15px;padding:12px 20px;min-width:230px;text-align:center;font-size:14px;opacity:0;transition:opacity .15s;pointer-events:none}#prompt.show{opacity:1}#prompt b{display:inline-flex;background:#e5b780;color:#243943;width:25px;height:25px;border-radius:7px;align-items:center;justify-content:center;margin-right:9px}#toast{position:fixed;top:240px;right:20px;padding:12px 16px;border-radius:12px;color:#fff;background:rgba(19,49,57,.89);font-size:12px;max-width:240px;opacity:0;transition:opacity .4s;pointer-events:none}#toast.show{opacity:1}.worldtag{position:fixed;transform:translate(-50%,-50%);white-space:nowrap;border:1px solid #ffffffa8;background:#f8f1e4dd;border-radius:12px;padding:5px 10px;font-size:11px;font-weight:800;box-shadow:0 3px 10px #20303825;pointer-events:none;display:none}#overlay{position:fixed;inset:0;background:rgba(16,35,44,.58);display:flex;align-items:center;justify-content:center;z-index:10;padding:18px}#overlay.hidden{display:none}#modal{width:min(580px,95vw);max-height:90vh;overflow:auto;padding:31px 33px;border-radius:22px;box-shadow:0 18px 60px #08242a70}#modal .topline{font-size:11px;letter-spacing:3px;color:#b48058;font-weight:800}#modal h2{font-size:27px;margin:10px 0}#modal p{font-size:14px;line-height:1.9;color:#526269}#modal .controls{font-size:13px;padding:14px;background:#e5efec;border-radius:10px;line-height:2}button{appearance:none;border:0;background:var(--teal);color:white;border-radius:10px;padding:11px 19px;font-size:13px;font-weight:800;cursor:pointer;font-family:inherit}button:hover{background:#205056}button.soft{background:#e0ece8;color:#24505a}#modal .actions{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}#dialog{position:fixed;bottom:72px;left:50%;transform:translateX(-50%);width:min(720px,92vw);border-radius:17px;padding:19px 22px;z-index:5;display:none}#dialog.active{display:block}#speaker{font-size:13px;font-weight:900;color:#b17d4f;margin-bottom:8px}#line{font-size:16px;line-height:1.8;min-height:57px}#dialog button{float:right;margin-top:5px}#mapModal{display:none;position:fixed;inset:0;background:#142c36dd;z-index:6;align-items:center;justify-content:center}#mapModal.show{display:flex}#bigmapWrap{border-radius:20px;padding:22px;max-width:95vw}#bigmap{display:block;max-width:100%;width:640px;height:auto;background:#e4e5d5;border-radius:12px}#mapClose{margin-top:12px}#crosshair{position:fixed;left:50%;top:50%;width:4px;height:4px;border:1px solid #fff7;background:#fff6;transform:translate(-50%,-50%);border-radius:99px;pointer-events:none}#vehiclehud{position:fixed;right:20px;bottom:65px;border-radius:14px;padding:12px 15px;min-width:204px;background:rgba(19,42,48,.90);color:white;border:1px solid #ffffff38;display:none;z-index:3}#vehiclehud.show{display:block}#vehiclehud strong{font-size:17px}#vehiclehud .speed{font-size:20px;font-weight:900;color:#f0c88d}#vehiclehud small{display:block;font-size:11px;color:#d8e5e6;line-height:1.55;margin-top:6px}#status{position:fixed;left:20px;bottom:20px;color:#fff;background:#1a3640b7;border-radius:8px;padding:7px 10px;font-size:11px;pointer-events:none}@media(max-width:750px){#quest{top:96px;width:190px;padding:9px}#mapbox{width:145px;height:145px}#minimap{width:145px;height:121px}#maplabel{height:24px;padding-top:4px}#brand{padding:9px}#brand h1{font-size:14px}#foot{font-size:9px;gap:4px;bottom:9px;padding:7px 9px}#foot span:nth-child(3),#foot span:nth-child(4){display:none}#status{bottom:55px}#modal{padding:22px}}
 
 /* CAST v0.8 — player appearance editor, cast roster and NPC signage */
@@ -149,7 +149,7 @@
  <label>遊戲時間</label><div class="envRow"><button type="button" data-hour="390">晨光</button><button type="button" data-hour="720">正午</button><button type="button" data-hour="1080">黃昏</button><button type="button" data-hour="1320">夜晚</button></div>
  <div class="envRow"><button type="button" id="envAutoWeather">天氣自動：開</button><button type="button" id="envAutoTime">時間流動：開</button></div>
  <small>自動模式會隨遊戲時間變化，僅影響場景氣氛，不會重設序章進度。</small>
-</div><div id="exitGuide" aria-live="off"></div><div id="brand" class="glass"><div class="eyebrow">LOVE, ACTION & REACTION</div><h1>戀愛片場失控中</h1><small>映灣市 ｜ 海灣高樓街區 × 光影起點街 v1.7</small></div><div id="quest" class="glass"><div class="tag">自由探索 · 映灣電影文化街區</div><h2 id="questtitle">走進映灣市</h2><p id="questdesc">探索海灣山城與「光影起點街」；每棟室內都有專屬光線與陳設，走進店面鏡頭會自動拉近，也能自由抬頭看裝潢。</p></div><div id="mapbox" class="glass"><canvas id="minimap" width="420" height="350"></canvas><div id="maplabel">映灣市　·　山海水岸</div></div><div id="toast"></div><div id="prompt"><b>F</b><span id="promptText">互動</span></div><div id="crosshair"></div><div id="foot" class="glass"><span><kbd>W A S D</kbd> 移動</span><span><kbd>滑鼠</kbd> 視角／滾輪縮放</span><span><kbd>Shift</kbd> 奔跑</span><span><kbd>F</kbd> 互動／上車</span><span><kbd>C</kbd> 主角造型</span><span><kbd>Tab</kbd> 地圖</span><span><kbd>Esc</kbd> 選單</span></div><div id="vehiclehud"><div id="vehicleName">交通工具</div><div class="speed" id="vehicleSpeed">0 km/h</div><small id="vehicleHelp">W 加速 / S 倒車 / A D 轉向<br>空白鍵 煞車 / F 下車</small></div><div id="status">2008　·　映灣港　·　上午 10:15</div><div id="castActions"><button id="openCastSettings" title="自訂主角，快捷鍵 C">主角造型 <kbd>C</kbd></button><button id="openCastRoster" title="查看角色名冊，快捷鍵 K">角色名冊 <kbd>K</kbd></button></div><div id="dialog" class="glass"><div id="speaker"></div><div id="line"></div><div id="dialogChoices"></div><button id="nextLine">繼續 ›</button></div><div id="mapModal"><div id="bigmapWrap" class="glass"><h2 style="margin:0 0 12px">映灣市 · 城市地圖</h2><canvas id="bigmap" width="800" height="600"></canvas><div style="font-size:12px;color:#607078;margin-top:8px">黃色：玩家位置　·　圓點：可進入建築　·　圖示：可駕駛交通工具</div><button id="mapClose">返回城市</button></div></div><div id="overlay"><div id="modal" class="glass"><div class="topline" id="modalTop">CITY EXPLORATION / 01</div><h2 id="modalTitle">歡迎來到映灣市</h2><p id="modalDesc">《戀愛片場失控中》v1.7：完整序章 3 項任務、13 個場景，增加動態天空、日夜循環、雨天濕地效果、環境切換以及更穩定的室內樓梯鏡頭。電影節港口片場有宋知遠假髮、煙火安全、許若晴拒吻等互動事件；隨著任務可前往公寓、辦公室、二樓收藏室與後頁書店。保留 v1.5 所有建築家具、鏡頭、主角自訂及五種交通工具。</p><div class="controls">🚲🚗🛵🐎⛵ 靠近交通工具按 <strong>F 上車／下車</strong><br>🚘 W 加速、S 煞車／倒車、A／D 轉向，腳踏車踩踏與雙手握把動作會跟隨速度；船隻請沿碼頭登船。<br>🚶 電腦：WASD 移動、Shift 奔跑、滑鼠轉視角。手機：左側搖桿移動／駕駛，右側空白處滑動轉視角，右下按鈕互動、跑步或煞車。<br>🎞️ 東北側「光影起點街」有兩棟可進入的電影展館，街邊按 F 查看史料<br>🏛️ 電影節辦公室內右側樓梯：<strong>直接步行上樓／下樓</strong>；二樓收藏室保留互動，主要室內空間則升級為更完整的家具擺設<br>🗺️ Tab 地圖 ｜ Esc 暫停 ｜ 可隨時儲存位置<br>👤 <strong>C</strong> 自訂主角　｜　<strong>K</strong> 角色名冊（可快速尋找 NPC）</div><div class="actions"><button id="startBtn">開始序章 · 映灣港</button><button class="soft" id="visitFilmStreet">前往光影起點街</button><button class="soft" id="coverCustomize">先設定主角外貌</button><button class="soft" id="saveBtn">儲存位置</button><button class="soft" id="resetBtn">回到港口</button></div><p style="font-size:11px;margin-bottom:0">v1.7：序章進度自動儲存；按右上角「天氣 / 時間」（手機按「環境」）可以預覽早晨、黃昏、夜景與雨天。建議手機橫向遊玩；儲存位置功能與原版相同。</p></div></div>
+</div><div id="exitGuide" aria-live="off"></div><div id="brand" class="glass"><div class="eyebrow">LOVE, ACTION & REACTION</div><h1>戀愛片場失控中</h1><small>映灣市 ｜ 海灣高樓街區 × 光影起點街 v2.1</small></div><div id="quest" class="glass"><div class="tag">自由探索 · 映灣電影文化街區</div><h2 id="questtitle">走進映灣市</h2><p id="questdesc">探索海灣山城與「光影起點街」；每棟室內都有專屬光線與陳設，走進店面鏡頭會自動拉近，也能自由抬頭看裝潢。</p></div><div id="mapbox" class="glass"><canvas id="minimap" width="420" height="350"></canvas><div id="maplabel">映灣市　·　山海水岸</div></div><div id="toast"></div><div id="prompt"><b>F</b><span id="promptText">互動</span></div><div id="crosshair"></div><div id="foot" class="glass"><span><kbd>W A S D</kbd> 移動</span><span><kbd>滑鼠</kbd> 視角／滾輪縮放</span><span><kbd>Shift</kbd> 奔跑</span><span><kbd>F</kbd> 互動／上車</span><span><kbd>C</kbd> 主角造型</span><span><kbd>Tab</kbd> 地圖</span><span><kbd>Esc</kbd> 選單</span></div><div id="vehiclehud"><div id="vehicleName">交通工具</div><div class="speed" id="vehicleSpeed">0 km/h</div><small id="vehicleHelp">W 加速 / S 倒車 / A D 轉向<br>空白鍵 煞車 / F 下車</small></div><div id="status">2008　·　映灣港　·　上午 10:15</div><div id="castActions"><button id="openCastSettings" title="自訂主角，快捷鍵 C">主角造型 <kbd>C</kbd></button><button id="openCastRoster" title="查看角色名冊，快捷鍵 K">角色名冊 <kbd>K</kbd></button></div><div id="dialog" class="glass"><div id="speaker"></div><div id="line"></div><div id="dialogChoices"></div><button id="nextLine">繼續 ›</button></div><div id="mapModal"><div id="bigmapWrap" class="glass"><div id="mapToolbar"><h2>映灣市 · 城市地圖</h2><div id="mapZoomControls"><button id="mapZoomOut" type="button" aria-label="地圖縮小">−</button><b id="mapZoomLabel">100%</b><button id="mapZoomIn" type="button" aria-label="地圖放大">＋</button></div></div><div id="bigmapViewport"><canvas id="bigmap" width="800" height="600"></canvas></div><div style="font-size:12px;color:#607078;margin-top:8px">黃色：玩家位置　·　圓點：可進入建築　·　圖示：可駕駛交通工具</div><button id="mapClose">返回城市</button></div></div><div id="overlay"><div id="modal" class="glass"><div class="topline" id="modalTop">CITY EXPLORATION / 01</div><h2 id="modalTitle">歡迎來到映灣市</h2><p id="modalDesc">《戀愛片場失控中》v1.7：完整序章 3 項任務、13 個場景，增加動態天空、日夜循環、雨天濕地效果、環境切換以及更穩定的室內樓梯鏡頭。電影節港口片場有宋知遠假髮、煙火安全、許若晴拒吻等互動事件；隨著任務可前往公寓、辦公室、二樓收藏室與後頁書店。保留 v1.5 所有建築家具、鏡頭、主角自訂及五種交通工具。</p><div class="controls">🚲🚗🛵🐎⛵ 靠近交通工具按 <strong>F 上車／下車</strong><br>🚘 W 加速、S 煞車／倒車、A／D 轉向，腳踏車踩踏與雙手握把動作會跟隨速度；船隻請沿碼頭登船。<br>🚶 電腦：WASD 移動、Shift 奔跑、滑鼠轉視角。手機：左側搖桿移動／駕駛，右側空白處滑動轉視角，右下按鈕互動、跑步或煞車。<br>🎞️ 東北側「光影起點街」有兩棟可進入的電影展館，街邊按 F 查看史料<br>🏛️ 電影節辦公室內右側樓梯：<strong>直接步行上樓／下樓</strong>；二樓收藏室保留互動，主要室內空間則升級為更完整的家具擺設<br>🗺️ Tab 地圖 ｜ Esc 暫停 ｜ 可隨時儲存位置<br>👤 <strong>C</strong> 自訂主角　｜　<strong>K</strong> 角色名冊（可快速尋找 NPC）</div><div class="actions"><button id="startBtn">開始序章 · 映灣港</button><button class="soft" id="visitFilmStreet">前往光影起點街</button><button class="soft" id="coverCustomize">先設定主角外貌</button><button class="soft" id="saveBtn">儲存位置</button><button class="soft" id="resetBtn">回到港口</button></div><p style="font-size:11px;margin-bottom:0">v1.7：序章進度自動儲存；按右上角「天氣 / 時間」（手機按「環境」）可以預覽早晨、黃昏、夜景與雨天。建議手機橫向遊玩；儲存位置功能與原版相同。</p></div></div>
 <div class="castLayer" id="castSettings" role="dialog" aria-modal="true" aria-label="主角外貌設定"><div class="castSheet">
  <div class="castHeader"><div><small>CHARACTER CUSTOMIZATION · 2008</small><h2>主角外貌設定</h2><p>你的外貌會同步用於城市步行、NPC 對話及交通工具上的人物。</p></div><button id="closeCastSettings" class="castClose" aria-label="關閉">×</button></div>
  <div class="castContent">
@@ -1805,8 +1805,8 @@ const vehicles=[
  {id:'carriage1',type:'carriage',name:'馬車',icon:'🐎',x:-50,z:24,angle:0,baseMax:8,accel:6,turn:1.15,speed:0,wheelSpin:0},
  {id:'boat1',type:'boat',name:'小船',icon:'⛵',x:1.3,z:92,angle:Math.PI,baseMax:11,accel:5.5,turn:1.05,speed:0,wheelSpin:0}
 ];
-const state={vehicle:null,lastMouseAt:0,lastCollisionToast:0,x:-8,z:61,yaw:0,pitch:.25,dir:0,run:false,walkPhase:0,dialog:null,map:false,overlay:true,characterPanel:false,roster:false,speed:0,toastTimeout:null,foot:0,cameraZoom:1,floor:1,levelHeight:0,stairTransition:null,timeMinutes:615,timeAutomatic:true};try{const st=JSON.parse(localStorage.getItem('lovescene_city_v02')||localStorage.getItem('lovescene_city_v01')||'null');
- if(st&&Number.isFinite(st.x)&&Math.abs(st.x)<108&&Math.abs(st.z)<180){state.x=st.x;state.z=st.z;state.yaw=st.yaw||0;state.floor=st.floor===2&&Math.abs(st.x-office2D.x)<office2D.w/2&&Math.abs(st.z-office2D.z)<office2D.d/2?2:1;state.levelHeight=state.floor===2?UPPER:0;
+const state={sitting:null,stepLift:0,vehicle:null,lastMouseAt:0,lastCollisionToast:0,x:-8,z:61,yaw:0,pitch:.25,dir:0,run:false,walkPhase:0,dialog:null,map:false,overlay:true,characterPanel:false,roster:false,speed:0,toastTimeout:null,foot:0,cameraZoom:1,floor:1,levelHeight:0,stairTransition:null,timeMinutes:615,timeAutomatic:true};try{const st=JSON.parse(localStorage.getItem('lovescene_city_v02')||localStorage.getItem('lovescene_city_v01')||'null');
+ if(st&&Number.isFinite(st.x)&&Math.abs(st.x)<108&&Math.abs(st.z)<180){state.x=st.x;state.z=st.z;state.yaw=st.yaw||0;if(Number.isFinite(st.pitch))state.pitch=clamp(st.pitch,-.88,1.08);if(Number.isFinite(st.cameraZoom))state.cameraZoom=clamp(st.cameraZoom,.48,1.55);state.floor=st.floor===2&&Math.abs(st.x-office2D.x)<office2D.w/2&&Math.abs(st.z-office2D.z)<office2D.d/2?2:1;state.levelHeight=state.floor===2?UPPER:0;
   if(Number.isFinite(st.timeMinutes))state.timeMinutes=st.timeMinutes;
   if(typeof st.timeAutomatic==='boolean')state.timeAutomatic=st.timeAutomatic;
   if(Array.isArray(st.vehicles))for(const data of st.vehicles){const v=vehicles.find(k=>k.id===data.id);if(v&&Number.isFinite(data.x)&&Number.isFinite(data.z)){v.x=data.x;v.z=data.z;v.angle=data.angle||0;}}
@@ -1814,7 +1814,7 @@ const state={vehicle:null,lastMouseAt:0,lastCollisionToast:0,x:-8,z:61,yaw:0,pit
   if(Number.isFinite(st.weatherIndex))setWeather(st.weatherIndex,false);
   if(typeof st.weatherAutomatic==='boolean')weather.automatic=st.weatherAutomatic;
  }}catch(e){}
-function saveState(){const result={x:state.x,z:state.z,yaw:state.yaw,vehicleId:state.vehicle?.id||null,floor:state.floor,timeMinutes:state.timeMinutes,timeAutomatic:state.timeAutomatic,weatherIndex:weather.index,weatherAutomatic:weather.automatic,vehicles:vehicles.map(v=>({id:v.id,x:v.x,z:v.z,angle:v.angle}))};try{localStorage.setItem('lovescene_city_v02',JSON.stringify(result));toast('位置、時間與交通工具狀態已儲存。');}catch(_){toast('瀏覽器未允許本機儲存。');}}
+function saveState(silent=false){const result={x:state.x,z:state.z,yaw:state.yaw,pitch:state.pitch,cameraZoom:state.cameraZoom,vehicleId:state.vehicle?.id||null,floor:state.floor,timeMinutes:state.timeMinutes,timeAutomatic:state.timeAutomatic,weatherIndex:weather.index,weatherAutomatic:weather.automatic,vehicles:vehicles.filter(v=>v.id!=='chapter1_cab').map(v=>({id:v.id,x:v.x,z:v.z,angle:v.angle})),savedAt:Date.now()};try{localStorage.setItem('lovescene_city_v02',JSON.stringify(result));if(!silent)toast('✓ 已儲存位置、時間及劇情。重新整理可繼續遊玩。');return true;}catch(_){if(!silent)toast('瀏覽器無法儲存，請確認沒有使用無痕模式。');return false;}}
 
 // v1.6 -- prologue 2008 / three missions, thirteen playable story beats.
 // The physical film set, named actors, second-floor archive and main world stay unchanged.
@@ -1849,7 +1849,7 @@ function renderStoryQuest(){const item=STORY_BEATS[story.stage];if(!item)return;
  $('questdesc').textContent=item.desc+(story.stage===3?'（'+['wig','safety','actress'].filter(k=>story.flags[k]).length+'/3）':'');
  if(story.stage>=13)$('questdesc').textContent+=' 也可以重新造訪港口與各棟建築。';
 }
-function setStoryStage(index){story.stage=clamp(index,0,13);story.finished=story.stage>=13;saveStory();renderStoryQuest();
+function setStoryStage(index){story.stage=clamp(index,0,13);story.finished=story.stage>=13;saveStory();saveState(true);renderStoryQuest();
  if(story.finished)toast('🎞️ 序章完成！第一卷膠卷已放入收藏室。');
  else toast('主線更新：'+STORY_BEATS[story.stage].title);
 }
@@ -1983,7 +1983,26 @@ function canWalk(x,z){
  return true;
 }
 function inside(b){return Math.abs(state.x-b.x)<b.w/2-.2&&Math.abs(state.z-b.z)<b.d/2-.2;}
-function buildTargets(){const t=[];for(const v of vehicles)t.push({type:'vehicle',name:v.icon+' '+v.name,x:v.x,z:v.z,ref:v});for(const d of doors){const x=d.inner?d.x+1.35:d.ref.x;const z=d.z;t.push({type:'door',floor:d.floor||1,name:d.inner?'二樓電影收藏室':d.ref.name,x,z,ref:d});}for(const p of people)t.push({type:'npc',name:p.name,x:p.x,z:p.z,ref:p});t.push({type:'object',name:'閱讀港口電影節公告',x:4,z:71,lines:['第十五屆映灣電影節：如果愛情可以重新剪接，你會改變結局嗎？','映灣電影節開幕特別單元：那些來不及說出口的故事。']});t.push({type:'object',name:'查看1993年舊照片',floor:2,x:29,z:-46.5,lines:['照片裡是一對站在月台上的男女。背面寫著：1993。','（電影收藏室的故事線索已預留互動位置。）']});t.push({type:'object',name:'翻閱館藏索引卡',floor:2,x:19.2,z:-36.6,lines:['一整格一整格的索引卡，記錄著歷屆影展放映資料與私人捐贈片單。','其中幾張卡片被特別用紅線圈起來：1991、1993，以及「月台另一側」的工作底片。']});t.push({type:'object',name:'檢視老式放映機',floor:2,x:24.1,z:-48.0,lines:['這台 16mm 老式放映機被保養得很好，旁邊貼著維修紀錄。','最後一行註記寫著：有些畫面，只有在暗房裡才願意重新出現。']});t.push({type:'object',name:'閱讀影展工作手稿',floor:2,x:29.2,z:-36.4,lines:['桌上的手稿像是某一年策展提案的草稿。','頁角寫著一行字：如果愛情是一段被剪掉的鏡頭，那麼誰還記得它曾經存在？']});t.push({type:'object',name:'查看捐贈膠卷盒',floor:2,x:31.7,z:-47.0,lines:['金屬膠卷盒上貼著手寫標籤：匿名捐贈，請勿外借。','盒蓋背面留著鉛筆字：請把故事放回原來的位置。']});
+const SEATS=[
+ // 海灣步道現有四張公園長椅，椅背在 -Z 一側，面向海港。
+ ...[[-18,61],[37,61],[-38,56],[82,60]].map(([x,z],i)=>({id:'bench'+i,name:'海灣休憩長椅',x,z:z+.10,heading:Math.PI,lift:.54,floor:1})),
+ // 咖啡館原有木製餐椅，座面高度約 0.72m。避免新增占用走道的物件。
+ ...[19,25].flatMap((tableX,j)=>[16,22].flatMap((z,k)=>[-1,1].map(side=>({id:'cafe'+j+k+side,name:'咖啡館座椅',x:tableX+side*1.8,z,heading:0,lift:.43,floor:1}))))
+];
+function seatNear(){return SEATS.find(t=>state.floor===t.floor&&Math.hypot(state.x-t.x,state.z-t.z)<3.0)||null;}
+function sitDown(t){if(state.vehicle)return;state.sitting={id:t.id,x:t.x,z:t.z,heading:t.heading,lift:t.lift};state.x=t.x;state.z=t.z;state.dir=t.heading;state.walkPhase=0;toast('已坐下休息。按 F 或點擊互動鍵起身。');}
+function standUp(){const t=state.sitting;if(!t)return;state.sitting=null;state.x=t.x;state.z=t.z+(t.heading===Math.PI?.82:-.82);toast('已起身，可以繼續探索映灣市。');}
+function stepHeightAt(x,z){
+ if(state.floor!==1||state.vehicle)return 0;
+ // 實體建築入口前的低踏階：保持前進方向不變，腳步自動抬升。
+ for(const b of buildings){
+  if(Math.abs(x-b.x)<b.doorW*.5+.48&&z>=b.front+.10&&z<=b.front+2.10)return .20;
+ }
+ // 人行道低緣，僅在步行時增加輕微抬腳，既有碰撞與辦公室樓梯仍有效。
+ if([-50,0,50].some(v=>Math.abs(Math.abs(x-v)-5.95)<.45)||[-11,48].some(v=>Math.abs(Math.abs(z-v)-6.35)<.43))return .08;
+ return 0;
+}
+function buildTargets(){const t=[];for(const tSeat of SEATS)t.push({type:'seat',name:'坐下 · '+tSeat.name,x:tSeat.x,z:tSeat.z,floor:1,ref:tSeat});for(const v of vehicles)t.push({type:'vehicle',name:v.icon+' '+v.name,x:v.x,z:v.z,ref:v});for(const d of doors){const x=d.inner?d.x+1.35:d.ref.x;const z=d.z;t.push({type:'door',floor:d.floor||1,name:d.inner?'二樓電影收藏室':d.ref.name,x,z,ref:d});}for(const p of people)t.push({type:'npc',name:p.name,x:p.x,z:p.z,ref:p});t.push({type:'object',name:'閱讀港口電影節公告',x:4,z:71,lines:['第十五屆映灣電影節：如果愛情可以重新剪接，你會改變結局嗎？','映灣電影節開幕特別單元：那些來不及說出口的故事。']});t.push({type:'object',name:'查看1993年舊照片',floor:2,x:29,z:-46.5,lines:['照片裡是一對站在月台上的男女。背面寫著：1993。','（電影收藏室的故事線索已預留互動位置。）']});t.push({type:'object',name:'翻閱館藏索引卡',floor:2,x:19.2,z:-36.6,lines:['一整格一整格的索引卡，記錄著歷屆影展放映資料與私人捐贈片單。','其中幾張卡片被特別用紅線圈起來：1991、1993，以及「月台另一側」的工作底片。']});t.push({type:'object',name:'檢視老式放映機',floor:2,x:24.1,z:-48.0,lines:['這台 16mm 老式放映機被保養得很好，旁邊貼著維修紀錄。','最後一行註記寫著：有些畫面，只有在暗房裡才願意重新出現。']});t.push({type:'object',name:'閱讀影展工作手稿',floor:2,x:29.2,z:-36.4,lines:['桌上的手稿像是某一年策展提案的草稿。','頁角寫著一行字：如果愛情是一段被剪掉的鏡頭，那麼誰還記得它曾經存在？']});t.push({type:'object',name:'查看捐贈膠卷盒',floor:2,x:31.7,z:-47.0,lines:['金屬膠卷盒上貼著手寫標籤：匿名捐贈，請勿外借。','盒蓋背面留著鉛筆字：請把故事放回原來的位置。']});
  t.push({type:'object',name:'查看書店本週推薦',x:-22.4,z:-33.4,lines:['後頁書店把電影原著與劇本集排在靠窗的展示架上。','林夏禾在一張推薦書卡背面寫著：有些人喜歡故事的開頭，有些人只記得最後一句。']});
  t.push({type:'object',name:'查看咖啡館今日甜點',x:30.3,z:25.9,lines:['吧台的玻璃櫃裡有檸檬塔、奶油可頌與巧克力蛋糕。','店員說，映灣電影節開始後，最常賣完的是可以邊走邊吃的點心。']});
  t.push({type:'object',name:'查看戲院場次告示',x:77,z:27.0,lines:['映灣戲院的今日片單貼在售票窗口旁。','其中一張小小的舊片重映海報沒有片名，只寫著：月台另一側／1993。']});
@@ -2002,7 +2021,7 @@ function nearest(){
  for(const t of targets){
   if((t.floor||1)!==state.floor)continue;
   if(t.type==='story'&&(t.stage!==story.stage||(t.flag&&story.flags[t.flag])))continue;
-  const pos=t.type==='vehicle'?t.ref:t,dd=dist(state,pos),range=t.type==='vehicle'?(t.ref.type==='boat'?5.1:3.5):t.type==='stairs'?3.45:3.05;
+  const pos=(t.type==='vehicle'||t.type==='npc')?t.ref:t,dd=dist(state,pos),range=t.type==='vehicle'?(t.ref.type==='boat'?5.1:3.5):t.type==='stairs'?3.45:3.05;
   const score=dd-(t.type==='story'?.48:0);
   if(dd<range&&(!best||score<bestD)){best=t;bestD=score;}
  }
@@ -2014,9 +2033,9 @@ function startStair(useUp){
 }
 function interact(){
  if(state.overlay||state.map||state.characterPanel||state.roster)return;
- if(state.dialog){advance();return;}if(state.vehicle){exitVehicle();return;}
+ if(state.dialog){advance();return;}if(state.sitting){standUp();return;}if(state.vehicle){exitVehicle();return;}
  const t=nearest();if(!t)return;
- if(t.type==='story'){handleStoryTarget(t);return;}
+ if(t.type==='story'){handleStoryTarget(t);return;}if(t.type==='seat'){sitDown(t.ref);return;}
  if(t.type==='stairs'){startStair(t.up);return;}
  if(t.type==='vehicle'){enterVehicle(t.ref);return;}
  if(t.type==='door'){t.ref.targetOpen=!t.ref.targetOpen;toast(t.ref.targetOpen?'門已推開，可以直接走進室內。':'已關上門。');}
@@ -2028,7 +2047,7 @@ function advance(){if(!state.dialog)return;const d=state.dialog;if(d.choices&&d.
 function toast(str){$('toast').textContent=str;$('toast').classList.add('show');clearTimeout(state.toastTimeout);state.toastTimeout=setTimeout(()=>$('toast').classList.remove('show'),3000);}
 function openMenu(){state.overlay=true;state.map=false;state.characterPanel=false;state.roster=false;$('castSettings').classList.remove('show');$('castRoster').classList.remove('show');$('mapModal').classList.remove('show');$('overlay').classList.remove('hidden');$('modalTop').textContent='PAUSED / CITY EXPLORATION';$('modalTitle').textContent='映灣市探索選單';$('startBtn').textContent='返回城市';if(document.pointerLockElement===canvas)document.exitPointerLock();}
 function start(){state.overlay=false;$('overlay').classList.add('hidden');if(story.stage===0){story.introShown=true;saveStory();storyTalk('彭小滿',['你終於到了！歡迎來到 2008 年的映灣市。','我是彭小滿，電影節的現場執行製片。今天先帶你熟悉港口。','等等拍攝的吻戲，聽說連導演都很緊張。你先去看一下港邊公告吧！'],()=>setStoryStage(1));}}
-function toggleMap(){if(state.overlay||state.dialog)return;state.map=!state.map;$('mapModal').classList.toggle('show',state.map);if(state.map){drawMap($('bigmap'),true);if(document.pointerLockElement===canvas)document.exitPointerLock();}else if(!touchMode)canvas.requestPointerLock?.();}
+function toggleMap(){if(state.overlay||state.dialog)return;state.map=!state.map;$('mapModal').classList.toggle('show',state.map);if(state.map){drawMap($('bigmap'),true);requestAnimationFrame(()=>updateMapZoom(false));if(document.pointerLockElement===canvas)document.exitPointerLock();}else if(!touchMode)canvas.requestPointerLock?.();}
 $('startBtn').onclick=start;
 $('visitFilmStreet').onclick=()=>{
  if(state.vehicle){state.vehicle.speed=0;state.vehicle=null;$('vehiclehud').classList.remove('show');}
@@ -2036,7 +2055,9 @@ $('visitFilmStreet').onclick=()=>{
  state.x=50;state.z=-63;state.yaw=-Math.PI/2;state.dir=-Math.PI/2;state.pitch=.20;
  start();toast('已抵達光影起點街。往東沿石板路走，按 F 探索兩棟電影建築。');
 };
-$('saveBtn').onclick=saveState;$('resetBtn').onclick=()=>{if(state.vehicle){state.vehicle.speed=0;state.vehicle=null;$('vehiclehud').classList.remove('show');}state.x=-8;state.z=61;state.floor=1;state.levelHeight=0;state.yaw=0;state.pitch=.25;toast('已返回映灣港。');};$('nextLine').onclick=advance;$('mapClose').onclick=toggleMap;canvas.addEventListener('click',()=>{if(!touchMode&&!state.overlay&&!state.map&&!state.dialog&&document.pointerLockElement!==canvas)canvas.requestPointerLock?.();});
+$('saveBtn').onclick=saveState;$('resetBtn').onclick=()=>{if(state.vehicle){state.vehicle.speed=0;state.vehicle=null;$('vehiclehud').classList.remove('show');}state.x=-8;state.z=61;state.floor=1;state.levelHeight=0;state.yaw=0;state.pitch=.25;toast('已返回映灣港。');};$('nextLine').onclick=advance;$('mapClose').onclick=toggleMap;
+let mapScale=1;function updateMapZoom(focus=true){const canvas=$('bigmap'),viewport=$('bigmapViewport');const oldW=canvas.getBoundingClientRect().width||1,oldH=canvas.getBoundingClientRect().height||1;const centerX=viewport.scrollLeft+viewport.clientWidth/2,centerY=viewport.scrollTop+viewport.clientHeight/2;const fit=Math.min((viewport.clientWidth||640)/800,(viewport.clientHeight||480)/600);const width=800*fit*mapScale;canvas.style.width=width+'px';canvas.style.height=(width*600/800)+'px';$('mapZoomLabel').textContent=Math.round(mapScale*100)+'%';if(focus){requestAnimationFrame(()=>{viewport.scrollLeft=(centerX/oldW)*width-viewport.clientWidth/2;viewport.scrollTop=(centerY/oldH)*(width*600/800)-viewport.clientHeight/2;});}}
+$('mapZoomOut').onclick=()=>{mapScale=Math.max(1,mapScale/1.5);updateMapZoom();};$('mapZoomIn').onclick=()=>{mapScale=Math.min(5,mapScale*1.5);updateMapZoom();};$('bigmapViewport').addEventListener('wheel',e=>{if(e.ctrlKey){e.preventDefault();mapScale=Math.max(1,Math.min(5,mapScale*(e.deltaY<0?1.2:1/1.2)));updateMapZoom();}},{passive:false});canvas.addEventListener('click',()=>{if(!touchMode&&!state.overlay&&!state.map&&!state.dialog&&document.pointerLockElement!==canvas)canvas.requestPointerLock?.();});
 window.addEventListener('keydown',e=>{
  if(['Tab','Space','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.code))e.preventDefault();
  const editing=e.target instanceof HTMLInputElement||e.target instanceof HTMLSelectElement;
@@ -2094,7 +2115,7 @@ window.addEventListener('blur',()=>{releaseStick();cameraPointer=null;});
 document.addEventListener('visibilitychange',()=>{if(document.hidden){releaseStick();cameraPointer=null;keys.ShiftLeft=false;keys.Space=false;}});
 function mobileInput(){if(!touchMode)return;keys.KeyW=touchMove.y<-.22;keys.KeyS=touchMove.y>.22;keys.KeyA=touchMove.x<-.22;keys.KeyD=touchMove.x>.22;
  const brake=$('touchBrake'),run=$('touchRun'),action=$('touchInteract');brake.style.display=state.vehicle?'block':'none';run.style.display=state.vehicle?'none':'';
- action.innerHTML=state.vehicle?'下車<br>／下船':state.dialog?'繼續': '互動<br>／上車';
+ action.innerHTML=state.sitting?'起身':state.vehicle?'下車<br>／下船':state.dialog?'繼續': '互動<br>／上車';
  $('touchTools').style.pointerEvents='auto';
 }
 // render model for protagonist and NPCs
@@ -2322,18 +2343,19 @@ function drawCharacter(x,z,heading,name,moving=false,phase=0,rideType=null,eleva
  const m=getCharacterModel(name);if(!m)return;
  const a=m.appearance,s=m.scale;
  const bounce=moving?Math.abs(Math.sin(phase*1.75))*.022:Math.sin(phase*.25)*.005;
- const root=mul(translate(x,elevation+bounce,z),mul(turnY(heading+Math.PI),scale(s,s,s)));
+ const seated=name==='player_protagonist'&&!!state.sitting&&!rideType;const sittingDrop=seated?state.sitting.lift:0;
+ const root=mul(translate(x,elevation+bounce-sittingDrop,z),mul(turnY(heading+Math.PI),scale(s,s,s)));
  draw(m.body,root,vp);draw(m.head,root,vp);
  const stride=moving?Math.sin(phase*1.75)*.37:0;
  const mesh=new Builder();
  for(const side of [-1,1]){
   const sh=a.gender==='male'?.412:a.gender==='female'?.352:.385;
-  const A=[side*sh,1.792,-.008],E=[side*(sh+.075),1.43,-side*stride*.22],W=[side*(sh+.045),1.115,-side*stride*.58+.01];
+  const A=[side*sh,1.792,-.008],E=seated?[side*(sh+.04),1.43,.19]:[side*(sh+.075),1.43,-side*stride*.22],W=seated?[side*.25,1.10,.37]:[side*(sh+.045),1.115,-side*stride*.58+.01];
   mesh.smoothLimb(A,E,W,.131,.105,.078,a.top);
   mesh.smoothLimb(W,[W[0],W[1]-.075,W[2]],[W[0],W[1]-.125,W[2]+.014],.084,.074,.053,a.skin,5,9);
   const hip=[side*.185,1.10,0],ankleZ=side*stride*.70;
   const lift=moving?Math.max(0,side*stride)*.19:0;
-  const knee=[side*.187,.625+lift*.2,ankleZ*.48+.055],ankle=[side*.19,.16+lift,ankleZ];
+  const knee=seated?[side*.187,1.06,.49]:[side*.187,.625+lift*.2,ankleZ*.48+.055],ankle=seated?[side*.19,sittingDrop+.19,.56]:[side*.19,.16+lift,ankleZ];
   mesh.smoothLimb(hip,knee,ankle,.176,.137,.090,a.pants);
   mesh.ellipsoid(ankle[0],ankle[1]-.07,ankle[2]+.075,.157,.097,.246,a.shoes,16,10);
  }
@@ -2460,11 +2482,12 @@ const storyWorldTag=tag('★ 主線目標');storyWorldTag.style.background='#f6d
 const indoorExitTag=tag('🚪 出口 · 按 F 開門');indoorExitTag.style.borderColor='#6b9b94';indoorExitTag.style.color='#2a645f';
 function project(pt,mat){const x=pt[0],y=pt[1],z=pt[2],w=mat[3]*x+mat[7]*y+mat[11]*z+mat[15];if(w<.01)return null;const qx=(mat[0]*x+mat[4]*y+mat[8]*z+mat[12])/w,qy=(mat[1]*x+mat[5]*y+mat[9]*z+mat[13])/w;return {x:(qx+1)*innerWidth/2,y:(1-qy)*innerHeight/2};}
 function tick(now){requestAnimationFrame(tick);if(touchMode&&now-lastTime<31)return;let dt=clamp((now-lastTime)/1000,0,.05);lastTime=now;resize();mobileInput();updateWeather(dt);if(state.timeAutomatic&&!state.overlay&&!state.map&&!state.dialog)state.timeMinutes=(state.timeMinutes+dt*2.0)%1440;
-const moving=!state.overlay&&!state.map&&!state.dialog&&!state.characterPanel&&!state.roster;let vF=0,vR=0;if(moving&&!state.vehicle){if(keys.KeyW||keys.ArrowUp)vF++;if(keys.KeyS||keys.ArrowDown)vF--;if(keys.KeyD||keys.ArrowRight)vR++;if(keys.KeyA||keys.ArrowLeft)vR--;}
+const moving=!state.overlay&&!state.map&&!state.dialog&&!state.characterPanel&&!state.roster&&!state.sitting;let vF=0,vR=0;if(moving&&!state.vehicle){if(keys.KeyW||keys.ArrowUp)vF++;if(keys.KeyS||keys.ArrowDown)vF--;if(keys.KeyD||keys.ArrowRight)vR++;if(keys.KeyA||keys.ArrowLeft)vR--;}
 if(touchMode&&!state.vehicle){vF=-touchMove.y;vR=touchMove.x;}const length=Math.hypot(vF,vR);state.run=!!(keys.ShiftLeft||keys.ShiftRight);let velocity=length?(state.run?(buildings.some(inside)?6.8:8.8):(buildings.some(inside)?4.3:5.2)):0;if(length&&!state.vehicle){vF/=length;vR/=length;const dx=(-Math.sin(state.yaw)*vF+Math.cos(state.yaw)*vR)*velocity*dt*(touchMode?Math.min(1,length):1),dz=(-Math.cos(state.yaw)*vF-Math.sin(state.yaw)*vR)*velocity*dt*(touchMode?Math.min(1,length):1);
  if(canWalk(state.x+dx,state.z))state.x+=dx;if(canWalk(state.x,state.z+dz))state.z+=dz;state.dir=Math.atan2(-dx,-dz);state.walkPhase+=dt*velocity;}
 if(state.vehicle)updateVehicle(state.vehicle,dt,keys,moving);
 syncOfficeLevel();
+state.stepLift=lerp(state.stepLift||0,state.sitting?0:stepHeightAt(state.x,state.z),Math.min(1,dt*9));
 if(moving&&story.stage===5&&inside(buildings.find(b=>b.id==='home'))&&!state.vehicle){storyTalk('主角公寓',['這是電影節安排的臨時住處。窗外能看到映灣市的街燈與港灣。','你放好行李，把皺成一團的工作流程單攤在桌上。','彭小滿留了一張字條：「明早記得去電影節辦公室簽合約！」'],()=>setStoryStage(6));}
 for(const d of doors){d.open=lerp(d.open||0,d.targetOpen?1.33:0,Math.min(1,dt*5));if(d.ref)d.ref.doorOpen=d.open;}
 const currentRoom=!state.vehicle?buildings.find(inside):null;
@@ -2476,7 +2499,7 @@ const currentRoom=!state.vehicle?buildings.find(inside):null;
  state.smoothCameraDist=Number.isFinite(state.smoothCameraDist)?lerp(state.smoothCameraDist,requestedDist,easeDist):requestedDist;
  state.smoothPitch=Number.isFinite(state.smoothPitch)?lerp(state.smoothPitch,state.pitch,easePitch):state.pitch;
  const camDist=state.smoothCameraDist,pitch=state.smoothPitch;
- const baseFocusY=state.levelHeight+(state.vehicle?1.62:1.48);
+ const baseFocusY=state.levelHeight+state.stepLift+(state.sitting ? .94 : (state.vehicle?1.62:1.48));
  const lookOffset=Math.max(0,-pitch)*(currentRoom?3.45:2.7);
  const focus=[state.x,baseFocusY+Math.min(lookOffset,onOfficeStairs?1.4:3.7),state.z];
  const yOffset=state.vehicle?4.0+pitch*camDist:Math.sin(pitch+.11)*camDist+(currentRoom?.36:1.05);
@@ -2562,10 +2585,10 @@ for(const p of people){const dr=dist(p,state);if(touchMode&&dr>62)continue;if(dr
  if(SPEC_BY_NAME.has(p.name))drawCharacter(p.x,p.z,p.face,p.name,false,now/1000+p.phase);
  else drawExtraNPC(p,now/1000);}
 for(const v of vehicles){if(touchMode&&v!==state.vehicle&&dist(v,state)>86)continue;renderVehicle(v);if(v.type==='carriage')movingHorse(v);}
-if(!state.vehicle)drawCharacter(state.x,state.z,state.dir,'player_protagonist',!!length,state.walkPhase,null,state.levelHeight);
+if(!state.vehicle)drawCharacter(state.x,state.z,state.sitting?.heading??state.dir,'player_protagonist',!!length&&!state.sitting,state.walkPhase,null,state.levelHeight+state.stepLift);
 else{const v=state.vehicle;riderPose(v,now);const num=v.type==='boat'?Math.abs(v.speed)*1.94384:Math.abs(v.speed)*3.6;$('vehicleSpeed').textContent=Math.round(num)+(v.type==='boat'?' 節':' km/h');}
 if(now-updateMapTick>100){drawMap($('minimap'),false);updateMapTick=now;}
-const target=moving&&!state.vehicle?nearest():null;if(state.vehicle){$('promptText').textContent=state.vehicle.type==='boat'?'靠碼頭停船後下船':'停穩後下車';$('prompt').classList.add('show');}else if(target){$('promptText').textContent=target.type==='vehicle'?'駕駛 '+target.name:target.type==='stairs'?(target.up?'沿樓梯步行上二樓':'沿樓梯步行下一樓'):target.type==='door'?(target.ref.inner?'推開電影收藏室的門':inside(target.ref.ref)?(target.ref.targetOpen?'關上出口門':'推門離開 '+target.ref.ref.name):(target.ref.targetOpen?'關上':'推開')+'「'+target.name+'」的門'):target.type==='npc'?'與 '+target.name+' 交談':target.name;$('prompt').classList.add('show');}else $('prompt').classList.remove('show');
+const target=moving&&!state.vehicle?nearest():null;if(state.sitting){$('promptText').textContent='從座椅起身';$('prompt').classList.add('show');}else if(state.vehicle){$('promptText').textContent=state.vehicle.type==='boat'?'靠碼頭停船後下船':'停穩後下車';$('prompt').classList.add('show');}else if(target){$('promptText').textContent=target.type==='vehicle'?'駕駛 '+target.name:target.type==='stairs'?(target.up?'沿樓梯步行上二樓':'沿樓梯步行下一樓'):target.type==='door'?(target.ref.inner?'推開電影收藏室的門':inside(target.ref.ref)?(target.ref.targetOpen?'關上出口門':'推門離開 '+target.ref.ref.name):(target.ref.targetOpen?'關上':'推開')+'「'+target.name+'」的門'):target.type==='npc'?'與 '+target.name+' 交談':target.name;$('prompt').classList.add('show');}else $('prompt').classList.remove('show');
 const doorpos=currentRoom&&state.floor===1?project([currentRoom.x,3.78,currentRoom.front-.34],vp):null;
  if(doorpos&&doorpos.x>0&&doorpos.x<innerWidth&&doorpos.y>0&&doorpos.y<innerHeight&&!state.overlay){
   indoorExitTag.style.left=doorpos.x+'px';indoorExitTag.style.top=doorpos.y+'px';indoorExitTag.style.display='block';
@@ -2657,7 +2680,8 @@ renderStoryQuest=function(){
 function ch1Step(n){
  ch1.beat=Math.max(0,Math.min(14,n));ch1.done=ch1.beat===14;ch1Save();
  if(ch1.beat!==3)ch1RemoveTaxi();
- ch1BuildPoints();renderStoryQuest();
+ ch1BuildPoints();renderStoryQuest();if(typeof lockQuestActors==='function')lockQuestActors();
+ saveState(true);
  toast(ch1.done?'🎞️ 第一章完成，電影收藏室已更新。':'第一章目標：'+CH1_BEATS[ch1.beat].title);
 }
 const ch1OriginalSetStoryStage=setStoryStage;
@@ -3172,6 +3196,32 @@ const LIFE_PLACES={
  books:{name:'後頁書店',x:-29,z:-42},quay:{name:'港邊步道',x:55,z:72},
  plaza:{name:'市集街口',x:1,z:47},filmStreet:{name:'光影起點街',x:62,z:-73}
 };
+// v2.2: keep speaking actors physically present at quest locations.
+// Chapter interactions previously displayed a speaker name without a rendered NPC.
+const QUEST_CAST_POINTS={
+ 0:[['彭小滿',21.6,-35.9]],
+ 1:[['阮知音',75.9,-19.3],['陸以辰',78.9,-19.5]],
+ 4:[['阮知音',29.0,17.4],['陸以辰',31.8,18.2]],
+ 5:[['江予白',78,32]],
+ 8:[['阮知音',76.7,23.5],['陸以辰',78.6,23.6]],
+ 9:[['江予白',78,32],['林夏禾',76,30.6]],
+ 10:[['陸以辰',46,11]],
+ 12:[['陸以辰',-7,74.2]]
+};
+function chapterActorAnchor(name){
+ if(story.stage<13||ch1.done)return null;
+ const row=(QUEST_CAST_POINTS[ch1.beat]||[]).find(r=>r[0]===name);
+ return row?{x:row[1],z:row[2]}:null;
+}
+function lockQuestActors(){
+ if(story.stage<13||ch1.done)return;
+ const rows=QUEST_CAST_POINTS[ch1.beat]||[];
+ for(const [name,x,z] of rows){
+  const rec=lifePeople.get(name);if(!rec)continue;
+  rec.person.x=x;rec.person.z=z;rec.slot=null;rec.arrival=null;
+  rec.person.rest=true;
+ }
+}
 // Hours are game clock hours. Each character follows a recurring 2008 film-festival day.
 const LIFE_CAST={
  '彭小滿':{job:'電影節現場製片',moods:['忙碌','專注','收工'],schedule:[[0,'office'],[8,'harbor'],[11,'office'],[14,'cinemaFront'],[17,'harbor'],[21,'office']],lines:{morning:['我帶了三份流程表，現在只找得到兩份。','你今天有空的話，記得看看電影節的工作手帳。'],afternoon:['片場說已經準備好了。我聽到這句話就開始緊張。','今天海港的光線很好，導演應該會喜歡。'],evening:['今天最厲害的事？大家都準時收工。','我明天打算先確認工作證，再碰咖啡。']}},
@@ -3198,6 +3248,7 @@ function lifeChoosePosition(name,slot){const pt=LIFE_PLACES[slot];const all=[{x:
 function lifeCanMove(){return story.stage>=13&&!state.overlay&&!state.map&&!state.dialog&&!state.characterPanel&&!state.roster;}
 function lifeStoryLock(name){
  if(story.stage<13)return true;
+ if(chapterActorAnchor(name))return true;
  if(!ch1.done){
   if(name==='阮知音'&&[1,4].includes(ch1.beat))return true;
   if(name==='江予白'&&[5,6,9].includes(ch1.beat))return true;
@@ -3214,6 +3265,7 @@ function lifeUpdate(now){
  for(const [name,record] of lifePeople){
   const p=record.person;
   if(lifeStoryLock(name)){
+   const anchor=chapterActorAnchor(name);if(anchor){p.x=anchor.x;p.z=anchor.z;record.slot=null;record.arrival=null;continue;}
    if(record.slot!==null){if(Math.hypot(state.x-p.x,state.z-p.z)>19){p.x=record.original.x;p.z=record.original.z;record.slot=null;}}
    continue;
   }
@@ -3304,8 +3356,97 @@ window.addEventListener('keydown',ev=>{if(lifePanel.classList.contains('open')){
 if(touchMode)$('touchTools').appendChild(lifeButton);else document.body.appendChild(lifeButton);
 let lifeLast=0;
 function lifeLoop(now){requestAnimationFrame(lifeLoop);if(now-lifeLast<100)return;lifeLast=now;lifeUpdate(now);}
-requestAnimationFrame(lifeLoop);
+lockQuestActors();requestAnimationFrame(lifeLoop);
+// v2.2 autosave: game position, weather/time, all chapter/side/life progress.
+// Progress already uses its original localStorage keys; save keys stay backward compatible.
+function persistWholeGame(silent=true){
+ const ok=saveState(silent);
+ try{saveStory();ch1Save();sideSave();lifeSave();saveCastPlayer();}catch(_e){}
+ return ok;
+}
+let lastAutoSave=performance.now();
+function autoSaveLoop(now){requestAnimationFrame(autoSaveLoop);
+ if(now-lastAutoSave<8000)return;lastAutoSave=now;
+ if(!state.overlay&&!state.dialog&&!state.map&&!state.characterPanel&&!state.roster)persistWholeGame(true);
+}
+requestAnimationFrame(autoSaveLoop);
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')persistWholeGame(true);});
+window.addEventListener('pagehide',()=>persistWholeGame(true));
+window.addEventListener('beforeunload',()=>persistWholeGame(true));
+// Explicit save action is accessible from the compact mobile menu.
+const quickSave=document.createElement('button');quickSave.type='button';quickSave.id='touchSaveNow';quickSave.textContent='💾 儲存進度';
+quickSave.onclick=()=>persistWholeGame(false);
+if(touchMode)$('touchTools').appendChild(quickSave);
+// Backup/restore lets GitHub Pages and local-file versions share save data if browser origins differ.
+const saveBundleKeys=['lovescene_city_v02',STORY_KEY,CH1_KEY,SIDE_KEY,LIFE_KEY,CAST_KEY];
+const exportSave=document.createElement('button');exportSave.type='button';exportSave.id='touchExportSave';exportSave.textContent='📤 匯出存檔';
+exportSave.onclick=()=>{persistWholeGame(true);
+ const data={game:'LoveFilm',schema:2,exportedAt:new Date().toISOString(),items:{}};
+ for(const key of saveBundleKeys){const val=localStorage.getItem(key);if(val!==null)data.items[key]=val;}
+ const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='LoveFilm_Save_Backup.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),4000);
+ toast('已匯出存檔備份，可在其他瀏覽器或版本匯入。');
+};
+const importSave=document.createElement('button');importSave.type='button';importSave.id='touchImportSave';importSave.textContent='📥 匯入存檔';
+const importInput=document.createElement('input');importInput.type='file';importInput.accept='.json,application/json';importInput.style.display='none';document.body.appendChild(importInput);
+importSave.onclick=()=>importInput.click();
+importInput.onchange=async()=>{const file=importInput.files?.[0];if(!file)return;
+ try{const data=JSON.parse(await file.text());if(data.game!=='LoveFilm'||!data.items||typeof data.items!=='object')throw Error('不是本遊戲的存檔');
+  const entries=Object.entries(data.items).filter(([k,v])=>saveBundleKeys.includes(k)&&typeof v==='string');
+  if(!entries.length)throw Error('存檔中沒有可讀取的資料');
+  if(!confirm('匯入存檔將取代此瀏覽器目前的進度，確定要繼續嗎？'))return;
+  for(const [k,v] of entries){JSON.parse(v);localStorage.setItem(k,v);}
+  alert('存檔匯入成功。重新載入後會回到存檔的位置與劇情。');location.reload();
+ }catch(err){alert('無法匯入存檔：'+err.message);}finally{importInput.value='';}
+};
+if(touchMode){$('touchTools').appendChild(exportSave);$('touchTools').appendChild(importSave);}
+// Desktop: use P for manual save; the pause screen gets backup controls too.
+const saveActionBar=document.createElement('div');saveActionBar.id='saveActionBar';saveActionBar.style.cssText='display:flex;gap:8px;flex-wrap:wrap;margin-top:12px';
+for(const [button,label] of [[exportSave,'匯出存檔'],[importSave,'匯入存檔']]){const copy=document.createElement('button');copy.className='soft';copy.type='button';copy.textContent=label;copy.onclick=()=>button.click();saveActionBar.appendChild(copy);}
+const menuAction=$('modal').querySelector('.actions');if(menuAction)menuAction.after(saveActionBar);
+$('saveBtn').onclick=()=>persistWholeGame(false);
+const savedGame=localStorage.getItem('lovescene_city_v02');
+if(savedGame&&story.stage>0){$('modalDesc').textContent='已找到上次存檔。點擊「繼續遊戲」會回到先前的位置和劇情進度。遊戲每 8 秒自動儲存，切換分頁與重新整理前也會儲存。';$('startBtn').textContent='繼續遊戲';}
+window.LoveFilmSave={version:'2.2',save:()=>persistWholeGame(false),keys:saveBundleKeys.slice()};
 window.LoveFilmNPCLife={version:'2.0',getSchedule:()=>Object.fromEntries(Object.entries(LIFE_CAST).map(([k,c])=>[k,c.schedule.map(([hour,p])=>({hour,place:LIFE_PLACES[p].name}))])),getRelationships:()=>({...life.affinity}),getLocations:()=>Object.fromEntries([...lifePeople].map(([n,r])=>[n,{x:r.person.x,z:r.person.z,slot:r.slot}]))};
 /* === END LOVEFILM NPC DAILY LIFE === */
 
-})();</script></body></html>
+})();</script>
+<style id="v21-responsive">
+/* 手機收合式右上工具選單：預設只顯示一顆按鈕，完整保留既有功能。 */
+.touchUI #touchTools{z-index:25!important;right:max(8px,env(safe-area-inset-right))!important;top:121px!important;display:flex!important;flex-direction:column;align-items:flex-end;gap:5px;max-width:min(290px,75vw)}
+.touchUI #touchTools #touchQuickToggle{display:inline-flex;justify-content:center;align-items:center;gap:5px;min-width:86px;padding:10px 12px;font-size:12px;background:#244e58f2;border:1px solid #ffffffbb;border-radius:12px;color:white}
+.touchUI #touchQuickItems{display:none;grid-template-columns:repeat(2,minmax(90px,1fr));gap:6px;padding:9px;max-height:min(62dvh,420px);overflow:auto;background:#183a45ed;border:1px solid #ffffff88;box-shadow:0 7px 28px #071a2366;border-radius:14px;min-width:206px}
+.touchUI #touchTools.expanded #touchQuickItems{display:grid}
+.touchUI #touchQuickItems button{width:100%;position:static!important;min-width:0;padding:10px 7px!important;min-height:39px;font-size:11px!important;white-space:normal;line-height:1.35}
+.touchUI #touchQuickItems #touchMap{background:#b98d59;color:#152f37}
+.touchUI #mapModal{z-index:42!important;padding:0;align-items:stretch;justify-content:stretch;overflow:hidden}
+.touchUI #bigmapWrap{height:100dvh;max-height:100dvh;width:100vw!important;max-width:100vw;padding:max(8px,env(safe-area-inset-top)) 10px max(8px,env(safe-area-inset-bottom));border-radius:0;display:flex;flex-direction:column;box-sizing:border-box}
+#mapToolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:9px}
+#mapToolbar h2{margin:0;font-size:18px}
+#mapZoomControls{display:flex;align-items:center;gap:7px;white-space:nowrap}
+#mapZoomControls button{padding:6px 12px;font-size:18px;min-height:35px}
+#mapZoomLabel{font-size:12px;min-width:45px;text-align:center}
+#bigmapViewport{overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y;flex:1;min-height:120px;max-height:min(70vh,650px);background:#e4e5d4;border-radius:12px;border:1px solid #bdc9bf}
+#bigmap{display:block;max-width:none!important;max-height:none!important;object-fit:fill!important;width:100%;height:auto}
+.touchUI #bigmapViewport{max-height:none;min-height:0}
+.touchUI #mapClose{align-self:flex-end;margin-top:8px;padding:10px 17px}
+.touchUI #touchTools.expanded{max-height:75dvh}
+@media(max-height:430px) and (orientation:landscape){.touchUI #touchTools{top:7px!important;right:125px!important}.touchUI #touchQuickItems{max-height:73dvh}.touchUI #mapToolbar h2{font-size:15px}}
+</style>
+<script id="v21-mobile-menu">
+(()=>{'use strict';
+ const tools=document.getElementById('touchTools');if(!tools)return;
+ const toggle=document.createElement('button');toggle.id='touchQuickToggle';toggle.type='button';toggle.textContent='☰ 功能選單';toggle.setAttribute('aria-expanded','false');
+ const items=document.createElement('div');items.id='touchQuickItems';
+ for(const el of [...tools.children])items.appendChild(el);
+ tools.append(toggle,items);
+ function close(){tools.classList.remove('expanded');toggle.setAttribute('aria-expanded','false');toggle.textContent='☰ 功能選單';}
+ toggle.addEventListener('click',()=>{const open=!tools.classList.contains('expanded');tools.classList.toggle('expanded',open);toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'× 收合選單':'☰ 功能選單';});
+ items.addEventListener('click',e=>{if(e.target.closest('button'))close();});
+ document.addEventListener('pointerdown',e=>{if(!tools.contains(e.target))close();});
+ // 新增按鈕的情形仍放回收合選單，避免擠滿螢幕。
+ const observer=new MutationObserver(ms=>{for(const m of ms)for(const n of m.addedNodes)if(n.nodeType===1&&n!==toggle&&n!==items&&n.tagName==='BUTTON')items.appendChild(n);});
+ observer.observe(tools,{childList:true});
+})();
+</script>
+</body></html>
