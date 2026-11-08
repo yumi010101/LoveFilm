@@ -3875,6 +3875,7 @@ function lifeChoosePosition(name,slot){const pt=LIFE_PLACES[slot];
 }
 function lifeCanMove(){return story.stage>=13&&!state.overlay&&!state.map&&!state.dialog&&!state.characterPanel&&!state.roster;}
 function lifeStoryLock(name){
+ if(chapter2ActorAnchor(name))return true;
  if(story.stage<13)return true;
  if(chapterActorAnchor(name))return true;
  if(!ch1.done){
@@ -3891,6 +3892,8 @@ function lifeUpdate(now){
  if(!lifeCanMove())return;
  const hour=lifeHour(),time=now/1000;
  for(const [name,record] of lifePeople){
+  const chapterAnchor=chapter2ActorAnchor(name);
+  if(chapterAnchor){record.person.x=chapterAnchor.x;record.person.z=chapterAnchor.z;record.slot=null;record.arrival=null;record.person.rest=true;continue;}
   const cinema=buildings.find(b=>b.id==='cinema');
   const p=record.person;
   if(lifeStoryLock(name)){
@@ -4096,8 +4099,21 @@ const ch2MainNames=['07｜電影節辦公室・寄錯的情書','07｜調查三�
  '08｜中央廣場・三則訊息','08｜探訪三位主角','08｜全城浪漫之夜・居民互動','08｜發現 1993 年電影票',
  '09｜廣場放映事故','09｜控制室・檢查三項資料','09｜預覽神秘影片','09｜決定影片的處理方式','09｜恢復放映設備',
  '09｜協助公開告白','09｜觀看市民愛情短片','09｜散場後的戀愛事件','09｜二樓收藏室・電影道具','09｜神秘訊息・第三章預告','第二章已完成'];
-const CH2_LOC={office:{x:24,z:-34},book:{x:-28,z:-35},cinema:{x:77,z:29},harbor:{x:-7,z:75},cafe:{x:29,z:18},florist:{x:77,z:-34},plaza:{x:5,z:67},post:{x:-73,z:27},upper:{x:24.1,z:-48,floor:2},booth:{x:78,z:29}};
-function ch2Point(id,name,doit,floor){const p=CH2_LOC[id];return {type:'chapter2',name,x:p.x,z:p.z,floor:floor||p.floor||1,act:doit};}
+const CH2_LOC={office:{x:24,z:-32.5},book:{x:-26,z:-26.5},cinema:{x:88,z:38.2},harbor:{x:-7,z:73.5},cafe:{x:29,z:18},florist:{x:77,z:-27},plaza:{x:5,z:65},post:{x:-73,z:31.5},upper:{x:24.1,z:-48,floor:2},booth:{x:89,z:38.2}};
+function ch2Point(id,name,doit,floor){const p=CH2_LOC[id];return {type:'chapter2',name,x:p.x,z:p.z,floor:floor||p.floor||1,act:doit,place:id};}
+// Chapter II test keeps story actors beside their actual quest markers.
+function chapter2ActorAnchor(name){
+ if(!ch2Unlocked()||ch2.main>=18)return null;
+ const m=ch2.main,f=ch2.mainFlags;
+ const places={
+  '彭小滿':m===0?CH2_LOC.office:(m===4||m===6||m===8||m===12||m===14)?CH2_LOC.plaza:null,
+  '阮知音':((m===1&&!f['07_ruan'])||(m===5&&!f['08_ruan']))?CH2_LOC.book:null,
+  '江予白':((m===1&&!f['07_jiang'])||(m===5&&!f['08_jiang'])||[9,10,11].includes(m))?CH2_LOC.cinema:null,
+  '林夏禾':((m===1&&!f['07_lin'])||(m===5&&!f['08_lin']))?CH2_LOC.harbor:null,
+  '方景森':m===3?CH2_LOC.office:null
+ };
+ return places[name]||null;
+}
 function ch2Talk(who,lines,after){ch1Talk(who,lines,after);}
 function ch2Choose(who,lines,opts){ch1Choose(who,lines,opts.map(o=>({text:o[0],pick:o[1]})));}
 function ch2Progress(n){ch2.main=n;ch2Save();ch2Refresh();toast(n>=18?'🎬 第二章完成！':'第二章目標：'+ch2MainNames[n]);}
@@ -4272,7 +4288,7 @@ function ch2SideTargets(){if(!ch2Unlocked())return [];const out=[];
 }
 function ch2Targets(){return [...ch2Missions(),...ch2SideTargets()];}
 function ch2Nearby(){if(!ch2Unlocked()||state.overlay||state.map||state.dialog||state.vehicle||state.characterPanel||state.roster||ch2Sheet.classList.contains('open'))return null;
- let a=null,score=4.2;for(const t of ch2Targets())if(t.floor===state.floor){const d=Math.hypot(state.x-t.x,state.z-t.z);const s=d+(t.type==='chapter2'&&t.name.startsWith('S')?.3:0);if(d<4.2&&s<score){a=t;score=s;}}return a;}
+ let a=null,score=6.6;for(const t of ch2Targets())if(t.floor===state.floor){const d=Math.hypot(state.x-t.x,state.z-t.z);const s=d+(t.type==='chapter2'&&t.name.startsWith('S')?.3:0);if(d<6.6&&s<score){a=t;score=s;}}return a;}
 const ch2NearestOriginal=nearest;
 nearest=function(){return ch2Nearby()||ch2NearestOriginal();};
 const ch2InteractOriginal=interact;
@@ -4328,6 +4344,84 @@ const oldSideBegin=sideBegin;
 sideBegin=function(id){if(String(id).startsWith('ch2_')){ch2.active=id.slice(4);ch2Save();return;}return oldSideBegin(id);};
 window.LoveFilmChapterTwo={version:'4.6',progress:()=>JSON.parse(JSON.stringify(ch2)),collection:()=>ch2Collection.map(x=>({...x,unlocked:ch2Has(x.id)})),open:ch2Open};
 ch2Refresh();
+
+/* === v4.8 TEST NAVIGATION & QUEST INTERACTION PATCH === */
+const ch2FixStyle=document.createElement('style');ch2FixStyle.textContent=`
+#ch2Waypoint{display:none;position:fixed;z-index:7;pointer-events:none;transform:translate(-50%,-100%);padding:9px 12px;border:2px solid #ffe0a6;border-radius:11px;background:#193f4cf0;color:#fff3d8;font-size:13px;font-weight:800;box-shadow:0 5px 25px #001b2866;max-width:min(280px,60vw);text-align:center;line-height:1.35}
+#ch2Waypoint:after{content:'▼';position:absolute;left:calc(50% - 7px);bottom:-20px;color:#ffe0a6;font-size:17px}
+#ch2TaskDock{position:fixed;z-index:19;bottom:118px;left:50%;transform:translateX(-50%);display:none;align-items:center;gap:8px;padding:8px 10px;border:1px solid #f2d5a2ab;background:#173d48eb;border-radius:13px;box-shadow:0 6px 20px #061f295b;color:#fff5e3;max-width:min(94vw,660px)}
+#ch2TaskDock button{white-space:nowrap;font-size:12px;padding:9px 12px;background:#d8aa6a;color:#253d44}
+#ch2TaskDock span{font-size:12px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#ch2TaskDock .ch2Jump{background:#386b77;color:#f7f3e8}
+#ch2Content .ch2MainCard{background:#fffaf1;border-color:#d8a669}
+#ch2Content .ch2MainCard button{background:#376b72}
+#ch2Content .ch2MainCard button.ch2Play{background:#aa7455}
+.touchUI #ch2TaskDock{bottom:max(134px,env(safe-area-inset-bottom) + 125px);padding:6px;gap:5px;max-width:62vw;left:53%}
+.touchUI #ch2TaskDock span{display:none}
+.touchUI #ch2TaskDock button{font-size:11px;padding:8px 9px}
+.touchUI #ch2Waypoint{font-size:11px;padding:6px 8px;z-index:4}
+@media(max-height:540px){#ch2TaskDock{bottom:74px}.touchUI #ch2TaskDock{bottom:99px;max-width:48vw;left:50%}}
+`;document.head.appendChild(ch2FixStyle);
+const ch2Way=document.createElement('div');ch2Way.id='ch2Waypoint';document.body.appendChild(ch2Way);
+const ch2Dock=document.createElement('div');ch2Dock.id='ch2TaskDock';ch2Dock.innerHTML='<span id="ch2DockName"></span><button id="ch2DockTalk" type="button">✦ 互動</button><button id="ch2DockTasks" type="button" class="ch2Jump">任務清單</button>';document.body.appendChild(ch2Dock);
+let ch2SelectedTargetName='';
+function ch2CurrentTarget(){
+ const all=ch2Targets();if(!all.length)return null;
+ const selected=all.find(t=>t.name===ch2SelectedTargetName);
+ return selected||((ch2.active==='main')?all.find(t=>!t.name.startsWith('S')):all.find(t=>t.name.startsWith(ch2SideInfo[ch2.active]?.name||'~~')))||all[0];
+}
+function ch2ChooseTarget(t){ch2SelectedTargetName=t.name;ch2.active=t.name.startsWith('S')?Object.keys(ch2SideInfo).find(k=>t.name.startsWith(ch2SideInfo[k].name))||'main':'main';lfNavChoice=t.name.startsWith('S')?'ch2_'+ch2.active:'main';lfNavEnabled=true;lfNavStore();ch2Save();ch2Refresh();lfNavRefresh();}
+function ch2Teleport(t){
+ ch2ChooseTarget(t);if(state.vehicle){state.vehicle.speed=0;state.vehicle=null;$('vehiclehud').classList.remove('show');}
+ if(state.sitting)standUp();
+ if(t.floor===2){state.x=24;state.z=-32.5;state.floor=1;state.levelHeight=0;toast('二樓目標：已送至辦公室，沿右側樓梯上樓。');}
+ else {state.x=t.x;state.z=t.z;state.floor=1;state.levelHeight=0;state.stepLift=stepHeightAt(t.x,t.z);toast('已抵達目標附近：'+t.name+'。按 F 或點擊「互動」。');}
+ state.yaw=0;state.pitch=.23;state.stairTransition=null;
+}
+function ch2RunTarget(t){if(!t||state.dialog||state.overlay||state.map)return;ch2ChooseTarget(t);t.act();}
+document.getElementById('ch2DockTalk').onclick=()=>{const t=ch2Nearby()||ch2CurrentTarget();if(t)ch2RunTarget(t);};
+document.getElementById('ch2DockTasks').onclick=()=>ch2Open('quests');
+// In the test build the task desk shows EVERY live objective with both real-world travel and direct event tests.
+const ch2DrawOriginal=ch2Draw;
+ch2Draw=function(){ch2DrawOriginal();if(ch2Tab!=='quests'||!ch2Unlocked())return;
+ const host=document.getElementById('ch2Content');const title=document.createElement('h3');title.textContent='目前可操作的任務目標';host.insertBefore(title,host.children[2]||null);
+ const targets=ch2Targets();for(const t of targets){const row=document.createElement('div');row.className='ch2item ch2MainCard';
+ const label=document.createElement('span');label.textContent=(t.name===ch2SelectedTargetName?'➤ ':'📍 ')+t.name+'｜'+(t.floor===2?'二樓':'一樓／街道');
+ const go=document.createElement('button');go.textContent='帶我到目標';go.onclick=()=>{ch2Close();ch2Teleport(t);};
+ const play=document.createElement('button');play.className='ch2Play';play.textContent='直接測試對話';play.onclick=()=>{ch2Close();if(state.overlay)start();ch2RunTarget(t);};
+ row.append(label,go,play);host.insertBefore(row,title.nextSibling);
+ }
+};
+function ch2UpdateMarkers(){
+ const t=ch2CurrentTarget();const active=ch2Unlocked()&&t&&!state.overlay&&!state.map&&!state.dialog&&!state.characterPanel&&!state.roster&&!ch2Sheet.classList.contains('open');
+ ch2Way.style.display='none';ch2Dock.style.display=active?'flex':'none';if(!active)return;
+ const near=ch2Nearby();const d=Math.round(Math.hypot(state.x-t.x,state.z-t.z));
+ document.getElementById('ch2DockName').textContent=(near?'可互動 · ':'追蹤 · ')+t.name+'　'+d+'m';
+ document.getElementById('ch2DockTalk').textContent=near?'✦ 進行任務':'✦ 目標互動';
+ document.getElementById('ch2DockTalk').disabled=!near;
+ if(t.floor!==state.floor)return;
+ const pos=project([t.x,(t.floor===2?UPPER:state.stepLift)+2.8,t.z],vp);
+ if(pos&&d<80&&pos.x>25&&pos.x<innerWidth-25&&pos.y>35&&pos.y<innerHeight-50){ch2Way.style.display='block';ch2Way.style.left=pos.x+'px';ch2Way.style.top=pos.y+'px';ch2Way.textContent='✦ '+t.name+'　'+d+'m';}
+}
+setInterval(()=>{try{ch2UpdateMarkers();}catch(e){console.warn('第二章目標標記:',e);}},220);
+// Quest speaker collision: physically matching a named NPC now starts its Chapter II interaction, not generic daily talk.
+const ch2InteractionPrevious=interact;
+interact=function(){if(!state.dialog&&ch2Unlocked()&&!state.overlay&&!state.vehicle&&!state.sitting){
+ const old=ch2Nearby();if(old){ch2RunTarget(old);return;}
+ const actor=nearest();if(actor?.type==='npc'){
+  const canon={'阮知音':'阮知音','江予白':'江予白','林夏禾':'林夏禾','彭小滿':'彭小滿','方景森':'方景森'};
+  const match=ch2Targets().find(t=>canon[actor.ref?.name]&&t.name.includes(canon[actor.ref.name]));
+  if(match){ch2RunTarget(match);return;}
+ }
+ }ch2InteractionPrevious();};
+// Replace the confusing single-coordinate HUD with the currently selected quest target.
+const ch2OldNavTarget=lfTarget;
+lfTarget=function(){const t=ch2CurrentTarget();if(!ch2Unlocked()||!t||lfNavChoice!=='main'&&!String(lfNavChoice).startsWith('ch2_'))return ch2OldNavTarget();
+ if(t.floor===2&&state.floor!==2){const b=buildings.find(v=>v.id==='office');const indoors=b&&Math.abs(state.x-b.x)<b.w/2-1&&Math.abs(state.z-b.z)<b.d/2-1;return {...t,x:indoors?stair.x:b.x,z:indoors?stair.fromZ:b.front+1.4,label:indoors?'先走右側樓梯':'先進入電影節辦公室'};}
+ return {...t,label:t.name};};
+// Keep legacy saved stages; no quest reset, no permanent NPC mutation.
+/* === END v4.8 PATCH === */
+
 /* === END CHAPTER TWO === */
 
 /* === END LOVEFILM NPC DAILY LIFE === */
